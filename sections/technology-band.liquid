@@ -1,0 +1,334 @@
+{% comment %}
+  UnlockedAir - "Technology Band" Section
+  Features:
+  - Responsive percentage-based layout (no fixed widths)
+  - Embedded CSS scoped to section ID
+  - 2-Column layout on desktop, stacked on mobile
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .tech-band-section {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: {{ section.settings.bg_color | default: '#FFFFFF' }};
+    padding: 96px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tech-band-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+  }
+
+  /* Left Copy Column */
+  .tech-band-copy {
+    flex: 1 1 0%;
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .tech-band-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    background-color: #DCEBEC;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #070D10;
+    white-space: nowrap;
+  }
+
+  .tech-band-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.015em;
+    color: #070D10;
+    margin: 0;
+  }
+
+  .tech-band-body {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #070D10;
+    margin: 0;
+  }
+
+  /* Benefits List */
+  .tech-band-benefits {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tech-band-benefit-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .tech-band-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    background-color: #2EE6D6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .tech-band-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #070D10;
+    margin: 0;
+  }
+
+  /* Right Media Column */
+  .tech-band-media {
+    flex: 1 1 0%;
+    width: 50%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 20px;
+  }
+
+  .tech-band-image {
+    width: 100%;
+    max-width: 624px;
+    height: auto;
+    max-height: 440px;
+    object-fit: contain;
+    border-radius: 20px;
+    display: block;
+  }
+
+  /* Responsive Mobile Breakpoint (<= 768px) */
+  @media screen and (max-width: 768px) {
+    .tech-band-section {
+      padding: 56px 0;
+    }
+
+    .tech-band-container {
+      width: 90%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 48px;
+    }
+
+    .tech-band-copy {
+      width: 100%;
+      gap: 20px;
+    }
+
+    .tech-band-title {
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: -0.01em;
+    }
+
+    .tech-band-body {
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .tech-band-media {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .tech-band-image {
+      max-width: 100%;
+      max-height: 360px;
+    }
+  }
+</style>
+
+<div class="tech-band-section" id="TechBand-section">
+  <div class="tech-band-container">
+    
+    <!-- Copy Column -->
+    <div class="tech-band-copy">
+      {% if section.settings.tag != blank %}
+        <div class="tech-band-tag">
+          {{ section.settings.tag }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="tech-band-title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.body != blank %}
+        <p class="tech-band-body">
+          {{ section.settings.body }}
+        </p>
+      {% endif %}
+
+      <!-- Benefit items -->
+      <ul class="tech-band-benefits">
+        {% if section.settings.item_1 != blank %}
+          <li class="tech-band-benefit-item">
+            <span class="tech-band-icon" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="tech-band-text">{{ section.settings.item_1 }}</span>
+          </li>
+        {% endif %}
+
+        {% if section.settings.item_2 != blank %}
+          <li class="tech-band-benefit-item">
+            <span class="tech-band-icon" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="tech-band-text">{{ section.settings.item_2 }}</span>
+          </li>
+        {% endif %}
+
+        {% if section.settings.item_3 != blank %}
+          <li class="tech-band-benefit-item">
+            <span class="tech-band-icon" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="tech-band-text">{{ section.settings.item_3 }}</span>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <!-- Media / Illustration Column -->
+    <div class="tech-band-media">
+      {% if section.settings.image != blank %}
+        <img
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          alt="{{ section.settings.title | escape }}"
+          class="tech-band-image"
+          loading="lazy"
+        >
+      {% else %}
+        <img
+          src="{{ 'technology-band-illustration.png' | asset_url }}"
+          alt="{{ section.settings.title | escape }}"
+          class="tech-band-image"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Technology Band",
+  "tag": "section",
+  "class": "section-technology-band",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Label",
+      "default": "Technology"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Title",
+      "default": "Magnetic lift, built to hold"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Description",
+      "default": "Two adhesive tabs sit on the outside of your nostrils. A band with neodymium magnets clicks onto them and gently lifts your nose open. Nothing goes inside, and nothing presses on the bridge."
+    },
+    {
+      "type": "text",
+      "id": "item_1",
+      "label": "Step / Benefit 1",
+      "default": "Clean and dry"
+    },
+    {
+      "type": "text",
+      "id": "item_2",
+      "label": "Step / Benefit 2",
+      "default": "Apply the tabs"
+    },
+    {
+      "type": "text",
+      "id": "item_3",
+      "label": "Step / Benefit 3",
+      "default": "Snap on the band"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Technology Illustration Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Technology Band"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,631 @@
+{% comment %}
+  UnlockedAir - "How it works / Benefits" Section
+  Features:
+  - Responsive percentage-based layout (no fixed widths)
+  - Embedded CSS scoped to section ID
+  - Desktop: Center product image with 6 fluid pointer lines and indicator dots
+  - Mobile: Left-aligned header, 6 checkmark benefit list items, and centered product image below
+  - Uses custom uploaded product image and aqua checkmark icon
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .how-it-works-section {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: {{ section.settings.bg_color | default: '#F4F7F7' }};
+    padding: 96px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how-it-works-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* Heading Block */
+  .how-it-works-heading {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .how-it-works-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    background-color: #DCEBEC;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #070D10;
+    white-space: nowrap;
+  }
+
+  .how-it-works-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.015em;
+    color: #070D10;
+    margin: 0;
+    text-align: center;
+  }
+
+  .how-it-works-subtitle {
+    width: 100%;
+    max-width: 860px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #4A5C63;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* ========================================================
+     DESKTOP DIAGRAM VIEW (Pointers & Lines)
+     ======================================================== */
+  .how-it-works-desktop-view {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2%;
+    box-sizing: border-box;
+  }
+
+  /* Left Callouts Column */
+  .how-it-works-callouts-left {
+    flex: 1 1 0%;
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 280px;
+    gap: 36px;
+    box-sizing: border-box;
+  }
+
+  /* Right Callouts Column */
+  .how-it-works-callouts-right {
+    flex: 1 1 0%;
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 280px;
+    gap: 36px;
+    box-sizing: border-box;
+  }
+
+  /* Callout Item Row */
+  .how-it-works-pointer-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .how-it-works-pointer-row--left {
+    justify-content: flex-end;
+  }
+
+  .how-it-works-pointer-row--right {
+    justify-content: flex-start;
+  }
+
+  .how-it-works-pointer-label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #070D10;
+    white-space: nowrap;
+  }
+
+  .how-it-works-pointer-line {
+    height: 0px;
+    border-top: 3px solid rgba(0, 0, 0, 0.2);
+    max-width: 204px;
+    width: 100%;
+    min-width: 40px;
+  }
+
+  /* Indicator Dot (Dual Ring Halo) */
+  .how-it-works-pointer-dot {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .how-it-works-pointer-dot-inner {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  /* Center Product Media */
+  .how-it-works-center-media {
+    flex: 0 0 auto;
+    width: 24%;
+    max-width: 341px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .how-it-works-product-image {
+    width: 100%;
+    height: auto;
+    max-height: 370px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ========================================================
+     MOBILE VIEW (Checklist & Bottom Image)
+     ======================================================== */
+  .how-it-works-mobile-view {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+    box-sizing: border-box;
+  }
+
+  .how-it-works-benefits-list {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .how-it-works-benefit-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .how-it-works-check-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .how-it-works-check-icon img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    object-fit: contain;
+  }
+
+  .how-it-works-benefit-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #070D10;
+    margin: 0;
+  }
+
+  .how-it-works-mobile-media {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .how-it-works-mobile-image {
+    width: 100%;
+    max-width: 345px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Responsive Mobile Breakpoint (<= 768px) */
+  @media screen and (max-width: 768px) {
+    .how-it-works-section {
+      padding: 56px 0;
+    }
+
+    .how-it-works-container {
+      width: 90%;
+      align-items: flex-start;
+      gap: 36px;
+    }
+
+    .how-it-works-heading {
+      align-items: flex-start;
+      text-align: left;
+      gap: 12px;
+    }
+
+    .how-it-works-title {
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
+
+    .how-it-works-subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      text-align: left;
+    }
+
+    /* Toggle Views */
+    .how-it-works-desktop-view {
+      display: none;
+    }
+
+    .how-it-works-mobile-view {
+      display: flex;
+    }
+  }
+</style>
+
+<div class="how-it-works-section" id="HowItWorks-section">
+  <div class="how-it-works-container">
+    
+    <!-- Heading Block -->
+    <div class="how-it-works-heading">
+      {% if section.settings.tag != blank %}
+        <div class="how-it-works-tag">
+          {{ section.settings.tag }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="how-it-works-title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="how-it-works-subtitle">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- ==============================================
+         DESKTOP VIEW: Diagram with lines and dots
+         ============================================== -->
+    <div class="how-it-works-desktop-view" aria-hidden="false">
+      
+      <!-- Left Callouts Column -->
+      <div class="how-it-works-callouts-left">
+        
+        <!-- Left Item 1: Instantly Expands -->
+        <div class="how-it-works-pointer-row how-it-works-pointer-row--left">
+          <span class="how-it-works-pointer-label">{{ section.settings.left_item_1 | default: 'Instantly Expands' }}</span>
+          <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+          <span class="how-it-works-pointer-dot" aria-hidden="true">
+            <span class="how-it-works-pointer-dot-inner"></span>
+          </span>
+        </div>
+
+        <!-- Left Item 2: Drug Free -->
+        <div class="how-it-works-pointer-row how-it-works-pointer-row--left">
+          <span class="how-it-works-pointer-label">{{ section.settings.left_item_2 | default: 'Drug Free' }}</span>
+          <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+          <span class="how-it-works-pointer-dot" aria-hidden="true">
+            <span class="how-it-works-pointer-dot-inner"></span>
+          </span>
+        </div>
+
+        <!-- Left Item 3: Nothing Inside Your Nose -->
+        <div class="how-it-works-pointer-row how-it-works-pointer-row--left">
+          <span class="how-it-works-pointer-label">{{ section.settings.left_item_3 | default: 'Nothing Inside Your Nose' }}</span>
+          <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+          <span class="how-it-works-pointer-dot" aria-hidden="true">
+            <span class="how-it-works-pointer-dot-inner"></span>
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Center Product Image -->
+      <div class="how-it-works-center-media">
+        {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | image_url: width: 800 }}"
+            alt="{{ section.settings.title | escape }}"
+            class="how-it-works-product-image"
+            loading="lazy"
+          >
+        {% else %}
+          <img
+            src="{{ 'magnific__background__1698.png' | asset_url }}"
+            alt="{{ section.settings.title | escape }}"
+            class="how-it-works-product-image"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
+      <!-- Right Callouts Column -->
+      <div class="how-it-works-callouts-right">
+        
+        <!-- Right Item 1: Sweat Proof Hold -->
+        <div class="how-it-works-pointer-row how-it-works-pointer-row--right">
+          <span class="how-it-works-pointer-dot" aria-hidden="true">
+            <span class="how-it-works-pointer-dot-inner"></span>
+          </span>
+          <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+          <span class="how-it-works-pointer-label">{{ section.settings.right_item_1 | default: 'Sweat Proof Hold' }}</span>
+        </div>
+
+        <!-- Right Item 2: Reusable Band -->
+        <div class="how-it-works-pointer-row how-it-works-pointer-row--right">
+          <span class="how-it-works-pointer-dot" aria-hidden="true">
+            <span class="how-it-works-pointer-dot-inner"></span>
+          </span>
+          <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+          <span class="how-it-works-pointer-label">{{ section.settings.right_item_2 | default: 'Reusable Band' }}</span>
+        </div>
+
+        <!-- Right Item 3: Gentle with skin -->
+        <div class="how-it-works-pointer-row how-it-works-pointer-row--right">
+          <span class="how-it-works-pointer-dot" aria-hidden="true">
+            <span class="how-it-works-pointer-dot-inner"></span>
+          </span>
+          <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+          <span class="how-it-works-pointer-label">{{ section.settings.right_item_3 | default: 'Gentle with skin' }}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ==============================================
+         MOBILE VIEW: Vertical List with Aqua Checkmark & Bottom Image
+         ============================================== -->
+    <div class="how-it-works-mobile-view" aria-hidden="true">
+      
+      <ul class="how-it-works-benefits-list">
+        
+        <!-- Mobile Benefit 1 -->
+        <li class="how-it-works-benefit-item">
+          <span class="how-it-works-check-icon">
+            {% if section.settings.check_icon != blank %}
+              <img src="{{ section.settings.check_icon | image_url: width: 48 }}" alt="check" loading="lazy">
+            {% else %}
+              <img src="{{ 'aqua-check-icon.png' | asset_url }}" alt="check" loading="lazy">
+            {% endif %}
+          </span>
+          <span class="how-it-works-benefit-text">{{ section.settings.left_item_3 | default: 'Nothing Inside Your Nose' }}</span>
+        </li>
+
+        <!-- Mobile Benefit 2 -->
+        <li class="how-it-works-benefit-item">
+          <span class="how-it-works-check-icon">
+            {% if section.settings.check_icon != blank %}
+              <img src="{{ section.settings.check_icon | image_url: width: 48 }}" alt="check" loading="lazy">
+            {% else %}
+              <img src="{{ 'aqua-check-icon.png' | asset_url }}" alt="check" loading="lazy">
+            {% endif %}
+          </span>
+          <span class="how-it-works-benefit-text">{{ section.settings.right_item_1 | default: 'Sweat Proof Hold' }}</span>
+        </li>
+
+        <!-- Mobile Benefit 3 -->
+        <li class="how-it-works-benefit-item">
+          <span class="how-it-works-check-icon">
+            {% if section.settings.check_icon != blank %}
+              <img src="{{ section.settings.check_icon | image_url: width: 48 }}" alt="check" loading="lazy">
+            {% else %}
+              <img src="{{ 'aqua-check-icon.png' | asset_url }}" alt="check" loading="lazy">
+            {% endif %}
+          </span>
+          <span class="how-it-works-benefit-text">{{ section.settings.right_item_2 | default: 'Reusable Band' }}</span>
+        </li>
+
+        <!-- Mobile Benefit 4 -->
+        <li class="how-it-works-benefit-item">
+          <span class="how-it-works-check-icon">
+            {% if section.settings.check_icon != blank %}
+              <img src="{{ section.settings.check_icon | image_url: width: 48 }}" alt="check" loading="lazy">
+            {% else %}
+              <img src="{{ 'aqua-check-icon.png' | asset_url }}" alt="check" loading="lazy">
+            {% endif %}
+          </span>
+          <span class="how-it-works-benefit-text">{{ section.settings.left_item_2 | default: 'Drug Free' }}</span>
+        </li>
+
+        <!-- Mobile Benefit 5 -->
+        <li class="how-it-works-benefit-item">
+          <span class="how-it-works-check-icon">
+            {% if section.settings.check_icon != blank %}
+              <img src="{{ section.settings.check_icon | image_url: width: 48 }}" alt="check" loading="lazy">
+            {% else %}
+              <img src="{{ 'aqua-check-icon.png' | asset_url }}" alt="check" loading="lazy">
+            {% endif %}
+          </span>
+          <span class="how-it-works-benefit-text">{{ section.settings.right_item_3 | default: 'Gentle with skin' }}</span>
+        </li>
+
+        <!-- Mobile Benefit 6 -->
+        <li class="how-it-works-benefit-item">
+          <span class="how-it-works-check-icon">
+            {% if section.settings.check_icon != blank %}
+              <img src="{{ section.settings.check_icon | image_url: width: 48 }}" alt="check" loading="lazy">
+            {% else %}
+              <img src="{{ 'aqua-check-icon.png' | asset_url }}" alt="check" loading="lazy">
+            {% endif %}
+          </span>
+          <span class="how-it-works-benefit-text">{{ section.settings.left_item_1 | default: 'Instantly Expands' }}</span>
+        </li>
+
+      </ul>
+
+      <!-- Mobile Product Image -->
+      <div class="how-it-works-mobile-media">
+        {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | image_url: width: 800 }}"
+            alt="{{ section.settings.title | escape }}"
+            class="how-it-works-mobile-image"
+            loading="lazy"
+          >
+        {% else %}
+          <img
+            src="{{ 'magnific__background__1698.png' | asset_url }}"
+            alt="{{ section.settings.title | escape }}"
+            class="how-it-works-mobile-image"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "section-how-it-works",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#F4F7F7"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Label",
+      "default": "Benefits"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Title",
+      "default": "Built to open up your Breathing"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle Description",
+      "default": "A Magnetic Dilator that works from outside"
+    },
+    {
+      "type": "header",
+      "content": "Product Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Illustration Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "check_icon",
+      "label": "Check Icon Image"
+    },
+    {
+      "type": "header",
+      "content": "Left Benefits (Desktop) / Items"
+    },
+    {
+      "type": "text",
+      "id": "left_item_1",
+      "label": "Benefit 1",
+      "default": "Instantly Expands"
+    },
+    {
+      "type": "text",
+      "id": "left_item_2",
+      "label": "Benefit 2",
+      "default": "Drug Free"
+    },
+    {
+      "type": "text",
+      "id": "left_item_3",
+      "label": "Benefit 3",
+      "default": "Nothing Inside Your Nose"
+    },
+    {
+      "type": "header",
+      "content": "Right Benefits (Desktop) / Items"
+    },
+    {
+      "type": "text",
+      "id": "right_item_1",
+      "label": "Benefit 4",
+      "default": "Sweat Proof Hold"
+    },
+    {
+      "type": "text",
+      "id": "right_item_2",
+      "label": "Benefit 5",
+      "default": "Reusable Band"
+    },
+    {
+      "type": "text",
+      "id": "right_item_3",
+      "label": "Benefit 6",
+      "default": "Gentle with skin"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works"
+    }
+  ]
+}
+{% endschema %}

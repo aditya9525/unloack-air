@@ -1,0 +1,305 @@
+{% comment %}
+  UnlockedAir - Final CTA Section ("Breathe wider tonight.")
+  Features:
+  - Exact match to Figma Desktop & Mobile specifications
+  - Responsive percentage-based layout (no fixed widths, no clamp(), no mixed height)
+  - Placed directly above the FAQ section
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ========================================================
+     FINAL CTA SECTION: "Breathe wider tonight."
+     (Percentage Widths, No clamp, No mixed height)
+     ======================================================== */
+  .final-cta-section {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: {{ section.settings.bg_color | default: '#0B3C44' }};
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .final-cta-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5%;
+    position: relative;
+  }
+
+  /* Left Copy */
+  .final-cta-copy {
+    width: 48%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    z-index: 2;
+  }
+
+  .final-cta-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .final-cta-body {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #DCEBEC;
+    margin: 0;
+  }
+
+  .final-cta-btn {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 28px;
+    gap: 8px;
+    background-color: #2EE6D6;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    width: fit-content;
+  }
+
+  .final-cta-btn:hover {
+    background-color: #26D5C6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 230, 214, 0.35);
+  }
+
+  .final-cta-btn:active {
+    transform: translateY(0);
+  }
+
+  .final-cta-btn-label {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #070D10;
+  }
+
+  .final-cta-btn-arrow {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #070D10;
+    transition: transform 0.2s ease;
+  }
+
+  .final-cta-btn:hover .final-cta-btn-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Right Media (Desktop) */
+  .final-cta-media-desktop {
+    width: 47%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    box-sizing: border-box;
+  }
+
+  .final-cta-woman-desktop {
+    width: 100%;
+    max-width: 494px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .final-cta-badge-desktop {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    width: 28%;
+    max-width: 152px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    display: block;
+    z-index: 2;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  }
+
+  .final-cta-media-mobile {
+    display: none;
+  }
+
+  /* Responsive Media Queries (Explicit Figma values) */
+  @media (max-width: 860px) {
+    .final-cta-section {
+    }
+
+    .final-cta-container {
+      width: 90%;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .final-cta-copy {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .final-cta-title {
+      font-size: 40px;
+      line-height: 44px;
+      text-align: center;
+    }
+
+    .final-cta-body {
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    .final-cta-media-desktop {
+      display: none;
+    }
+
+    .final-cta-media-mobile {
+      display: block;
+      width: 100%;
+      max-width: 390px;
+      margin: 0 auto;
+      position: relative;
+      line-height: 0;
+    }
+
+    .final-cta-woman-mobile {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .final-cta-title {
+      font-size: 34px;
+      line-height: 38px;
+    }
+  }
+</style>
+
+<section class="final-cta-section">
+  <div class="final-cta-container">
+
+    <!-- Copy Column -->
+    <div class="final-cta-copy">
+      <h2 class="final-cta-title">{{ section.settings.title | default: 'Breathe wider tonight.' }}</h2>
+      <p class="final-cta-body">{{ section.settings.body | default: 'Try it free, backed by our 90-day better breathing guarantee.' }}</p>
+      <a href="{{ section.settings.btn_link | default: '#ProductHero-section' }}" class="final-cta-btn">
+        <span class="final-cta-btn-label">{{ section.settings.btn_label | default: 'Start my free trial' }}</span>
+        <span class="final-cta-btn-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- Desktop Media (Woman + 90 Days Seal Badge) -->
+    <div class="final-cta-media-desktop">
+      <img
+        class="final-cta-badge-desktop"
+        src="assets/final-cta-guarantee-badge.png"
+        alt="90 Days Money Back Guarantee"
+        loading="lazy"
+      >
+      <img
+        class="final-cta-woman-desktop"
+        src="assets/final-cta-desktop-woman.png"
+        alt="Smiling woman wearing UnlockedAir magnetic nasal dilator"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Mobile Media (Woman with badge composite) -->
+    <div class="final-cta-media-mobile">
+      <img
+        class="final-cta-woman-mobile"
+        src="assets/final-cta-mobile-woman.png"
+        alt="Smiling woman wearing UnlockedAir with 90 days guarantee"
+        loading="lazy"
+      >
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0B3C44"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Breathe wider tonight."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Text",
+      "default": "Try it free, backed by our 90-day better breathing guarantee."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Start my free trial"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Final CTA"
+    }
+  ]
+}
+{% endschema %}

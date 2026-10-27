@@ -1,0 +1,2996 @@
+{% comment %}
+  UnlockedAir - Product Buy Box / Starter Kit Hero Section
+  Features:
+  - Exact match to Figma Desktop & Mobile specifications
+  - Responsive percentage-based layout
+  - Swiper.js integration for product thumbnail gallery & UGC video reviews carousel
+  - Interactive kit selection (1 kit, 2 kits, 3 kits)
+  - Interactive offer toggle (Free trial vs One-time purchase)
+  - Collapsible description/kit/shipping/materials accordions
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Lato:wght@600&family=Poppins:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600&display=swap"
+  rel="stylesheet"
+>
+
+<!-- Swiper.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+  /* ========================================================
+     PRODUCT HERO SECTION: Desktop & Responsive Styles
+     ======================================================== */
+  .product-hero-section {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 60px 0 70px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-hero-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 5%;
+  }
+
+  /* Left Column: Gallery & Customer Review */
+  .product-gallery-col {
+    width: 47.5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Main Gallery Viewer */
+  .product-gallery-viewer {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-main-image-wrap {
+    width: 100%;
+    aspect-ratio: 570 / 494;
+    background: #2EE6D6;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(7, 13, 16, 0.04);
+  }
+
+  .product-main-swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .product-main-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2EE6D6;
+  }
+
+  .product-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Gallery Thumbnails Strip with Swiper */
+  .product-thumbs-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+  }
+
+  .product-thumbs-btn {
+    width: 30px;
+    height: 66px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+  }
+
+  .product-thumbs-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .product-thumbs-btn.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .product-thumbs-swiper {
+    flex: 1 1 0%;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .product-thumb-slide {
+    width: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    background: #F4F7F7;
+    position: relative;
+  }
+
+  .product-thumb-slide:hover {
+    transform: translateY(-2px);
+  }
+
+  .product-thumb-slide.is-active,
+  .product-thumb-slide.swiper-slide-thumb-active {
+    border-color: #070D10;
+  }
+
+  .product-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-thumb-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background: rgba(194, 194, 194, 0.6);
+    backdrop-filter: blur(3px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  /* Customer Review Comparison Card */
+  .product-review-card {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #FFFFFF;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  }
+
+  .product-review-media {
+    width: 48%;
+    aspect-ratio: 262 / 257;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #E8ECEF;
+    position: relative;
+  }
+
+  .product-review-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .product-review-content {
+    width: 52%;
+    padding: 0 20px 0 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .product-review-stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .product-review-stars svg {
+    width: 18px;
+    height: 18px;
+    fill: #F5A623;
+  }
+
+  .product-review-title {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #1E2123;
+    margin: 0;
+  }
+
+  .product-review-quote {
+    font-family: 'Red Hat Display', 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1E2123;
+    margin: 0;
+  }
+
+  .product-review-author {
+    font-family: 'Red Hat Display', 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 22px;
+    color: #1E2123;
+    margin: 0;
+  }
+
+  .product-review-verified {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 3px 8px;
+    gap: 5px;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    background: #FFFFFF;
+  }
+
+  .product-review-verified-icon {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-review-verified-text {
+    font-family: 'Red Hat Display', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 13px;
+    letter-spacing: 0.63px;
+    text-transform: uppercase;
+    color: #1E2123;
+  }
+
+  /* Right Column: Product Buy Box Info */
+  .product-info-col {
+    width: 47.5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* Rating Row */
+  .product-rating-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+
+  .product-rating-stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .product-rating-stars svg {
+    width: 14px;
+    height: 14px;
+    fill: #070D10;
+  }
+
+  .product-rating-score,
+  .product-rating-count {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A5C63;
+  }
+
+  /* Title & Description */
+  .product-hero-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 52px;
+    line-height: 48px;
+    letter-spacing: -0.02em;
+    color: #070D10;
+    margin: 0;
+  }
+
+  .product-hero-description {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #4A5C63;
+    margin: 0;
+  }
+
+  /* Price Row */
+  .product-price-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .product-price-current {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 42px;
+    letter-spacing: -0.01em;
+    color: #070D10;
+  }
+
+  .product-price-compare {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    text-decoration: line-through;
+    color: #4A5C63;
+  }
+
+  .product-price-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    background: #2EE6D6;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #070D10;
+    white-space: nowrap;
+  }
+
+  /* Benefits Checklist */
+  .product-benefits-list {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 4px 0;
+  }
+
+  .product-benefit-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .product-benefit-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: #2EE6D6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .product-benefit-icon svg {
+    width: 12px;
+    height: 12px;
+    stroke: #070D10;
+    stroke-width: 2.2;
+    fill: none;
+  }
+
+  .product-benefit-text {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #070D10;
+    flex: 1 1 0%;
+  }
+
+  /* Quantity Selector Chips */
+  .product-quantity-wrap {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .product-quantity-label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #070D10;
+  }
+
+  .product-quantity-chips {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    box-sizing: border-box;
+  }
+
+  .product-quantity-chip {
+    flex: 1 1 0%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    gap: 2px;
+    background: #FFFFFF;
+    border: 1px solid #C5D6D8;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+
+  .product-quantity-chip.is-selected {
+    border: 2px solid #070D10;
+    padding: 11px 15px; /* offset border 2px */
+  }
+
+  .product-chip-pack {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #070D10;
+  }
+
+  .product-chip-save {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #4A5C63;
+  }
+
+  /* Purchase Offers Box */
+  .product-offers-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background: #F8F8F8;
+    border-radius: 18px;
+  }
+
+  .product-offer-card {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 20px;
+    gap: 12px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1px solid #E2E8F0;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .product-offer-card.is-selected {
+    border: 2px solid #070D10;
+    padding: 15px 19px; /* offset border */
+  }
+
+  .product-offer-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: #2EE6D6;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #070D10;
+    width: fit-content;
+  }
+
+  .product-offer-main-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .product-offer-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1 1 0%;
+  }
+
+  .product-offer-title {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #070D10;
+  }
+
+  .product-offer-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A5C63;
+  }
+
+  .product-offer-pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+  }
+
+  .product-offer-compare {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: line-through;
+    color: #4A5C63;
+  }
+
+  .product-offer-price {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #070D10;
+  }
+
+  .product-offer-perks {
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #C5D6D8;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .product-offer-perk {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .product-offer-perk-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: #2EE6D6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .product-offer-perk-icon svg {
+    width: 12px;
+    height: 12px;
+    stroke: #070D10;
+    stroke-width: 2.2;
+    fill: none;
+  }
+
+  .product-offer-perk-text {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #070D10;
+  }
+
+  /* Product Buy Form */
+  .product-buy-form {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+
+  /* Primary CTA Button */
+  .product-cta-btn {
+    width: 100%;
+    height: 48px;
+    background: #2EE6D6;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    font-family: inherit;
+  }
+
+  .product-cta-btn:hover {
+    background: #26D5C6;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(46, 230, 214, 0.4);
+  }
+
+  .product-cta-btn:active {
+    transform: translateY(1px);
+  }
+
+  .product-cta-label {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #070D10;
+  }
+
+  .product-cta-arrow {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #070D10;
+    transition: transform 0.2s ease;
+  }
+
+  .product-cta-btn:hover .product-cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Guarantees & Shipping */
+  .product-meta-notes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: -4px;
+  }
+
+  .product-meta-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .product-meta-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .product-meta-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: #070D10;
+    fill: none;
+  }
+
+  .product-meta-text {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #4A5C63;
+  }
+
+  /* Trust Row */
+  .product-trust-row {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    {% comment %} background: #FFFFFF; {% endcomment %}
+    border-radius: 20px;
+    {% comment %} box-shadow: 0 2px 16px rgba(7, 13, 16, 0.04); {% endcomment %}
+    {% comment %} border: 1px solid #EDF2F4; {% endcomment %}
+  }
+
+  .product-trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1 1 0%;
+  }
+
+  .product-trust-icon {
+    width: 24px;
+    height: 24px;
+    background: #DCEBEC;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-trust-icon svg {
+    width: 12px;
+    height: 12px;
+    fill: #070D10;
+  }
+
+  .product-trust-value {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #070D10;
+  }
+
+  .product-trust-caption {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #4A5C63;
+  }
+
+  /* Accordions */
+  .product-accordions {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-accordion-item {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #EDF2F4;
+    padding: 16px 0;
+  }
+
+  .product-accordion-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    outline: none;
+  }
+
+  .product-accordion-title {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #070D10;
+    transition: color 0.2s ease;
+  }
+
+  .product-accordion-header:hover .product-accordion-title {
+    color: #0B3C44;
+  }
+
+  .product-accordion-toggle {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #070D10;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.2s ease;
+  }
+
+  .product-accordion-header:hover .product-accordion-toggle {
+    color: #0B3C44;
+  }
+
+  /* Smooth Grid Transition for Accordion Body */
+  .product-accordion-body {
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .product-accordion-item.is-open .product-accordion-body {
+    grid-template-rows: 1fr;
+  }
+
+  .product-accordion-content,
+  .product-accordion-body > * {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .product-accordion-content {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A5C63;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s, padding 0.35s ease;
+    padding-top: 0;
+  }
+
+  .product-accordion-item.is-open .product-accordion-content {
+    opacity: 1;
+    transform: translateY(0);
+    padding-top: 10px;
+  }
+
+  /* UGC Video Reviews Carousel ("Over 840,000+ Happy Customers") */
+  .product-ugc-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    gap: 16px;
+  }
+
+  .product-ugc-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-ugc-title {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #1E2123;
+    margin: 0;
+  }
+
+  .product-ugc-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .product-ugc-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 99px;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    padding: 0;
+  }
+
+  .product-ugc-btn:hover {
+    background: #F4F7F7;
+    transform: scale(1.08);
+  }
+
+  .product-ugc-btn svg {
+    width: 12px;
+    height: 12px;
+    stroke: #000000;
+    stroke-width: 2;
+    fill: none;
+  }
+
+  .product-ugc-swiper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .product-ugc-slide {
+    width: auto;
+    aspect-ratio: 9 / 12.6;
+    border-radius: 13.5px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    background: #070D10;
+  }
+
+  .product-ugc-slide:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  }
+
+  .product-ugc-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    z-index: 1;
+    display: block;
+    background: #070D10;
+  }
+
+  .product-ugc-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-ugc-slide.is-playing .product-ugc-bg {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .product-ugc-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, opacity 0.25s ease, background 0.2s ease;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .product-ugc-slide:hover .product-ugc-play {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .product-ugc-slide.is-playing .product-ugc-play {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  .product-ugc-slide.is-playing:hover .product-ugc-play {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .product-ugc-play-icon {
+    width: 14px;
+    height: 14px;
+    fill: #070D10;
+    margin-left: 2px;
+  }
+
+  .product-ugc-pause-icon {
+    width: 14px;
+    height: 14px;
+    fill: #070D10;
+    display: none;
+  }
+
+  .product-ugc-slide.is-playing .product-ugc-play-icon {
+    display: none;
+  }
+
+  .product-ugc-slide.is-playing .product-ugc-pause-icon {
+    display: block;
+  }
+
+  .product-ugc-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    padding: 6px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+  }
+
+  .product-ugc-name {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+    color: #070D10;
+  }
+
+  .product-ugc-role {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+    color: #4A5C63;
+  }
+
+  /* ========================================================
+     RESPONSIVE MEDIA QUERIES (Desktop -> Tablet -> Mobile)
+     (Explicit Figma values)
+     ======================================================== */
+  @media (max-width: 991px) {
+    .product-hero-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .product-gallery-col,
+    .product-info-col {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .product-hero-section {
+      padding: 16px 0 56px;
+    }
+
+    .product-hero-container {
+      width: 92%;
+      gap: 20px;
+    }
+
+    .product-gallery-col,
+    .product-info-col {
+      width: 100%;
+      gap: 16px;
+    }
+
+    .product-main-image-wrap {
+      border-radius: 24px;
+      aspect-ratio: 350 / 360;
+    }
+
+    .product-thumbs-btn {
+      display: none;
+    }
+
+    .product-review-card {
+        display: none;
+      flex-direction: column;
+    }
+
+    .product-review-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    .product-review-content {
+      width: 100%;
+      padding: 16px;
+    }
+
+    .product-hero-title {
+      font-size: 44px;
+      line-height: 46px;
+    }
+
+    .product-price-current {
+      font-size: 28px;
+      line-height: 32px;
+    }
+
+    .product-price-compare {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .product-quantity-chips {
+      gap: 8px;
+    }
+
+    .product-quantity-chip {
+      padding: 10px 8px;
+    }
+
+    .product-chip-pack {
+      font-size: 14px;
+    }
+
+    .product-chip-save {
+      font-size: 11px;
+    }
+
+    .product-offers-container {
+      padding: 12px;
+    }
+
+    .product-offer-card {
+      padding: 14px 12px;
+    }
+
+    .product-trust-row {
+      padding: 16px 8px;
+      gap: 4px;
+    }
+
+    .product-trust-value {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .product-trust-caption {
+      font-size: 11px;
+      line-height: 14px;
+    }
+
+    .product-ugc-title {
+      font-size: 22px;
+      line-height: 34px;
+    }
+  }
+</style>
+
+{%- comment -%}
+  Shopify Product Resolution:
+  Title, description, price, and images come directly from the Shopify product.
+  Appstle Subscriptions integrated via Shopify Selling Plans and Appstle widget.
+{%- endcomment -%}
+{%- assign product_obj = product | default: section.settings.product -%}
+{%- assign current_variant = product_obj.selected_or_first_available_variant | default: product_obj.variants.first -%}
+{%- assign product_title = product_obj.title | default: 'Unlocked Air Starter Kit' -%}
+{%- assign product_desc = product_obj.description
+  | default: 'A reusable magnetic band and gentle adhesive tabs that lift your nostrils open from the outside. Nothing goes inside your nose.'
+-%}
+{%- assign raw_price = current_variant.price | default: 6000 -%}
+{%- assign raw_compare = current_variant.compare_at_price | default: raw_price -%}
+
+{%- if product_obj.featured_image != blank -%}
+  {%- assign main_image_url = product_obj.featured_image | image_url: width: 1200 -%}
+{%- elsif product_obj.images.first != blank -%}
+  {%- assign main_image_url = product_obj.images.first | image_url: width: 1200 -%}
+{%- else -%}
+  {%- assign main_image_url = 'assets/product-hero-large@2x.png' -%}
+{%- endif -%}
+
+{%- assign selling_plan_group = product_obj.selling_plan_groups | first -%}
+{%- assign first_selling_plan = selling_plan_group.selling_plans | first -%}
+
+<section class="product-hero-section" id="ProductHeroSection-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="product-hero-container">
+    <!-- LEFT COLUMN: Image Gallery & Review Comparison Card -->
+    <div class="product-gallery-col">
+      <!-- Product Gallery Viewer -->
+      <div class="product-gallery-viewer">
+        <div class="product-main-image-wrap">
+          <div class="swiper product-main-swiper" id="productMainSwiper">
+            <div class="swiper-wrapper">
+              {% if product_obj != blank and product_obj.images.size > 0 %}
+                {% for img in product_obj.images %}
+                  <div class="swiper-slide product-main-slide" data-index="{{ forloop.index0 }}">
+                    <img
+                      class="product-main-image"
+                      src="{{ img | image_url: width: 1200 }}"
+                      alt="{{ img.alt | default: product_title | escape }}"
+                      loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                    >
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div class="swiper-slide product-main-slide" data-index="0">
+                  <img class="product-main-image" src="assets/product-hero-large@2x.png" alt="Starter kit flatlay">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="1">
+                  <img class="product-main-image" src="assets/Sporty Portrait with Nose Strip.png" alt="Sporty portrait with nose strip">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="2">
+                  <img class="product-main-image" src="assets/feature-wont-collapse.png" alt="Man wearing magnetic strip">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="3">
+                  <img class="product-main-image" src="assets/gentle-on-skin-portrait.png" alt="Customer story video">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="4">
+                  <img class="product-main-image" src="assets/product-bands-tabs.png" alt="Bands and adhesive tabs">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="5">
+                  <img class="product-main-image" src="assets/feature-sweat-proof-hold.png" alt="Sweat proof hold in action">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="6">
+                  <img class="product-main-image" src="assets/with-unlocked-air.jpg" alt="Side profile with unlocked air">
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Thumbnails Slider (Swiper.js) -->
+        <div class="product-thumbs-container">
+          <button type="button" class="product-thumbs-btn product-thumbs-prev" aria-label="Previous image">
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+              <path d="M7 1L1 7L7 13" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="swiper product-thumbs-swiper">
+            <div class="swiper-wrapper">
+              {% if product_obj != blank and product_obj.images.size > 0 %}
+                {% for img in product_obj.images %}
+                  <div
+                    class="swiper-slide product-thumb-slide{% if forloop.first %} is-active{% endif %}"
+                    data-src="{{ img | image_url: width: 1200 }}"
+                  >
+                    <img
+                      class="product-thumb-img"
+                      src="{{ img | image_url: width: 200, height: 200, crop: 'center' }}"
+                      alt="{{ img.alt | default: product_title | escape }}"
+                    >
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div class="swiper-slide product-thumb-slide is-active" data-src="assets/product-hero-large@2x.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-1@2x.png" alt="Starter kit flatlay">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/Sporty Portrait with Nose Strip.png">
+                  <img
+                    class="product-thumb-img"
+                    src="assets/product-thumb-2@2x.png"
+                    alt="Sporty portrait with nose strip"
+                  >
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/feature-wont-collapse.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-3@2x.png" alt="Man wearing magnetic strip">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/gentle-on-skin-portrait.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-4@2x.png" alt="Customer story video">
+                  <div class="product-thumb-play-icon">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#070D10">
+                      <polygon points="6,3 20,12 6,21"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/product-bands-tabs.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-5@2x.png" alt="Bands and adhesive tabs">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/feature-sweat-proof-hold.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-6@2x.png" alt="Sweat proof hold in action">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/with-unlocked-air.jpg">
+                  <img
+                    class="product-thumb-img"
+                    src="assets/product-thumb-7@2x.png"
+                    alt="Side profile with unlocked air"
+                  >
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <button type="button" class="product-thumbs-btn product-thumbs-next" aria-label="Next image">
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+              <path d="M1 1L7 7L1 13" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Customer Review Comparison Card ("With 1") -->
+      <div class="product-review-card">
+        <div class="product-review-media">
+          {% if section.settings.review_image != blank %}
+            <img
+              class="product-review-img"
+              src="{{ section.settings.review_image | image_url: width: 600 }}"
+              alt="{{ section.settings.review_author | default: 'Customer review' | escape }}"
+              loading="lazy"
+            >
+          {% else %}
+            <img
+              class="product-review-img"
+              src="assets/product-review-with@2x.png"
+              alt="Customer Caroline T. before and after UnlockedAir"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+        <div class="product-review-content">
+          <div class="product-review-stars">
+            {% for i in (1..5) %}
+              <svg viewBox="0 0 24 24">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+              </svg>
+            {% endfor %}
+          </div>
+          <h3 class="product-review-title">
+            {{ section.settings.review_title | default: 'I CAN FINALLY BREATHE AT NIGHT' }}
+          </h3>
+          <p class="product-review-quote">
+            {{
+              section.settings.review_quote
+              | default: '“I stopped waking up with a dry mouth. The band stays on all night and it’s far more comfortable than the strips I used before.”'
+            }}
+          </p>
+          <p class="product-review-author">{{ section.settings.review_author | default: 'Caroline T., Austin, TX' }}</p>
+          <div class="product-review-verified">
+            <div class="product-review-verified-icon">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1E2123" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="product-review-verified-text">
+              {{- section.settings.review_badge_text | default: 'VERIFIED BUYER' -}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Buy Box & Product Info -->
+    <div class="product-info-col">
+      <!-- Rating Row -->
+      <div class="product-rating-row">
+        <div class="product-rating-stars">
+          {% for i in (1..5) %}
+            <svg viewBox="0 0 24 24">
+              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+            </svg>
+          {% endfor %}
+        </div>
+        <span class="product-rating-score">{{ section.settings.rating_score | default: 'Excellent 4.5' }}</span>
+        <span class="product-rating-count">{{ section.settings.rating_count | default: '(45,000+ Reviews)' }}</span>
+      </div>
+
+      <!-- Title & Subtitle (Directly from Product) -->
+      <h1 class="product-hero-title">{{ product_obj.title | default: 'Unlocked Air Starter Kit' }}</h1>
+      <div class="product-hero-description">
+        {% if product_obj != blank and product_obj.description != blank %}
+          {{ product_obj.description | strip_html | truncatewords: 35 }}
+        {% else %}
+          A reusable magnetic band and gentle adhesive tabs that lift your nostrils open from the outside. Nothing goes
+          inside your nose.
+        {% endif %}
+      </div>
+
+      <!-- Price Row (Directly from Product Variant) -->
+      <div class="product-price-row">
+        <span class="product-price-current" id="displayCurrentPrice">$0.00</span>
+        <span class="product-price-compare" id="displayComparePrice">
+          {% if raw_compare > raw_price %}
+            {{ raw_compare | money }}
+          {% elsif raw_price > 0 %}
+            {{ raw_price | money }}
+          {% else %}
+            $60.00
+          {% endif %}
+        </span>
+        <span class="product-price-tag" id="displayPriceTag">
+          {{- section.settings.trial_price_tag | default: 'Free trial' -}}
+        </span>
+      </div>
+
+      <!-- Benefits Checklist -->
+      <div class="product-benefits-list">
+        {% if section.settings.benefit_1 != blank %}
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="product-benefit-text">{{ section.settings.benefit_1 }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.benefit_2 != blank %}
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="product-benefit-text">{{ section.settings.benefit_2 }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.benefit_3 != blank %}
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="product-benefit-text">{{ section.settings.benefit_3 }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.benefit_4 != blank %}
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="product-benefit-text">{{ section.settings.benefit_4 }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.benefit_5 != blank %}
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <span class="product-benefit-text">{{ section.settings.benefit_5 }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Product Buy Form (Appstle Subscription & One-Time) -->
+      {% if product_obj != blank %}
+        {% form 'product', product_obj, id: 'productBuyForm', class: 'product-buy-form' %}
+          <input type="hidden" name="id" id="productVariantId" value="{{ current_variant.id }}">
+          <input type="hidden" name="quantity" id="productQuantity" value="1">
+          <input
+            type="hidden"
+            name="selling_plan"
+            id="productSellingPlan"
+            value="{% if first_selling_plan %}{{ first_selling_plan.id }}{% endif %}"
+          >
+
+          <!-- Quantity Selector Chips -->
+          <div class="product-quantity-wrap">
+            <span class="product-quantity-label">
+              {{- section.settings.kit_selector_label | default: 'Choose your kit' -}}
+            </span>
+            <div class="product-quantity-chips">
+              {% if product_obj.variants.size > 1 %}
+                {% for variant in product_obj.variants limit: 3 %}
+                  <div
+                    class="product-quantity-chip{% if forloop.first %} is-selected{% endif %}"
+                    data-kit="{{ forloop.index }}"
+                    data-variant-id="{{ variant.id }}"
+                    data-price="{{ variant.price | divided_by: 100.0 }}"
+                    data-compare="{{ variant.compare_at_price | default: variant.price | divided_by: 100.0 }}"
+                  >
+                    <span class="product-chip-pack">{{ variant.title }}</span>
+                    <span class="product-chip-save">
+                      {% if variant.compare_at_price > variant.price %}
+                        Save
+                        {{
+                          variant.compare_at_price
+                          | minus: variant.price
+                          | times: 100.0
+                          | divided_by: variant.compare_at_price
+                          | round
+                        -}}
+                        %
+                      {% elsif forloop.index == 1 %}
+                        {{ section.settings.kit_1_badge | default: 'Starter' }}
+                      {% elsif forloop.index == 2 %}
+                        {{ section.settings.kit_2_badge | default: 'Save 20%' }}
+                      {% else %}
+                        {{ section.settings.kit_3_badge | default: 'Save 30%' }}
+                      {% endif %}
+                    </span>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <div
+                  class="product-quantity-chip is-selected"
+                  data-kit="1"
+                  data-variant-id="{{ current_variant.id }}"
+                  data-price="{{ raw_price | divided_by: 100.0 }}"
+                  data-compare="{{ raw_compare | divided_by: 100.0 }}"
+                >
+                  <span class="product-chip-pack">{{ section.settings.kit_1_title | default: '1 kit' }}</span>
+                  <span class="product-chip-save">{{ section.settings.kit_1_badge | default: 'Starter' }}</span>
+                </div>
+                <div
+                  class="product-quantity-chip"
+                  data-kit="2"
+                  data-variant-id="{{ current_variant.id }}"
+                  data-price="{{ raw_price | divided_by: 100.0 }}"
+                  data-compare="{{ raw_compare | divided_by: 100.0 | times: 2 }}"
+                >
+                  <span class="product-chip-pack">{{ section.settings.kit_2_title | default: '2 kits' }}</span>
+                  <span class="product-chip-save">{{ section.settings.kit_2_badge | default: 'Save 20%' }}</span>
+                </div>
+                <div
+                  class="product-quantity-chip"
+                  data-kit="3"
+                  data-variant-id="{{ current_variant.id }}"
+                  data-price="{{ raw_price | divided_by: 100.0 }}"
+                  data-compare="{{ raw_compare | divided_by: 100.0 | times: 3 }}"
+                >
+                  <span class="product-chip-pack">{{ section.settings.kit_3_title | default: '3 kits' }}</span>
+                  <span class="product-chip-save">{{ section.settings.kit_3_badge | default: 'Save 30%' }}</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Offers Container (Appstle Subscription vs One-Time Purchase) -->
+          <div class="product-offers-container">
+            <!-- Option 1: Free Trial / Subscription -->
+            <div class="product-offer-card is-selected" id="offerFreeTrial" data-offer="trial">
+              {% if section.settings.subscription_tag != blank %}
+                <div class="product-offer-tag">{{ section.settings.subscription_tag }}</div>
+              {% endif %}
+              <div class="product-offer-main-row">
+                <div class="product-offer-copy">
+                  <span class="product-offer-title">
+                    {{- section.settings.subscription_title | default: 'Free trial' -}}
+                  </span>
+                  <span class="product-offer-subtitle">
+                    {{-
+                      section.settings.subscription_subtitle
+                      | default: '15 tab sets + 4 bands free, then 30 tab sets every 30 days'
+                    -}}
+                  </span>
+                </div>
+                <div class="product-offer-pricing">
+                  <span class="product-offer-compare">$49.00</span>
+                  <span class="product-offer-price">$0.00</span>
+                </div>
+              </div>
+              <div class="product-offer-perks" id="offerTrialPerks">
+                {% if section.settings.subscription_perk_1 != blank %}
+                  <div class="product-offer-perk">
+                    <div class="product-offer-perk-icon">
+                      <svg viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <span class="product-offer-perk-text">{{ section.settings.subscription_perk_1 }}</span>
+                  </div>
+                {% endif %}
+                {% if section.settings.subscription_perk_2 != blank %}
+                  <div class="product-offer-perk">
+                    <div class="product-offer-perk-icon">
+                      <svg viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <span class="product-offer-perk-text">{{ section.settings.subscription_perk_2 }}</span>
+                  </div>
+                {% endif %}
+                {% if section.settings.subscription_perk_3 != blank %}
+                  <div class="product-offer-perk">
+                    <div class="product-offer-perk-icon">
+                      <svg viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <span class="product-offer-perk-text">{{ section.settings.subscription_perk_3 }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- Option 2: One-time purchase -->
+            <div class="product-offer-card" id="offerOneTime" data-offer="onetime">
+              <div class="product-offer-main-row">
+                <div class="product-offer-copy">
+                  <span class="product-offer-title">
+                    {{- section.settings.onetime_title | default: 'One-time purchase' -}}
+                  </span>
+                  <span class="product-offer-subtitle">
+                    {{- section.settings.onetime_subtitle | default: '15 tab sets + 4 bands, no subscription' -}}
+                  </span>
+                </div>
+                <div class="product-offer-pricing">
+                  <span class="product-offer-compare" id="offerOneTimeCompare">
+                    {% if raw_compare > raw_price -%}
+                      {{- raw_compare | money -}}
+                    {%- else -%}
+                      {{- raw_price | money -}}
+                    {%- endif %}
+                  </span>
+                  <span class="product-offer-price" id="offerOneTimePrice">{{ raw_price | money }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appstle Subscription App Widget Anchor & OS 2.0 App Blocks -->
+          <div
+            id="appstle_subscription_widget"
+            class="appstle_subscription_widget"
+            data-product-id="{{ product_obj.id }}"
+            data-variant-id="{{ current_variant.id }}"
+            style="display:none;"
+          ></div>
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when '@app' %}
+                {% render block %}
+            {% endcase %}
+          {% endfor %}
+
+          <!-- Main CTA Button -->
+          <button type="submit" name="add" class="product-cta-btn" id="productCtaBtn">
+            <span class="product-cta-label" id="productCtaLabel">
+              {{- section.settings.trial_cta_label | default: 'Start my free trial' -}}
+            </span>
+            <span class="product-cta-arrow">→</span>
+          </button>
+        {% endform %}
+      {% else %}
+        <form
+          action="/cart/add"
+          method="post"
+          enctype="multipart/form-data"
+          id="productBuyForm"
+          class="product-buy-form"
+        >
+          <input type="hidden" name="id" id="productVariantId" value="1">
+          <input type="hidden" name="quantity" id="productQuantity" value="1">
+          <input type="hidden" name="selling_plan" id="productSellingPlan" value="">
+
+          <!-- Quantity Selector Chips -->
+          <div class="product-quantity-wrap">
+            <span class="product-quantity-label">
+              {{- section.settings.kit_selector_label | default: 'Choose your kit' -}}
+            </span>
+            <div class="product-quantity-chips">
+              <div class="product-quantity-chip is-selected" data-kit="1" data-price="60.00" data-compare="60.00">
+                <span class="product-chip-pack">{{ section.settings.kit_1_title | default: '1 kit' }}</span>
+                <span class="product-chip-save">{{ section.settings.kit_1_badge | default: 'Starter' }}</span>
+              </div>
+              <div class="product-quantity-chip" data-kit="2" data-price="60.00" data-compare="120.00">
+                <span class="product-chip-pack">{{ section.settings.kit_2_title | default: '2 kits' }}</span>
+                <span class="product-chip-save">{{ section.settings.kit_2_badge | default: 'Save 20%' }}</span>
+              </div>
+              <div class="product-quantity-chip" data-kit="3" data-price="60.00" data-compare="180.00">
+                <span class="product-chip-pack">{{ section.settings.kit_3_title | default: '3 kits' }}</span>
+                <span class="product-chip-save">{{ section.settings.kit_3_badge | default: 'Save 30%' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Offers Container (Appstle Free trial vs One-time purchase) -->
+          <div class="product-offers-container">
+            <!-- Option 1: Free Trial -->
+            <div class="product-offer-card is-selected" id="offerFreeTrial" data-offer="trial">
+              {% if section.settings.subscription_tag != blank %}
+                <div class="product-offer-tag">{{ section.settings.subscription_tag }}</div>
+              {% endif %}
+              <div class="product-offer-main-row">
+                <div class="product-offer-copy">
+                  <span class="product-offer-title">
+                    {{- section.settings.subscription_title | default: 'Free trial' -}}
+                  </span>
+                  <span class="product-offer-subtitle">
+                    {{-
+                      section.settings.subscription_subtitle
+                      | default: '15 tab sets + 4 bands free, then 30 tab sets every 30 days'
+                    -}}
+                  </span>
+                </div>
+                <div class="product-offer-pricing">
+                  <span class="product-offer-compare">$49.00</span>
+                  <span class="product-offer-price">$0.00</span>
+                </div>
+              </div>
+              <div class="product-offer-perks" id="offerTrialPerks">
+                {% if section.settings.subscription_perk_1 != blank %}
+                  <div class="product-offer-perk">
+                    <div class="product-offer-perk-icon">
+                      <svg viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <span class="product-offer-perk-text">{{ section.settings.subscription_perk_1 }}</span>
+                  </div>
+                {% endif %}
+                {% if section.settings.subscription_perk_2 != blank %}
+                  <div class="product-offer-perk">
+                    <div class="product-offer-perk-icon">
+                      <svg viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <span class="product-offer-perk-text">{{ section.settings.subscription_perk_2 }}</span>
+                  </div>
+                {% endif %}
+                {% if section.settings.subscription_perk_3 != blank %}
+                  <div class="product-offer-perk">
+                    <div class="product-offer-perk-icon">
+                      <svg viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <span class="product-offer-perk-text">{{ section.settings.subscription_perk_3 }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- Option 2: One-time purchase -->
+            <div class="product-offer-card" id="offerOneTime" data-offer="onetime">
+              <div class="product-offer-main-row">
+                <div class="product-offer-copy">
+                  <span class="product-offer-title">
+                    {{- section.settings.onetime_title | default: 'One-time purchase' -}}
+                  </span>
+                  <span class="product-offer-subtitle">
+                    {{- section.settings.onetime_subtitle | default: '15 tab sets + 4 bands, no subscription' -}}
+                  </span>
+                </div>
+                <div class="product-offer-pricing">
+                  <span class="product-offer-compare" id="offerOneTimeCompare">$60.00</span>
+                  <span class="product-offer-price" id="offerOneTimePrice">$60.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main CTA Button -->
+          <button type="submit" name="add" class="product-cta-btn" id="productCtaBtn">
+            <span class="product-cta-label" id="productCtaLabel">
+              {{- section.settings.trial_cta_label | default: 'Start my free trial' -}}
+            </span>
+            <span class="product-cta-arrow">→</span>
+          </button>
+        </form>
+      {% endif %}
+
+      <!-- Guarantees & Shipping Notes -->
+      <div class="product-meta-notes">
+        <div class="product-meta-row">
+          <div class="product-meta-icon">
+            <img
+              src="{{ 'guarantee-icon.svg' | asset_url }}"
+              alt="Money-back guarantee"
+              width="14"
+              height="16"
+              loading="lazy"
+            >
+          </div>
+
+          <span class="product-meta-text">
+            {{- section.settings.guarantee_text | default: '30 Days Money Back Guarantee' -}}
+          </span>
+        </div>
+
+        <div class="product-meta-row">
+        <div class="product-meta-icon">
+            <img
+              src="{{ 'shipping-icon.svg' | asset_url }}"
+              alt="Shipping"
+              width="18"
+              height="18"
+              loading="lazy"
+            >
+          </div>
+
+          <span class="product-meta-text">
+            {{- section.settings.shipping_text | default: 'Ships in 3–5 business days · Free US shipping over $40' -}}
+          </span>
+        </div>
+      </div>
+
+      <!-- Trust Metrics Row -->
+      <div class="product-trust-row">
+        <div class="product-trust-badge">
+          <div class="product-trust-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="6"/>
+            </svg>
+          </div>
+          <span class="product-trust-value">{{ section.settings.trust_1_val | default: '90 days' }}</span>
+          <span class="product-trust-caption">{{ section.settings.trust_1_cap | default: 'Breathing guarantee' }}</span>
+        </div>
+        <div class="product-trust-badge">
+          <div class="product-trust-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="6"/>
+            </svg>
+          </div>
+          <span class="product-trust-value">{{ section.settings.trust_2_val | default: '4 sizes' }}</span>
+          <span class="product-trust-caption">{{ section.settings.trust_2_cap | default: 'Fit guaranteed' }}</span>
+        </div>
+        <div class="product-trust-badge">
+          <div class="product-trust-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="6"/>
+            </svg>
+          </div>
+          <span class="product-trust-value">{{ section.settings.trust_3_val | default: '4.8 / 5' }}</span>
+          <span class="product-trust-caption">{{ section.settings.trust_3_cap | default: 'Customer rating' }}</span>
+        </div>
+      </div>
+
+      <!-- Accordions -->
+      <div class="product-accordions">
+        <!-- Item 1: Description (From Product, Open by default) -->
+        <div class="product-accordion-item is-open">
+          <button type="button" class="product-accordion-header" aria-expanded="true">
+            <span class="product-accordion-title">
+              {{- section.settings.accordion_1_title | default: 'Description' -}}
+            </span>
+            <span class="product-accordion-toggle">—</span>
+          </button>
+          <div class="product-accordion-body">
+            <div class="product-accordion-content">
+              {% if product_obj != blank and product_obj.description != blank %}
+                {{ product_obj.description }}
+              {% else %}
+                Stick a tab on each side of your nose, then bring the band close and let the magnets click on. The band
+                lifts your nostrils open from the outside, so you breathe through your nose more easily.
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: What's in the kit -->
+        <div class="product-accordion-item">
+          <button type="button" class="product-accordion-header" aria-expanded="false">
+            <span class="product-accordion-title">
+              {{- section.settings.accordion_2_title | default: "What's in the kit" -}}
+            </span>
+            <span class="product-accordion-toggle">+</span>
+          </button>
+          <div class="product-accordion-body">
+            <div class="product-accordion-content">
+              {{
+                section.settings.accordion_2_body
+                | default: 'Each starter kit includes 4 reusable magnetic bands in different sizes to guarantee your custom fit, 15 hypoallergenic sweat-resistant adhesive tab sets, a precision placement applicator, and an easy step-by-step instructional manual.'
+              }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Shipping and returns -->
+        <div class="product-accordion-item">
+          <button type="button" class="product-accordion-header" aria-expanded="false">
+            <span class="product-accordion-title">
+              {{- section.settings.accordion_3_title | default: 'Shipping and returns' -}}
+            </span>
+            <span class="product-accordion-toggle">+</span>
+          </button>
+          <div class="product-accordion-body">
+            <div class="product-accordion-content">
+              {{
+                section.settings.accordion_3_body
+                | default: 'All US orders ship promptly within 3–5 business days, with free shipping on all orders over $40. We back every purchase with our 30-day money back breathing guarantee. If you are not completely satisfied, return it hassle-free for a full refund.'
+              }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Materials -->
+        <div class="product-accordion-item">
+          <button type="button" class="product-accordion-header" aria-expanded="false">
+            <span class="product-accordion-title">{{ section.settings.accordion_4_title | default: 'Materials' }}</span>
+            <span class="product-accordion-toggle">+</span>
+          </button>
+          <div class="product-accordion-body">
+            <div class="product-accordion-content">
+              {{
+                section.settings.accordion_4_body
+                | default: 'Crafted from high-tensile spring steel core encased in soft-touch biocompatible silicone, rare-earth neodymium micro-magnets, and medical-grade hypoallergenic breathable adhesive tabs tested safe for all skin types.'
+              }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UGC Video Reviews Carousel ("Over 840,000+ Happy Customers") -->
+      <div class="product-ugc-container">
+        <div class="product-ugc-header">
+          <h2 class="product-ugc-title">{{ section.settings.ugc_title | default: 'Over 840,000+ Happy Customers' }}</h2>
+          <div class="product-ugc-nav">
+            <button type="button" class="product-ugc-btn product-ugc-prev" aria-label="Previous customer review">
+              <svg viewBox="0 0 24 24">
+                <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="product-ugc-btn product-ugc-next" aria-label="Next customer review">
+              <svg viewBox="0 0 24 24">
+                <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="swiper product-ugc-swiper">
+          <div class="swiper-wrapper">
+            {% assign ugc_block_count = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'video_review' %}
+                {% assign ugc_block_count = ugc_block_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+
+            {% if ugc_block_count > 0 %}
+              {% for block in section.blocks %}
+                {% if block.type == 'video_review' %}
+                  <div
+                    class="swiper-slide product-ugc-slide"
+                    data-name="{{ block.settings.name | escape }}"
+                    data-role="{{ block.settings.role | escape }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {% if block.settings.video != blank %}
+                      {{
+                        block.settings.video
+                        | video_tag:
+                          class: 'product-ugc-video',
+                          image_size: '600x',
+                          loop: true,
+                          controls: false,
+                          playsinline: true,
+                          preload: 'none'
+                      }}
+                    {% elsif block.settings.video_url != blank %}
+                      <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                        <source src="{{ block.settings.video_url }}" type="video/mp4">
+                      </video>
+                    {% else %}
+                      <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                        <source
+                          src="{{ 'ugc-sample.mp4' | asset_url | default: 'assets/ugc-sample.mp4' }}"
+                          type="video/mp4"
+                        >
+                      </video>
+                    {% endif %}
+
+                    {% if block.settings.poster_image != blank %}
+                      <img
+                        class="product-ugc-bg"
+                        src="{{ block.settings.poster_image | image_url: width: 600 }}"
+                        alt="{{ block.settings.name | default: 'Customer' | escape }} UnlockedAir review"
+                      >
+                    {% else %}
+                      {% assign fallback_idx = forloop.index | modulo: 5 %}
+                      {% case fallback_idx %}
+                        {% when 1 %}
+                          <img
+                            class="product-ugc-bg"
+                            src="{{ 'ugc-maya@2x.png' | asset_url | default: 'assets/ugc-maya@2x.png' }}"
+                            alt="{{ block.settings.name | escape }}"
+                          >
+                        {% when 2 %}
+                          <img
+                            class="product-ugc-bg"
+                            src="{{ 'ugc-jordan@2x.png' | asset_url | default: 'assets/ugc-jordan@2x.png' }}"
+                            alt="{{ block.settings.name | escape }}"
+                          >
+                        {% when 3 %}
+                          <img
+                            class="product-ugc-bg"
+                            src="{{ 'ugc-chris.png' | asset_url | default: 'assets/ugc-chris.png' }}"
+                            alt="{{ block.settings.name | escape }}"
+                          >
+                        {% when 4 %}
+                          <img
+                            class="product-ugc-bg"
+                            src="{{ 'ugc-elena.png' | asset_url | default: 'assets/ugc-elena.png' }}"
+                            alt="{{ block.settings.name | escape }}"
+                          >
+                        {% else %}
+                          <img
+                            class="product-ugc-bg"
+                            src="{{ 'ugc-marcus.png' | asset_url | default: 'assets/ugc-marcus.png' }}"
+                            alt="{{ block.settings.name | escape }}"
+                          >
+                      {% endcase %}
+                    {% endif %}
+
+                    <div class="product-ugc-play" aria-label="Play review video">
+                      <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                        <polygon points="6,3 20,12 6,21"/>
+                      </svg>
+                      <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                        <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+                      </svg>
+                    </div>
+                    <div class="product-ugc-badge">
+                      <span class="product-ugc-name">{{ block.settings.name | default: 'Verified Customer' }}</span>
+                      {% if block.settings.role != blank %}
+                        <span class="product-ugc-role">{{ block.settings.role }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <!-- Fallback Default 5 UGC Cards when no blocks configured -->
+              <!-- UGC Card 1 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Maya R." data-role="Runner">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-maya@2x.png" alt="Maya R. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21"/>
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Maya R.</span>
+                  <span class="product-ugc-role">Runner</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 2 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Jordan P." data-role="Cyclist">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-jordan@2x.png" alt="Jordan P. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21"/>
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Jordan P.</span>
+                  <span class="product-ugc-role">Cyclist</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 3 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Chris D." data-role="Recovery & Sleep">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-chris.png" alt="Chris D. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21"/>
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Chris D.</span>
+                  <span class="product-ugc-role">Recovery & Sleep</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 4 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Elena S." data-role="Marathoner">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-elena.png" alt="Elena S. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21"/>
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Elena S.</span>
+                  <span class="product-ugc-role">Marathoner</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 5 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Marcus T." data-role="CrossFit Athlete">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-marcus.png" alt="Marcus T. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21"/>
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Marcus T.</span>
+                  <span class="product-ugc-role">CrossFit Athlete</span>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Swiper.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1. Initialize UGC Reviews Swiper Carousel
+    var ugcSwiper = new Swiper('.product-ugc-swiper', {
+      slidesPerView: 1.3,
+      spaceBetween: 16,
+      loop: true,
+      navigation: {
+        nextEl: '.product-ugc-next',
+        prevEl: '.product-ugc-prev',
+      },
+      breakpoints: {
+        480: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+        },
+        768: {
+          slidesPerView: 2.3,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 2.5,
+          spaceBetween: 22,
+        }
+      }
+    });
+
+    // 2. Initialize Thumbnails Swiper Carousel
+    var thumbsSwiper = new Swiper('.product-thumbs-swiper', {
+      slidesPerView: 6.5,
+      spaceBetween: 8,
+      freeMode: true,
+      watchSlidesProgress: true,
+      breakpoints: {
+        320: {
+          slidesPerView: 4.8,
+          spaceBetween: 6,
+        },
+        480: {
+          slidesPerView: 5.8,
+          spaceBetween: 8,
+        },
+        768: {
+          slidesPerView: 6.5,
+          spaceBetween: 8,
+        }
+      },
+      navigation: {
+        nextEl: '.product-thumbs-next',
+        prevEl: '.product-thumbs-prev',
+      }
+    });
+
+    // 3. Initialize Main Product Swiper Gallery (Allows user to swipe main images)
+    var productMainSwiper = new Swiper('.product-main-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      speed: 350,
+      grabCursor: true,
+      autoHeight: false,
+      resistanceRatio: 0.85
+    });
+
+    var thumbSlides = document.querySelectorAll('.product-thumb-slide');
+
+    function syncActiveThumb(index) {
+      thumbSlides.forEach(function (s, i) {
+        if (i === index) {
+          s.classList.add('is-active');
+        } else {
+          s.classList.remove('is-active');
+        }
+      });
+      if (thumbsSwiper && typeof thumbsSwiper.slideTo === 'function') {
+        thumbsSwiper.slideTo(index);
+      }
+    }
+
+    // When main product image is swiped, update the active thumbnail
+    if (productMainSwiper) {
+      productMainSwiper.on('slideChange', function () {
+        syncActiveThumb(productMainSwiper.activeIndex);
+      });
+    }
+
+    // When a thumbnail is clicked, slide main swiper to that index
+    thumbSlides.forEach(function (slide, idx) {
+      slide.addEventListener('click', function () {
+        if (productMainSwiper && typeof productMainSwiper.slideTo === 'function') {
+          productMainSwiper.slideTo(idx);
+        }
+        syncActiveThumb(idx);
+      });
+    });
+
+    // 3. Kit Quantity Selector Interaction & Dynamic Pricing
+    var kitChips = document.querySelectorAll('.product-quantity-chip');
+    var currentPriceEl = document.getElementById('displayCurrentPrice');
+    var comparePriceEl = document.getElementById('displayComparePrice');
+    var oneTimePriceEl = document.getElementById('offerOneTimePrice');
+    var oneTimeCompareEl = document.getElementById('offerOneTimeCompare');
+    var variantInput = document.getElementById('productVariantId');
+    var quantityInput = document.getElementById('productQuantity');
+    var sellingPlanInput = document.getElementById('productSellingPlan');
+
+    // Appstle selling plan ID (if present on product)
+    var defaultSellingPlanId = {{ first_selling_plan.id | default: '' | json }};
+
+    // Base pricing dynamically read from Shopify Liquid
+    var currencySymbol = {{ cart.currency.symbol | default: '$' | json }};
+    var shopifyBasePrice = {{ raw_price | divided_by: 100.0 | json }};
+    var shopifyComparePrice = {{ raw_compare | divided_by: 100.0 | json }};
+    if (!shopifyBasePrice || shopifyBasePrice <= 0) shopifyBasePrice = 60.00;
+    if (!shopifyComparePrice || shopifyComparePrice <= 0) shopifyComparePrice = shopifyBasePrice;
+
+    var currentUnitBase = shopifyBasePrice;
+    var currentUnitCompare = shopifyComparePrice;
+
+    kitChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        kitChips.forEach(function (c) { c.classList.remove('is-selected'); });
+        chip.classList.add('is-selected');
+
+        var kitNum = chip.getAttribute('data-kit');
+        var variantId = chip.getAttribute('data-variant-id');
+        var chipPrice = parseFloat(chip.getAttribute('data-price'));
+        var chipCompare = parseFloat(chip.getAttribute('data-compare'));
+
+        if (variantId && variantInput) {
+          variantInput.value = variantId;
+        }
+        if (quantityInput) {
+          quantityInput.value = kitNum;
+        }
+
+        if (!isNaN(chipPrice) && chipPrice > 0) {
+          currentUnitBase = chipPrice;
+        } else {
+          currentUnitBase = shopifyBasePrice;
+        }
+
+        if (!isNaN(chipCompare) && chipCompare > 0) {
+          currentUnitCompare = chipCompare;
+        } else {
+          currentUnitCompare = shopifyComparePrice;
+        }
+
+        var activeOffer = document.querySelector('.product-offer-card.is-selected');
+        var offerType = activeOffer ? activeOffer.getAttribute('data-offer') : 'trial';
+
+        updatePricing(offerType, kitNum);
+      });
+    });
+
+    // 4. Offer Toggle Interaction (Free Trial / Appstle Subscription vs One-Time)
+    var offerCards = document.querySelectorAll('.product-offer-card');
+    var ctaLabel = document.getElementById('productCtaLabel');
+    var priceTag = document.getElementById('displayPriceTag');
+
+    offerCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        offerCards.forEach(function (c) { c.classList.remove('is-selected'); });
+        card.classList.add('is-selected');
+
+        var offerType = card.getAttribute('data-offer');
+        var selectedChip = document.querySelector('.product-quantity-chip.is-selected');
+        var kitNum = selectedChip ? selectedChip.getAttribute('data-kit') : '1';
+
+        updatePricing(offerType, kitNum);
+      });
+    });
+
+    function updatePricing(offerType, kitNum) {
+      var k = parseInt(kitNum, 10) || 1;
+      var trialLabel = {{ section.settings.trial_cta_label | default: 'Start my free trial' | json }};
+      var onetimePrefix = {{ section.settings.onetime_cta_label | default: 'Buy now' | json }};
+
+      if (offerType === 'trial') {
+        if (sellingPlanInput) {
+          sellingPlanInput.value = defaultSellingPlanId || '';
+          sellingPlanInput.disabled = false;
+        }
+
+        // Synchronize with Appstle widget if present on page
+        var appstleSubRadio = document.querySelector('.appstle_subscribe_save_radio, [name="appstle_selling_plan_option"][value="sub_save"], [name="appstle_selling_plan_option"][value="subscription"], input[value="sub_save"]');
+        if (appstleSubRadio && !appstleSubRadio.checked) {
+          appstleSubRadio.checked = true;
+          appstleSubRadio.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        if (currentPriceEl) currentPriceEl.textContent = currencySymbol + '0.00';
+        if (comparePriceEl) comparePriceEl.textContent = currencySymbol + (k * currentUnitCompare).toFixed(2);
+        if (priceTag) {
+          priceTag.textContent = {{ section.settings.trial_price_tag | default: 'Free trial' | json }};
+          priceTag.style.display = 'inline-flex';
+        }
+        if (ctaLabel) ctaLabel.textContent = trialLabel;
+      } else {
+        if (sellingPlanInput) {
+          sellingPlanInput.value = '';
+          sellingPlanInput.disabled = true;
+        }
+
+        // Synchronize with Appstle widget if present on page
+        var appstleOneTimeRadio = document.querySelector('.appstle_one_time_radio, [name="appstle_selling_plan_option"][value="one_time"], [name="appstle_selling_plan_option"][value="onetime"], input[value="one_time"]');
+        if (appstleOneTimeRadio && !appstleOneTimeRadio.checked) {
+          appstleOneTimeRadio.checked = true;
+          appstleOneTimeRadio.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        var discount = k === 2 ? 0.8 : (k === 3 ? 0.7 : 1.0);
+        var finalPrice = (currentUnitBase * k * discount).toFixed(2);
+        var compPrice = (currentUnitCompare * k).toFixed(2);
+
+        if (currentPriceEl) currentPriceEl.textContent = currencySymbol + finalPrice;
+        if (comparePriceEl) comparePriceEl.textContent = currencySymbol + compPrice;
+        if (oneTimePriceEl) oneTimePriceEl.textContent = currencySymbol + finalPrice;
+        if (oneTimeCompareEl) oneTimeCompareEl.textContent = currencySymbol + compPrice;
+
+        if (priceTag) {
+          priceTag.textContent = k > 1 ? 'Save ' + ((1 - discount) * 100).toFixed(0) + '%' : 'One-time';
+          priceTag.style.display = 'inline-flex';
+        }
+        if (ctaLabel) ctaLabel.textContent = onetimePrefix + ' · ' + currencySymbol + finalPrice;
+      }
+    }
+
+    // Two-way sync: Listen to changes on external Appstle selling plan inputs if present
+    document.addEventListener('change', function (e) {
+      if (e.target && e.target.name === 'selling_plan' && e.target !== sellingPlanInput) {
+        if (sellingPlanInput) {
+          sellingPlanInput.value = e.target.value;
+          if (e.target.value) {
+            var trialCard = document.getElementById('offerFreeTrial');
+            if (trialCard && !trialCard.classList.contains('is-selected')) {
+              trialCard.click();
+            }
+          }
+        }
+      }
+    });
+
+    // 5. Accordion Toggle Interaction (Single-open: only one open at a time)
+    var accordionHeaders = document.querySelectorAll('.product-accordion-header');
+    accordionHeaders.forEach(function (header) {
+      header.addEventListener('click', function () {
+        var item = header.closest('.product-accordion-item');
+        if (!item) return;
+
+        var container = item.closest('.product-accordions') || document;
+        var isOpen = item.classList.contains('is-open');
+
+        // Close all items in this accordion list first
+        var allItems = container.querySelectorAll('.product-accordion-item');
+        allItems.forEach(function (otherItem) {
+          otherItem.classList.remove('is-open');
+          var otherHeader = otherItem.querySelector('.product-accordion-header');
+          if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+          var otherToggle = otherItem.querySelector('.product-accordion-toggle');
+          if (otherToggle) otherToggle.textContent = '+';
+        });
+
+        // If the clicked item was not open, open it now
+        if (!isOpen) {
+          item.classList.add('is-open');
+          header.setAttribute('aria-expanded', 'true');
+          var toggle = header.querySelector('.product-accordion-toggle');
+          if (toggle) toggle.textContent = '—';
+        }
+      });
+    });
+
+    // 6. Inline Video Playback for UGC Carousel Cards (Plays in place, no modal)
+    var ugcSwiperContainer = document.querySelector('.product-ugc-swiper');
+    if (ugcSwiperContainer) {
+      ugcSwiperContainer.addEventListener('click', function (e) {
+        var slide = e.target.closest('.product-ugc-slide');
+        if (!slide) return;
+
+        var video = slide.querySelector('.product-ugc-video');
+        if (!video) return;
+
+        var isPlaying = !video.paused && !video.ended;
+
+        // Pause all other videos in the carousel
+        var allVideos = ugcSwiperContainer.querySelectorAll('.product-ugc-video');
+        allVideos.forEach(function (otherVid) {
+          if (otherVid !== video) {
+            otherVid.pause();
+            var otherSlide = otherVid.closest('.product-ugc-slide');
+            if (otherSlide) {
+              otherSlide.classList.remove('is-playing');
+            }
+          }
+        });
+
+        if (isPlaying) {
+          video.pause();
+          slide.classList.remove('is-playing');
+        } else {
+          slide.classList.add('is-playing');
+          var playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(function () {
+              // If unmuted playback is restricted, play muted
+              video.muted = true;
+              video.play().catch(function (err) {
+                console.warn('Playback error:', err);
+              });
+            });
+          }
+        }
+      });
+
+      // Reset slide state and bring poster back when video ends or is paused
+      var allUgcVideos = ugcSwiperContainer.querySelectorAll('.product-ugc-video');
+      allUgcVideos.forEach(function (vid) {
+        vid.addEventListener('ended', function () {
+          var s = vid.closest('.product-ugc-slide');
+          if (s) s.classList.remove('is-playing');
+        });
+        vid.addEventListener('pause', function () {
+          var s = vid.closest('.product-ugc-slide');
+          if (s) s.classList.remove('is-playing');
+        });
+      });
+
+      // Pause playback when carousel slide changes
+      if (ugcSwiper && typeof ugcSwiper.on === 'function') {
+        ugcSwiper.on('slideChange', function () {
+          var allVideos = ugcSwiperContainer.querySelectorAll('.product-ugc-video');
+          allVideos.forEach(function (vid) {
+            if (!vid.paused) {
+              vid.pause();
+              var s = vid.closest('.product-ugc-slide');
+              if (s) s.classList.remove('is-playing');
+            }
+          });
+        });
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "UnlockedAir Product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Catalog Selection"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Select a product from your catalog. Automatically uses the active product when placed on a Product page template."
+    },
+    {
+      "type": "header",
+      "content": "Social Proof & Rating"
+    },
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Rating Score",
+      "default": "Excellent 4.5"
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "Rating Review Count",
+      "default": "(45,000+ Reviews)"
+    },
+    {
+      "type": "header",
+      "content": "Key Benefits Checklist"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "Opens your nose from the sides, with no pressure on the bridge"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "Rigid magnetic lift that won't fold when you inhale"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3",
+      "label": "Benefit 3",
+      "default": "Sweat-resistant tabs that hold through workouts and sleep"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4",
+      "label": "Benefit 4",
+      "default": "Reusable band, so you only replace the tabs"
+    },
+    {
+      "type": "text",
+      "id": "benefit_5",
+      "label": "Benefit 5",
+      "default": "Latex-free, hypoallergenic adhesive"
+    },
+    {
+      "type": "header",
+      "content": "Kit Options (Quantity Chips)"
+    },
+    {
+      "type": "text",
+      "id": "kit_selector_label",
+      "label": "Kit Selector Heading",
+      "default": "Choose your kit"
+    },
+    {
+      "type": "text",
+      "id": "kit_1_title",
+      "label": "Kit 1 Title",
+      "default": "1 kit"
+    },
+    {
+      "type": "text",
+      "id": "kit_1_badge",
+      "label": "Kit 1 Badge",
+      "default": "Starter"
+    },
+    {
+      "type": "text",
+      "id": "kit_2_title",
+      "label": "Kit 2 Title",
+      "default": "2 kits"
+    },
+    {
+      "type": "text",
+      "id": "kit_2_badge",
+      "label": "Kit 2 Badge",
+      "default": "Save 20%"
+    },
+    {
+      "type": "text",
+      "id": "kit_3_title",
+      "label": "Kit 3 Title",
+      "default": "3 kits"
+    },
+    {
+      "type": "text",
+      "id": "kit_3_badge",
+      "label": "Kit 3 Badge",
+      "default": "Save 30%"
+    },
+    {
+      "type": "header",
+      "content": "Appstle Subscription & Offers"
+    },
+    {
+      "type": "text",
+      "id": "trial_price_tag",
+      "label": "Price Tag Label",
+      "default": "Free trial"
+    },
+    {
+      "type": "text",
+      "id": "subscription_tag",
+      "label": "Subscription Tag Banner",
+      "default": "Limited Time Deal | 12056 left"
+    },
+    {
+      "type": "text",
+      "id": "subscription_title",
+      "label": "Subscription Option Title",
+      "default": "Free trial"
+    },
+    {
+      "type": "text",
+      "id": "subscription_subtitle",
+      "label": "Subscription Option Subtitle",
+      "default": "15 tab sets + 4 bands free, then 30 tab sets every 30 days"
+    },
+    {
+      "type": "text",
+      "id": "subscription_perk_1",
+      "label": "Subscription Perk 1",
+      "default": "15 tab sets + 4 magnetic bands, free"
+    },
+    {
+      "type": "text",
+      "id": "subscription_perk_2",
+      "label": "Subscription Perk 2",
+      "default": "35% off every refill"
+    },
+    {
+      "type": "text",
+      "id": "subscription_perk_3",
+      "label": "Subscription Perk 3",
+      "default": "Pause or cancel anytime"
+    },
+    {
+      "type": "text",
+      "id": "onetime_title",
+      "label": "One-Time Option Title",
+      "default": "One-time purchase"
+    },
+    {
+      "type": "text",
+      "id": "onetime_subtitle",
+      "label": "One-Time Option Subtitle",
+      "default": "15 tab sets + 4 bands, no subscription"
+    },
+    {
+      "type": "text",
+      "id": "trial_cta_label",
+      "label": "Free Trial CTA Button Label",
+      "default": "Start my free trial"
+    },
+    {
+      "type": "text",
+      "id": "onetime_cta_label",
+      "label": "One-Time CTA Button Prefix",
+      "default": "Buy now"
+    },
+    {
+      "type": "header",
+      "content": "Guarantees & Shipping"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "30 Days Money Back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "shipping_text",
+      "label": "Shipping Text",
+      "default": "Ships in 3–5 business days · Free US shipping over $40"
+    },
+    {
+      "type": "header",
+      "content": "Trust Badges"
+    },
+    {
+      "type": "text",
+      "id": "trust_1_val",
+      "label": "Trust Badge 1 Value",
+      "default": "90 days"
+    },
+    {
+      "type": "text",
+      "id": "trust_1_cap",
+      "label": "Trust Badge 1 Caption",
+      "default": "Breathing guarantee"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_val",
+      "label": "Trust Badge 2 Value",
+      "default": "4 sizes"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_cap",
+      "label": "Trust Badge 2 Caption",
+      "default": "Fit guaranteed"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_val",
+      "label": "Trust Badge 3 Value",
+      "default": "4.8 / 5"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_cap",
+      "label": "Trust Badge 3 Caption",
+      "default": "Customer rating"
+    },
+    {
+      "type": "header",
+      "content": "Customer Review Card (Left Column)"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image",
+      "label": "Review Image"
+    },
+    {
+      "type": "text",
+      "id": "review_title",
+      "label": "Review Title",
+      "default": "I CAN FINALLY BREATHE AT NIGHT"
+    },
+    {
+      "type": "textarea",
+      "id": "review_quote",
+      "label": "Review Quote",
+      "default": "“I stopped waking up with a dry mouth. The band stays on all night and it’s far more comfortable than the strips I used before.”"
+    },
+    {
+      "type": "text",
+      "id": "review_author",
+      "label": "Review Author",
+      "default": "Caroline T., Austin, TX"
+    },
+    {
+      "type": "text",
+      "id": "review_badge_text",
+      "label": "Review Verified Badge",
+      "default": "VERIFIED BUYER"
+    },
+    {
+      "type": "header",
+      "content": "Product Accordions"
+    },
+    {
+      "type": "text",
+      "id": "accordion_1_title",
+      "label": "Accordion 1 Title (Uses Product Description)",
+      "default": "Description"
+    },
+    {
+      "type": "text",
+      "id": "accordion_2_title",
+      "label": "Accordion 2 Title",
+      "default": "What's in the kit"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_2_body",
+      "label": "Accordion 2 Content",
+      "default": "Each starter kit includes 4 reusable magnetic bands in different sizes to guarantee your custom fit, 15 hypoallergenic sweat-resistant adhesive tab sets, a precision placement applicator, and an easy step-by-step instructional manual."
+    },
+    {
+      "type": "text",
+      "id": "accordion_3_title",
+      "label": "Accordion 3 Title",
+      "default": "Shipping and returns"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_3_body",
+      "label": "Accordion 3 Content",
+      "default": "All US orders ship promptly within 3–5 business days, with free shipping on all orders over $40. We back every purchase with our 30-day money back breathing guarantee. If you are not completely satisfied, return it hassle-free for a full refund."
+    },
+    {
+      "type": "text",
+      "id": "accordion_4_title",
+      "label": "Accordion 4 Title",
+      "default": "Materials"
+    },
+    {
+      "type": "textarea",
+      "id": "accordion_4_body",
+      "label": "Accordion 4 Content",
+      "default": "Crafted from high-tensile spring steel core encased in soft-touch biocompatible silicone, rare-earth neodymium micro-magnets, and medical-grade hypoallergenic breathable adhesive tabs tested safe for all skin types."
+    },
+    {
+      "type": "header",
+      "content": "Customer Video Reviews Carousel (UGC)"
+    },
+    {
+      "type": "text",
+      "id": "ugc_title",
+      "label": "UGC Section Title",
+      "default": "Over 840,000+ Happy Customers"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "video_review",
+      "name": "UGC Video Post",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Activity / Tag",
+          "default": "Runner"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_image",
+          "label": "Video Cover / Poster Image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video (Shopify Hosted MP4)"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Or Video File URL (.mp4)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UnlockedAir Product",
+      "blocks": [
+        {
+          "type": "video_review",
+          "settings": {
+            "name": "Maya R.",
+            "role": "Runner"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "name": "Jordan P.",
+            "role": "Cyclist"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "name": "Chris D.",
+            "role": "Recovery & Sleep"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "name": "Elena S.",
+            "role": "Marathoner"
+          }
+        },
+        {
+          "type": "video_review",
+          "settings": {
+            "name": "Marcus T.",
+            "role": "CrossFit Athlete"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

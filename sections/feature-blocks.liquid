@@ -1,0 +1,421 @@
+{% comment %}
+  UnlockedAir - "Feature Blocks" Section
+  Features:
+  - Responsive percentage-based layout (no fixed widths)
+  - Embedded CSS with clean direct class selectors (no section.id in CSS)
+  - No clamp() and no mixed heights
+  - Desktop 4-column cards grid, mobile smooth swipeable carousel
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .feature-blocks-section {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #FFFFFF;
+    padding: 96px 0;
+  }
+
+  .feature-blocks-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* Heading Block */
+  .feature-blocks-heading {
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .feature-blocks-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    background-color: #DCEBEC;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #070D10;
+  }
+
+  .feature-blocks-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.015em;
+    color: #070D10;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Cards Grid */
+  .feature-blocks-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+
+  /* Individual Feature Card */
+  .feature-block-card {
+    flex: 1 1 0%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .feature-block-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(7, 13, 16, 0.08);
+  }
+
+  /* Card Image */
+  .feature-block-card__image-wrap {
+    width: 100%;
+    aspect-ratio: 286 / 280;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background-color: #DCEBEC;
+  }
+
+  .feature-block-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+  }
+
+  /* Card Copy */
+  .feature-block-card__copy {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 8px 8px;
+    gap: 6px;
+  }
+
+  .feature-block-card__title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.005em;
+    color: #070D10;
+    margin: 0;
+  }
+
+  .feature-block-card__body {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A5C63;
+    margin: 0;
+  }
+
+  /* Mobile Responsive Breakpoint (<= 860px) */
+  @media screen and (max-width: 860px) {
+    .feature-blocks-section {
+      padding: 56px 0;
+    }
+
+    .feature-blocks-container {
+      width: 90%;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .feature-blocks-heading {
+      align-items: flex-start;
+      text-align: left;
+      gap: 10px;
+    }
+
+    .feature-blocks-title {
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
+
+    .feature-blocks-grid {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 16px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .feature-blocks-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .feature-block-card {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+    }
+  }
+</style>
+
+<section class="feature-blocks-section" id="FeatureBlocks-section">
+  <div class="feature-blocks-container">
+    
+    <!-- Heading Block -->
+    <div class="feature-blocks-heading">
+      {% if section.settings.tag != blank %}
+        <div class="feature-blocks-tag">
+          {{ section.settings.tag }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="feature-blocks-title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="feature-blocks-grid">
+      
+      <!-- Card 1 -->
+      <div class="feature-block-card">
+        <div class="feature-block-card__image-wrap">
+          <img
+            src="{{ 'Sporty Portrait with Nose Strip.png' | asset_url }}"
+            alt="{{ section.settings.card_1_title | default: 'Instantly expands' }}"
+            class="feature-block-card__image"
+            loading="lazy"
+          >
+        </div>
+        <div class="feature-block-card__copy">
+          <h3 class="feature-block-card__title">
+            {{ section.settings.card_1_title | default: 'Instantly expands' }}
+          </h3>
+          <p class="feature-block-card__body">
+            {{ section.settings.card_1_body | default: 'Opens your nasal passages the moment it clicks on.' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-block-card">
+        <div class="feature-block-card__image-wrap">
+          <img
+            src="{{ 'magnific__common-style-block-an-extreme-closeup-of-a-fiction__55923.png' | asset_url }}"
+            alt="{{ section.settings.card_2_title | default: 'Won’t collapse' }}"
+            class="feature-block-card__image"
+            loading="lazy"
+          >
+        </div>
+        <div class="feature-block-card__copy">
+          <h3 class="feature-block-card__title">
+            {{ section.settings.card_2_title | default: 'Won’t collapse' }}
+          </h3>
+          <p class="feature-block-card__body">
+            {{ section.settings.card_2_body | default: 'A rigid band keeps lift steady on every breath.' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-block-card">
+        <div class="feature-block-card__image-wrap">
+          <img
+            src="{{ 'magnific__edit-this-photo-remove-all-overlay-text-and-all-cu__55924.png' | asset_url }}"
+            alt="{{ section.settings.card_3_title | default: 'Sweat-proof hold' }}"
+            class="feature-block-card__image"
+            loading="lazy"
+          >
+        </div>
+        <div class="feature-block-card__copy">
+          <h3 class="feature-block-card__title">
+            {{ section.settings.card_3_title | default: 'Sweat-proof hold' }}
+          </h3>
+          <p class="feature-block-card__body">
+            {{ section.settings.card_3_body | default: 'Tabs grip through hard training, heat and long nights.' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-block-card">
+        <div class="feature-block-card__image-wrap">
+          <img
+            src="{{ 'Screenshot 2026-10-13 at 11.29.52 AM.png' | asset_url }}"
+            alt="{{ section.settings.card_4_title | default: 'Gentle on skin' }}"
+            class="feature-block-card__image"
+            loading="lazy"
+          >
+        </div>
+        <div class="feature-block-card__copy">
+          <h3 class="feature-block-card__title">
+            {{ section.settings.card_4_title | default: 'Gentle on skin' }}
+          </h3>
+          <p class="feature-block-card__body">
+            {{ section.settings.card_4_body | default: 'Latex-free, hypoallergenic tabs made for daily wear.' }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Feature Blocks",
+  "tag": "section",
+  "class": "section-feature-blocks",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Label",
+      "default": "Product"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Title",
+      "default": "Engineered for athletes. Loved by everyone."
+    },
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Card 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Card 1 Title",
+      "default": "Instantly expands"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_body",
+      "label": "Card 1 Description",
+      "default": "Opens your nasal passages the moment it clicks on."
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Card 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Card 2 Title",
+      "default": "Won’t collapse"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_body",
+      "label": "Card 2 Description",
+      "default": "A rigid band keeps lift steady on every breath."
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_image",
+      "label": "Card 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Card 3 Title",
+      "default": "Sweat-proof hold"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_body",
+      "label": "Card 3 Description",
+      "default": "Tabs grip through hard training, heat and long nights."
+    },
+    {
+      "type": "header",
+      "content": "Card 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_image",
+      "label": "Card 4 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Card 4 Title",
+      "default": "Gentle on skin"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_body",
+      "label": "Card 4 Description",
+      "default": "Latex-free, hypoallergenic tabs made for daily wear."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Blocks"
+    }
+  ]
+}
+{% endschema %}

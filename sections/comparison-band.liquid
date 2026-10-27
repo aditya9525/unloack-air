@@ -1,0 +1,739 @@
+{% comment %}
+  UnlockedAir - "Comparison Band" Section
+  Features:
+  - Responsive percentage-based layout (no fixed widths)
+  - Embedded CSS with clean direct class selectors (no section.id in CSS)
+  - No clamp() and no mixed heights
+  - Deep Teal (#0B3C44) featured card with pop-out UnlockedAir band
+  - Clean alternatives cards with Aqua checks and Red dashes
+  - Horizontally swipeable layout on mobile devices
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .comparison-band-section {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #F4F7F7;
+    padding: 96px 0;
+  }
+
+  .comparison-band-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  /* Heading Block */
+  .comparison-band-heading {
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .comparison-band-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.015em;
+    color: #070D10;
+    margin: 0;
+    text-align: center;
+  }
+
+  .comparison-band-subtitle {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #4A5C63;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Cards Grid / Container */
+  .comparison-cards-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 24px;
+    box-sizing: border-box;
+    padding-top: 36px; /* Room for pop-out band on featured card */
+  }
+
+  /* Individual Card */
+  .comparison-card {
+    flex: 1 1 0%;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 24px 20px 32px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 36px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(7, 13, 16, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .comparison-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(7, 13, 16, 0.08);
+  }
+
+  /* Featured Brand Card (UnlockedAir) */
+  .comparison-card--featured {
+    background-color: #0B3C44;
+    color: #F4F7F7;
+    overflow: visible;
+  }
+
+  /* Alternative Cards */
+  .comparison-card--standard {
+    background-color: #FFFFFF;
+    color: #070D10;
+  }
+
+  /* Card Header */
+  .comparison-card__header {
+    width: 100%;
+    height: 102px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+  }
+
+  /* Pop-out Dilator Image for Featured Card */
+  .comparison-card__popout-image {
+    position: absolute;
+    top: -52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 74px;
+    height: 130px;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Alternative Product Images */
+  .comparison-card__product-image {
+    height: 76px;
+    width: auto;
+    max-width: 80px;
+    object-fit: contain;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .comparison-card__product-image--strips {
+    max-width: 53px;
+    opacity: 0.85;
+  }
+
+  .comparison-card__product-image--spray {
+    max-width: 77px;
+  }
+
+  .comparison-card__product-image--device {
+    max-width: 50px;
+  }
+
+  /* Card Brand Title */
+  .comparison-card__title {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .comparison-card--featured .comparison-card__title {
+    color: #F4F7F7;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .comparison-card--standard .comparison-card__title {
+    color: #070D10;
+  }
+
+  /* Features List */
+  .comparison-card__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Feature Item */
+  .comparison-feature-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+  }
+
+  /* Badge Icon */
+  .comparison-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .comparison-icon--check {
+    background-color: #2EE6D6;
+  }
+
+  .comparison-icon--dash {
+    background-color: #F64242;
+  }
+
+  /* Feature Text */
+  .comparison-feature-text {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0;
+    flex: 1 1 0%;
+  }
+
+  .comparison-card--featured .comparison-feature-text {
+    color: #F4F7F7;
+  }
+
+  .comparison-card--standard .comparison-feature-text {
+    color: #070D10;
+  }
+
+  /* Mobile Breakpoint (<= 860px) */
+  @media screen and (max-width: 860px) {
+    .comparison-band-section {
+      padding: 56px 0;
+    }
+
+    .comparison-band-container {
+      width: 90%;
+      gap: 36px;
+    }
+
+    .comparison-band-heading {
+      gap: 12px;
+    }
+
+    .comparison-band-title {
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: -0.01em;
+    }
+
+    .comparison-band-subtitle {
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    .comparison-cards-grid {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 12px;
+      width: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 38px 4px 16px 4px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .comparison-cards-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .comparison-card {
+      flex: 0 0 230px;
+      scroll-snap-align: start;
+      padding: 20px 14px 28px 14px;
+      gap: 32px;
+    }
+
+    .comparison-feature-row {
+      gap: 10px;
+    }
+
+    .comparison-feature-text {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+</style>
+
+<section class="comparison-band-section" id="ComparisonBand-section">
+  <div class="comparison-band-container">
+    
+    <!-- Heading Block -->
+    <div class="comparison-band-heading">
+      {% if section.settings.title != blank %}
+        <h2 class="comparison-band-title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="comparison-band-subtitle">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Cards Row -->
+    <div class="comparison-cards-grid">
+      
+      <!-- ==============================================
+           CARD 1: UnlockedAir (Deep Teal Featured)
+           ============================================== -->
+      <div class="comparison-card comparison-card--featured">
+        
+        <!-- Header with Pop-out Dilator Band -->
+        <div class="comparison-card__header">
+          <img
+            src="{{ 'magnific__background__55937.png' | asset_url }}"
+            alt="Unlocked Air Dilator"
+            class="comparison-card__popout-image"
+            loading="lazy"
+          >
+          <h3 class="comparison-card__title">
+            {{ section.settings.card_1_title | default: 'UNLOCKED AIR' }}
+          </h3>
+        </div>
+
+        <!-- Features List -->
+        <ul class="comparison-card__features">
+          
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Opens from the sides</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Drug Free</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Holds through sweat</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Reusable</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Works the moment you puts it on</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- ==============================================
+           CARD 2: Nasal Strips
+           ============================================== -->
+      <div class="comparison-card comparison-card--standard">
+        
+        <!-- Header -->
+        <div class="comparison-card__header">
+          <img
+            src="{{ 'magnific__background__55935.png' | asset_url }}"
+            alt="Nasal strips"
+            class="comparison-card__product-image comparison-card__product-image--strips"
+            loading="lazy"
+          >
+          <h3 class="comparison-card__title">
+            {{ section.settings.card_2_title | default: 'Nasal strips' }}
+          </h3>
+        </div>
+
+        <!-- Features List -->
+        <ul class="comparison-card__features">
+          
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Opens from the sides</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Drug Free</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Holds through sweat</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Reusable</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Works the moment you puts it on</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- ==============================================
+           CARD 3: Nasal Spray
+           ============================================== -->
+      <div class="comparison-card comparison-card--standard">
+        
+        <!-- Header -->
+        <div class="comparison-card__header">
+          <img
+            src="{{ 'magnific__background__55936.png' | asset_url }}"
+            alt="Nasal Spray"
+            class="comparison-card__product-image comparison-card__product-image--spray"
+            loading="lazy"
+          >
+          <h3 class="comparison-card__title">
+            {{ section.settings.card_3_title | default: 'Nasal Spray' }}
+          </h3>
+        </div>
+
+        <!-- Features List -->
+        <ul class="comparison-card__features">
+          
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Opens from the sides</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Drug Free</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Holds through sweat</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Reusable</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Works the moment you puts it on</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- ==============================================
+           CARD 4: Other Devices
+           ============================================== -->
+      <div class="comparison-card comparison-card--standard">
+        
+        <!-- Header -->
+        <div class="comparison-card__header">
+          <img
+            src="{{ 'magnific__background__18163.png' | asset_url }}"
+            alt="Other Devices"
+            class="comparison-card__product-image comparison-card__product-image--device"
+            loading="lazy"
+          >
+          <h3 class="comparison-card__title">
+            {{ section.settings.card_4_title | default: 'Other Devices' }}
+          </h3>
+        </div>
+
+        <!-- Features List -->
+        <ul class="comparison-card__features">
+          
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Opens from the sides</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Drug Free</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Holds through sweat</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Reusable</span>
+          </li>
+
+          <li class="comparison-feature-row">
+            <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+              <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="comparison-feature-text">Works the moment you puts it on</span>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Band",
+  "tag": "section",
+  "class": "section-comparison-band",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Title",
+      "default": "UnlockedAir vs the alternatives"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle Description",
+      "default": "How a magnetic dilator compares with strips and sprays."
+    },
+    {
+      "type": "header",
+      "content": "Card 1: Featured Brand"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Card 1 Title",
+      "default": "UNLOCKED AIR"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Card 1 Dilator Image"
+    },
+    {
+      "type": "header",
+      "content": "Card 2: Nasal Strips"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Card 2 Title",
+      "default": "Nasal strips"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Card 2 Image"
+    },
+    {
+      "type": "header",
+      "content": "Card 3: Nasal Spray"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Card 3 Title",
+      "default": "Nasal Spray"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_image",
+      "label": "Card 3 Image"
+    },
+    {
+      "type": "header",
+      "content": "Card 4: Other Devices"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Card 4 Title",
+      "default": "Other Devices"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_image",
+      "label": "Card 4 Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Band"
+    }
+  ]
+}
+{% endschema %}

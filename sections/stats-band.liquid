@@ -1,0 +1,329 @@
+{% comment %}
+  UnlockedAir - "Stats Band" Section
+  Features:
+  - Responsive percentage-based layout (no fixed widths)
+  - Embedded CSS with clean direct class selectors (no section.id in CSS)
+  - Desktop & Mobile optimized background banners with dark gradient overlay
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .stats-band-section {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    background-color: #0B3C44;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{ 'nose_dilator_banner_shifted_right.png' | asset_url }}');
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stats-band-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Heading Block */
+  .stats-band-heading {
+    width: 100%;
+    max-width: 750px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .stats-band-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .stats-band-subtitle {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #DCEBEC;
+    margin: 0;
+  }
+
+  /* Stats List */
+  .stats-band-grid {
+    width: 100%;
+    max-width: 780px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 48px;
+    box-sizing: border-box;
+  }
+
+  .stats-band-item {
+    flex: 1 1 0%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .stats-band-value {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 100px;
+    line-height: 110px;
+    letter-spacing: -0.03em;
+    color: #2EE6D6;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .stats-band-label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin: 0;
+    max-width: 220px;
+  }
+
+  /* Responsive Mobile Breakpoint (<= 768px) */
+  @media screen and (max-width: 768px) {
+    .stats-band-section {
+      padding: 56px 0;
+      background-image:  url('{{ 'stats-banner-mobile.png' | asset_url }}');
+      background-position: center center;
+    }
+
+    .stats-band-container {
+      width: 90%;
+      align-items: center;
+      text-align: center;
+      gap: 48px;
+    }
+
+    .stats-band-heading {
+      align-items: center;
+      text-align: center;
+      max-width: 100%;
+      gap: 12px;
+    }
+
+    .stats-band-title {
+      font-size: 48px;
+      line-height: 52px;
+      text-align: center;
+    }
+
+    .stats-band-subtitle {
+      font-size: 18px;
+      line-height: 28px;
+      text-align: center;
+    }
+
+    .stats-band-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      max-width: 100%;
+    }
+
+    .stats-band-item {
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .stats-band-value {
+      font-size: 100px;
+      line-height: 110px;
+      text-align: center;
+    }
+
+    .stats-band-label {
+      font-size: 13px;
+      line-height: 24px;
+      text-align: center;
+      max-width: 268px;
+    }
+  }
+</style>
+
+<section class="stats-band-section" id="StatsBand-section">
+  <div class="stats-band-container">
+    
+    <!-- Heading Block -->
+    <div class="stats-band-heading">
+      {% if section.settings.title != blank %}
+        <h2 class="stats-band-title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="stats-band-subtitle">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-band-grid">
+      
+      <!-- Stat 1 -->
+      <div class="stats-band-item">
+        <div class="stats-band-value">
+          {{ section.settings.stat_1_value | default: '91%' }}
+        </div>
+        <p class="stats-band-label">
+          {{ section.settings.stat_1_label | default: 'of users reported less snoring (to be verified)' }}
+        </p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="stats-band-item">
+        <div class="stats-band-value">
+          {{ section.settings.stat_2_value | default: '85%' }}
+        </div>
+        <p class="stats-band-label">
+          {{ section.settings.stat_2_label | default: 'of users reported relief from sinus pressure (to be verified)' }}
+        </p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="stats-band-item">
+        <div class="stats-band-value">
+          {{ section.settings.stat_3_value | default: '96%' }}
+        </div>
+        <p class="stats-band-label">
+          {{ section.settings.stat_3_label | default: 'of users reported deeper, more restful sleep (to be verified)' }}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats Band",
+  "tag": "section",
+  "class": "section-stats-band",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Title",
+      "default": "What users report"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle Description",
+      "default": "Placeholder figures. Replace with results from the client's own study before launch."
+    },
+    {
+      "type": "header",
+      "content": "Stat 1"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 Value",
+      "default": "91%"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 Label",
+      "default": "of users reported less snoring (to be verified)"
+    },
+    {
+      "type": "header",
+      "content": "Stat 2"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 Value",
+      "default": "85%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 Label",
+      "default": "of users reported relief from sinus pressure (to be verified)"
+    },
+    {
+      "type": "header",
+      "content": "Stat 3"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 Value",
+      "default": "96%"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 Label",
+      "default": "of users reported deeper, more restful sleep (to be verified)"
+    },
+    {
+      "type": "header",
+      "content": "Background Banners"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_banner",
+      "label": "Desktop Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner",
+      "label": "Mobile Banner Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats Band"
+    }
+  ]
+}
+{% endschema %}

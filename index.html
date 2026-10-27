@@ -1,0 +1,6228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnlockedAir - Starter Kit | Natural Magnetic Nasal Dilator</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Lato:wght@600&family=Poppins:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    /* Reset & Base Setup */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F4F7F7;
+      font-family: 'Poppins', sans-serif;
+      color: #070D10;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========================================================
+       SECTION CSS: Pure Percentage-Based Responsive Styles
+       ======================================================== */
+    .why-it-works-section {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #F4F7F7;
+      padding: 60px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-it-works-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* Heading Area */
+    .why-it-works-heading {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .why-it-works-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 12px;
+      background-color: #DCEBEC;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+      white-space: nowrap;
+    }
+
+    .why-it-works-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      color: #070D10;
+      margin: 0;
+      text-align: center;
+    }
+
+    .why-it-works-subtitle {
+      width: 100%;
+      max-width: 860px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      line-height: 1.55;
+      color: #4A5C63;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Before / After Media Container */
+    .why-it-works-media {
+      width: 100%;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1312 / 520;
+      box-shadow: 0 8px 30px rgba(7, 13, 16, 0.06);
+      user-select: none;
+      touch-action: pan-y;
+      background-color: #E2ECEE;
+    }
+
+    .why-it-works-media__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .why-it-works-media__after {
+      z-index: 1;
+    }
+
+    .why-it-works-media__before {
+      z-index: 2;
+      clip-path: inset(0 calc(100% - var(--split-pos, 50%)) 0 0);
+      will-change: clip-path;
+    }
+
+    /* Vertical Divider Line */
+    .why-it-works-media__divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--split-pos, 50%);
+      width: 4px;
+      background-color: #FFFFFF;
+      transform: translateX(-50%);
+      z-index: 3;
+      pointer-events: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Center Slider Handle */
+    .why-it-works-media__handle {
+      position: absolute;
+      top: 50%;
+      left: var(--split-pos, 50%);
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      pointer-events: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .why-it-works-media:active .why-it-works-media__handle,
+    .why-it-works-media:focus-within .why-it-works-media__handle {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .why-it-works-media__handle-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Badges */
+    .why-it-works-media__badge {
+      position: absolute;
+      bottom: 24px;
+      background: rgba(0, 0, 0, 0.9);
+      color: #FFFFFF;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      z-index: 5;
+      pointer-events: none;
+      letter-spacing: -0.01em;
+      backdrop-filter: blur(8px);
+    }
+
+    .why-it-works-media__badge--left {
+      left: 24px;
+    }
+
+    .why-it-works-media__badge--right {
+      right: 24px;
+    }
+
+    /* Range input overlay for smooth interaction & accessibility */
+    .why-it-works-media__range {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+      z-index: 6;
+      margin: 0;
+      padding: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Compare Cards */
+    .why-it-works-cards {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      align-items: stretch;
+      box-sizing: border-box;
+    }
+
+    .why-it-works-card {
+      flex: 1 1 0%;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* Brand Card ("With UnlockedAir") */
+    .why-it-works-card--brand {
+      background-color: #0B3C44;
+      border: 1px solid #C5D6D8;
+    }
+
+    /* Competitor Card ("Typical nasal strips") */
+    .why-it-works-card--competitor {
+      background-color: #FFFFFF;
+      border: 1px solid transparent;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .why-it-works-card__title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: -0.005em;
+      margin: 0 0 2px 0;
+    }
+
+    .why-it-works-card--brand .why-it-works-card__title {
+      color: #FFFFFF;
+    }
+
+    .why-it-works-card--competitor .why-it-works-card__title {
+      color: #4A5C63;
+    }
+
+    .why-it-works-card__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .why-it-works-card__item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .why-it-works-card__icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .why-it-works-card--brand .why-it-works-card__icon {
+      background-color: #2EE6D6;
+    }
+
+    .why-it-works-card--competitor .why-it-works-card__icon {
+      background-color: #DCEBEC;
+    }
+
+    .why-it-works-card__text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 0;
+    }
+
+    .why-it-works-card--brand .why-it-works-card__text {
+      color: #FFFFFF;
+    }
+
+    .why-it-works-card--competitor .why-it-works-card__text {
+      color: #070D10;
+    }
+
+    /* Responsive Mobile Breakpoint (<= 768px) */
+    @media screen and (max-width: 768px) {
+      .why-it-works-section {
+        padding: 56px 0;
+      }
+
+      .why-it-works-container {
+        width: 90%;
+        align-items: flex-start;
+        gap: 28px;
+      }
+
+      .why-it-works-heading {
+        align-items: flex-start;
+        text-align: left;
+        gap: 10px;
+      }
+
+      .why-it-works-title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -0.01em;
+        text-align: left;
+      }
+
+      .why-it-works-subtitle {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+      }
+
+      .why-it-works-media {
+        aspect-ratio: 350 / 300;
+      }
+
+      .why-it-works-media__divider {
+        width: 3px;
+      }
+
+      .why-it-works-media__handle {
+        width: 28px;
+        height: 28px;
+      }
+
+      .why-it-works-media__badge {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        line-height: 16px;
+      }
+
+      .why-it-works-media__badge--left {
+        left: 12px;
+        bottom: 12px;
+      }
+
+      .why-it-works-media__badge--right {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .why-it-works-cards {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .why-it-works-card {
+        padding: 20px;
+      }
+
+      .why-it-works-card--competitor .why-it-works-card__title {
+        font-size: 20px;
+        line-height: 26px;
+      }
+    }
+
+    /* ========================================================
+       SECTION 2: Technology Band Styles (Percentage-Based)
+       ======================================================== */
+    .tech-band-section {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #FFFFFF;
+      padding: 96px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-band-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 64px;
+    }
+
+    /* Left Copy Column */
+    .tech-band-copy {
+      flex: 1 1 0%;
+      width: 50%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .tech-band-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background-color: #DCEBEC;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+      white-space: nowrap;
+    }
+
+    .tech-band-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: #070D10;
+      margin: 0;
+    }
+
+    .tech-band-body {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: #070D10;
+      margin: 0;
+    }
+
+    /* Benefits List */
+    .tech-band-benefits {
+      width: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tech-band-benefit-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .tech-band-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      background-color: #2EE6D6;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tech-band-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #070D10;
+      margin: 0;
+    }
+
+    /* Right Media Column */
+    .tech-band-media {
+      flex: 1 1 0%;
+      width: 50%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 20px;
+    }
+
+    .tech-band-image {
+      width: 100%;
+      max-width: 624px;
+      height: auto;
+      max-height: 440px;
+      object-fit: contain;
+      border-radius: 20px;
+      display: block;
+    }
+
+    /* Responsive Mobile Breakpoint for Technology Band (<= 768px) */
+    @media screen and (max-width: 768px) {
+      .tech-band-section {
+        padding: 56px 0;
+      }
+
+      .tech-band-container {
+        width: 90%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 48px;
+      }
+
+      .tech-band-copy {
+        width: 100%;
+        gap: 20px;
+      }
+
+      .tech-band-title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -0.01em;
+      }
+
+      .tech-band-body {
+        font-size: 18px;
+        line-height: 28px;
+      }
+
+      .tech-band-media {
+        width: 100%;
+        margin-top: 8px;
+      }
+
+      .tech-band-image {
+        max-width: 100%;
+        max-height: 360px;
+      }
+    }
+
+    /* ========================================================
+       SECTION 3: How It Works / Benefits Styles (Percentage-Based)
+       ======================================================== */
+    .how-it-works-section {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #F4F7F7;
+      padding: 96px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .how-it-works-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .how-it-works-heading {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .how-it-works-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background-color: #DCEBEC;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+      white-space: nowrap;
+    }
+
+    .how-it-works-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: #070D10;
+      margin: 0;
+      text-align: center;
+    }
+
+    .how-it-works-subtitle {
+      width: 100%;
+      max-width: 860px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      line-height: 1.55;
+      color: #4A5C63;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Desktop View */
+    .how-it-works-desktop-view {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2%;
+      box-sizing: border-box;
+    }
+
+    .how-it-works-callouts-left,
+    .how-it-works-callouts-right {
+      flex: 1 1 0%;
+      width: 38%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 280px;
+      gap: 36px;
+      box-sizing: border-box;
+    }
+
+    .how-it-works-pointer-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      gap: 12px;
+    }
+
+    .how-it-works-pointer-row--left {
+      justify-content: flex-end;
+    }
+
+    .how-it-works-pointer-row--right {
+      justify-content: flex-start;
+    }
+
+    .how-it-works-pointer-label {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: #070D10;
+      white-space: nowrap;
+    }
+
+    .how-it-works-pointer-line {
+      /* flex: 1 1 0%; */
+      height: 0px;
+      border-top: 3px solid rgba(0, 0, 0, 0.2);
+      max-width: 204px;
+      width: 100%;
+      min-width: 40px;
+    }
+
+    .how-it-works-pointer-dot {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .how-it-works-pointer-dot-inner {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .how-it-works-center-media {
+      flex: 0 0 auto;
+      width: 24%;
+      max-width: 341px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .how-it-works-product-image {
+      width: 100%;
+      height: auto;
+      max-height: 370px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Mobile View */
+    .how-it-works-mobile-view {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 36px;
+      box-sizing: border-box;
+    }
+
+    .how-it-works-benefits-list {
+      width: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .how-it-works-benefit-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .how-it-works-check-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .how-it-works-check-icon img {
+      width: 24px;
+      height: 24px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .how-it-works-benefit-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #070D10;
+      margin: 0;
+    }
+
+    .how-it-works-mobile-media {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .how-it-works-mobile-image {
+      width: 100%;
+      max-width: 345px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    @media screen and (max-width: 768px) {
+      .how-it-works-section {
+        padding: 56px 0;
+      }
+
+      .how-it-works-container {
+        width: 90%;
+        align-items: flex-start;
+        gap: 36px;
+      }
+
+      .how-it-works-heading {
+        align-items: flex-start;
+        text-align: left;
+        gap: 12px;
+      }
+
+      .how-it-works-title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -0.01em;
+        text-align: left;
+      }
+
+      .how-it-works-subtitle {
+        font-size: 18px;
+        line-height: 28px;
+        text-align: left;
+      }
+
+      .how-it-works-desktop-view {
+        display: none;
+      }
+
+      .how-it-works-mobile-view {
+        display: flex;
+      }
+    }
+
+    /* ========================================================
+       SECTION 4: Stats Band Styles (Percentage-Based)
+       ======================================================== */
+    .stats-band-section {
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      background-color: #0B3C44;
+      background-image: url('./assets/nose_dilator_banner_shifted_right.png');
+      background-size: cover;
+      background-position: center right;
+      background-repeat: no-repeat;
+      padding: 80px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stats-band-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-band-heading {
+      width: 100%;
+      max-width: 750px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 12px;
+    }
+
+    .stats-band-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      letter-spacing: -0.015em;
+      color: #FFFFFF;
+      margin: 0;
+    }
+
+    .stats-band-subtitle {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: #DCEBEC;
+      margin: 0;
+    }
+
+    .stats-band-grid {
+      width: 100%;
+      max-width: 780px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 48px;
+      box-sizing: border-box;
+    }
+
+    .stats-band-item {
+      flex: 1 1 0%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .stats-band-value {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 100px;
+      line-height: 110px;
+      letter-spacing: -0.03em;
+      color: #2EE6D6;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .stats-band-label {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 20px;
+      color: #FFFFFF;
+      margin: 0;
+      max-width: 220px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .stats-band-section {
+        padding: 56px 0;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./assets/stats-banner-mobile.png');
+        background-position: center center;
+      }
+
+      .stats-band-container {
+        width: 90%;
+        align-items: center;
+        text-align: center;
+        gap: 48px;
+      }
+
+      .stats-band-heading {
+        align-items: center;
+        text-align: center;
+        max-width: 100%;
+        gap: 12px;
+      }
+
+      .stats-band-title {
+        font-size: 48px;
+        line-height: 52px;
+        text-align: center;
+      }
+
+      .stats-band-subtitle {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+      }
+
+      .stats-band-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 36px;
+        max-width: 100%;
+      }
+
+      .stats-band-item {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+
+      .stats-band-value {
+        font-size: 96px;
+        line-height: 100px;
+        text-align: center;
+      }
+
+      .stats-band-label {
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        max-width: 268px;
+      }
+    }
+
+    /* ========================================================
+       SECTION 5: COMPARISON BAND ("UnlockedAir vs the alternatives")
+       ======================================================== */
+    .comparison-band-section {
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #F4F7F7;
+      padding: 96px 0;
+    }
+
+    .comparison-band-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .comparison-band-heading {
+      width: 100%;
+      max-width: 900px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .comparison-band-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      letter-spacing: -0.015em;
+      color: #070D10;
+      margin: 0;
+      text-align: center;
+    }
+
+    .comparison-band-subtitle {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: #4A5C63;
+      margin: 0;
+      text-align: center;
+    }
+
+    .comparison-cards-grid {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: center;
+      gap: 24px;
+      box-sizing: border-box;
+      padding-top: 36px;
+    }
+
+    .comparison-card {
+      flex: 1 1 0%;
+      box-sizing: border-box;
+      border-radius: 12px;
+      padding: 24px 20px 32px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 36px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(7, 13, 16, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .comparison-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(7, 13, 16, 0.08);
+    }
+
+    .comparison-card--featured {
+      background-color: #0B3C44;
+      color: #F4F7F7;
+      overflow: visible;
+    }
+
+    .comparison-card--standard {
+      background-color: #FFFFFF;
+      color: #070D10;
+    }
+
+    .comparison-card__header {
+      width: 100%;
+      height: 102px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      box-sizing: border-box;
+    }
+
+    .comparison-card__popout-image {
+      position: absolute;
+      top: -52px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 74px;
+      height: 130px;
+      object-fit: contain;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .comparison-card__product-image {
+      height: 76px;
+      width: auto;
+      max-width: 80px;
+      object-fit: contain;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .comparison-card__product-image--strips {
+      max-width: 53px;
+      opacity: 0.85;
+    }
+
+    .comparison-card__product-image--spray {
+      max-width: 77px;
+    }
+
+    .comparison-card__product-image--device {
+      max-width: 50px;
+    }
+
+    .comparison-card__title {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      margin: 0;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .comparison-card--featured .comparison-card__title {
+      color: #F4F7F7;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .comparison-card--standard .comparison-card__title {
+      color: #070D10;
+    }
+
+    .comparison-card__features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .comparison-feature-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 13px;
+      width: 100%;
+      height: 48px;
+      box-sizing: border-box;
+    }
+
+    .comparison-icon {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .comparison-icon--check {
+      background-color: #2EE6D6;
+    }
+
+    .comparison-icon--dash {
+      background-color: #F64242;
+    }
+
+    .comparison-feature-text {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 22px;
+      margin: 0;
+      flex: 1 1 0%;
+    }
+
+    .comparison-card--featured .comparison-feature-text {
+      color: #F4F7F7;
+    }
+
+    .comparison-card--standard .comparison-feature-text {
+      color: #070D10;
+    }
+
+    @media screen and (max-width: 860px) {
+      .comparison-band-section {
+        padding: 56px 0;
+      }
+
+      .comparison-band-container {
+        width: 90%;
+        gap: 36px;
+      }
+
+      .comparison-band-heading {
+        gap: 12px;
+      }
+
+      .comparison-band-title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -0.01em;
+      }
+
+      .comparison-band-subtitle {
+        font-size: 16px;
+        line-height: 26px;
+      }
+
+      .comparison-cards-grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 38px 4px 16px 4px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .comparison-cards-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .comparison-card {
+        flex: 0 0 230px;
+        scroll-snap-align: start;
+        padding: 20px 14px 28px 14px;
+        gap: 32px;
+      }
+
+      .comparison-feature-row {
+        gap: 10px;
+      }
+
+      .comparison-feature-text {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    /* ========================================================
+       SECTION 6: FEATURE BLOCKS ("Engineered for athletes. Loved by everyone.")
+       ======================================================== */
+    .feature-blocks-section {
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #FFFFFF;
+      padding: 96px 0;
+    }
+
+    .feature-blocks-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .feature-blocks-heading {
+      width: 100%;
+      max-width: 900px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .feature-blocks-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background-color: #DCEBEC;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+    }
+
+    .feature-blocks-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      letter-spacing: -0.015em;
+      color: #070D10;
+      margin: 0;
+      text-align: center;
+    }
+
+    .feature-blocks-grid {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 24px;
+      box-sizing: border-box;
+    }
+
+    .feature-block-card {
+      flex: 1 1 0%;
+      box-sizing: border-box;
+      /* background-color: #FFFFFF; */
+      border-radius: 20px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      /* border: 1px solid rgba(7, 13, 16, 0.06); */
+      /* box-shadow: 0 4px 16px rgba(7, 13, 16, 0.03); */
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .feature-block-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(7, 13, 16, 0.08);
+    }
+
+    .feature-block-card__image-wrap {
+      width: 100%;
+      aspect-ratio: 286 / 280;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background-color: #DCEBEC;
+    }
+
+    .feature-block-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .feature-block-card__copy {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 4px 8px 8px;
+      gap: 6px;
+    }
+
+    .feature-block-card__title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: -0.005em;
+      color: #070D10;
+      margin: 0;
+    }
+
+    .feature-block-card__body {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4A5C63;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 860px) {
+      .feature-blocks-section {
+        padding: 56px 0;
+      }
+
+      .feature-blocks-container {
+        width: 90%;
+        align-items: flex-start;
+        gap: 32px;
+      }
+
+      .feature-blocks-heading {
+        align-items: flex-start;
+        text-align: left;
+        gap: 10px;
+      }
+
+      .feature-blocks-title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -0.01em;
+        text-align: left;
+      }
+
+      .feature-blocks-grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 16px;
+        width: 100%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 16px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .feature-blocks-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .feature-block-card {
+        flex: 0 0 260px;
+        scroll-snap-align: start;
+      }
+    }
+
+    /* ========================================================
+       SECTION 7: USE CASES ("Wear it your way")
+       ======================================================== */
+    .use-cases-section {
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #F4F7F7;
+      padding: 96px 0;
+    }
+
+    .use-cases-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .use-cases-heading {
+      width: 100%;
+      max-width: 900px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .use-cases-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background-color: #DCEBEC;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+    }
+
+    .use-cases-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      letter-spacing: -0.015em;
+      color: #070D10;
+      margin: 0;
+      text-align: center;
+    }
+
+    .use-cases-subtitle {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: #4A5C63;
+      margin: 0;
+      text-align: center;
+    }
+
+    .use-cases-grid {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 24px;
+      box-sizing: border-box;
+    }
+
+    .use-case-card {
+      flex: 1 1 0%;
+      box-sizing: border-box;
+      background-color: transparent;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .use-case-card__image-wrap {
+      width: 100%;
+      aspect-ratio: 310 / 380;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background-color: #DCEBEC;
+      box-shadow: 0 4px 16px rgba(7, 13, 16, 0.04);
+    }
+
+    .use-case-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      transition: transform 0.35s ease;
+    }
+
+    .use-case-card:hover .use-case-card__image {
+      transform: scale(1.03);
+    }
+
+    .use-case-card__copy {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .use-case-card__title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: -0.005em;
+      color: #070D10;
+      margin: 0;
+    }
+
+    .use-case-card__body {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4A5C63;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 860px) {
+      .use-cases-section {
+        padding: 56px 0;
+      }
+
+      .use-cases-container {
+        width: 90%;
+        align-items: flex-start;
+        gap: 32px;
+      }
+
+      .use-cases-heading {
+        align-items: flex-start;
+        text-align: left;
+        gap: 10px;
+      }
+
+      .use-cases-title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -0.01em;
+        text-align: left;
+      }
+
+      .use-cases-subtitle {
+        font-size: 18px;
+        line-height: 28px;
+        text-align: left;
+      }
+
+      .use-cases-grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 16px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .use-cases-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .use-case-card {
+        flex: 0 0 236px;
+        scroll-snap-align: start;
+      }
+
+      .use-case-card__image-wrap {
+        aspect-ratio: 236 / 280;
+      }
+    }
+
+    /* ========================================================
+       SECTION 8: FAQ ("Frequently asked questions")
+       ======================================================== */
+    .faq-section {
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #FFFFFF;
+      padding: 96px 0;
+    }
+
+    .faq-container {
+      position: relative;
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 5%;
+    }
+
+    .faq-left-col {
+      width: 35%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      position: relative;
+    }
+
+    .faq-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background-color: #DCEBEC;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+    }
+
+    .faq-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      letter-spacing: -0.015em;
+      color: #070D10;
+      margin: 0;
+    }
+
+    .faq-subtitle {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #4A5C63;
+      margin: 0;
+    }
+
+    .faq-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 28px;
+      background-color: #2EE6D6;
+      border-radius: 999px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      color: #070D10;
+      text-decoration: none;
+      margin-top: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .faq-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(46, 230, 214, 0.45);
+      background-color: #26d2c3;
+    }
+
+    .faq-button-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-button:hover .faq-button-arrow {
+      transform: translateX(3px);
+    }
+
+    .faq-desktop-media {
+      width: 143%;
+      /* max-width: 440px; */
+      margin-top: 36px;
+      display: block;
+      /* position: absolute; */
+      margin-top: -40px;
+      margin-left: -63px;
+
+      /* width: 100%;
+      max-width: 440px;
+      margin-top: 36px;
+      display: block; */
+      /* position: absolute; */
+    }
+
+    .faq-desktop-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .faq-mobile-media {
+      display: none;
+    }
+
+    .faq-right-col {
+      width: 60%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-list {
+      width: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      width: 100%;
+      box-sizing: border-box;
+      border-bottom: 1px solid #E2E8EC;
+      padding: 18px 0;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-item-header {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      outline: none;
+    }
+
+    .faq-item-question {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #070D10;
+      margin: 0;
+      flex: 1 1 0%;
+      transition: color 0.2s ease;
+    }
+
+    .faq-item:hover .faq-item-question {
+      color: #0B3C44;
+    }
+
+    .faq-item-icon {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 22px;
+      color: #070D10;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      user-select: none;
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item-body {
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    .faq-item-answer {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: #4A5C63;
+      margin: 10px 0 2px 0;
+    }
+
+    .faq-item.is-open .faq-item-body {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 4px;
+    }
+
+    .faq-item.is-open .faq-item-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-mobile-button {
+      display: none;
+    }
+
+    @media (max-width: 1356px) {
+      .faq-desktop-media {
+        width: 117%;
+      }
+    }
+
+    @media screen and (max-width: 860px) {
+      .faq-section {
+        padding: 56px 0;
+      }
+
+      .faq-container {
+        width: 90%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+      }
+
+      .faq-left-col {
+        width: 100%;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .faq-title {
+        font-size: 32px;
+        line-height: 36px;
+        letter-spacing: -0.01em;
+        text-align: left;
+      }
+
+      .faq-subtitle {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+      }
+
+      .faq-left-col .faq-button {
+        display: none;
+      }
+
+      .faq-desktop-media {
+        display: none;
+      }
+
+      .faq-mobile-media {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin: 8px 0;
+      }
+
+      .faq-mobile-img {
+        width: 100%;
+        max-width: 350px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 20px;
+        display: block;
+      }
+
+      .faq-right-col {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .faq-item {
+        padding: 16px 0;
+      }
+
+      .faq-item-question {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .faq-mobile-button {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 16px;
+      }
+
+      .faq-mobile-button .faq-button {
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+      }
+    }
+
+    /* ========================================================
+       SECTION 0: UnlockedAir Product / Buy Box Starter Kit
+       (Exact Figma Desktop & Mobile Specs, No clamp, No mixed height)
+       ======================================================== */
+    .product-hero-section {
+      width: 100%;
+      background-color: #FFFFFF;
+      padding: 60px 0 70px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-hero-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 5%;
+    }
+
+    /* Left Column: Gallery & Customer Review */
+    .product-gallery-col {
+      width: 47.5%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Main Gallery Viewer */
+    .product-gallery-viewer {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .product-main-image-wrap {
+      width: 100%;
+      aspect-ratio: 570 / 494;
+      background: #2EE6D6;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(7, 13, 16, 0.04);
+    }
+
+    .product-main-swiper {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .product-main-slide {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2EE6D6;
+    }
+
+    .product-main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Gallery Thumbnails Strip with Swiper */
+    .product-thumbs-container {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .product-thumbs-btn {
+      width: 30px;
+      height: 66px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      flex-shrink: 0;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+
+    .product-thumbs-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .product-thumbs-btn.swiper-button-disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .product-thumbs-swiper {
+      flex: 1 1 0%;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .product-thumb-slide {
+      width: auto;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      background: #F4F7F7;
+      position: relative;
+    }
+
+    .product-thumb-slide:hover {
+      transform: translateY(-2px);
+    }
+
+    .product-thumb-slide.is-active,
+    .product-thumb-slide.swiper-slide-thumb-active {
+      border-color: #070D10;
+    }
+
+    .product-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-thumb-play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      background: rgba(194, 194, 194, 0.6);
+      backdrop-filter: blur(3px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    /* Customer Review Comparison Card */
+    .product-review-card {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: 1px solid #D9D9D9;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #FFFFFF;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .product-review-media {
+      width: 48%;
+      aspect-ratio: 262 / 257;
+      flex-shrink: 0;
+      overflow: hidden;
+      background: #E8ECEF;
+      position: relative;
+    }
+
+    .product-review-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-review-content {
+      width: 52%;
+      padding: 24px 20px 24px 24px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .product-review-stars {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .product-review-stars svg {
+      width: 18px;
+      height: 18px;
+      fill: #F5A623;
+    }
+
+    .product-review-title {
+      font-family: 'Lato', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      text-transform: uppercase;
+      color: #1E2123;
+      margin: 0;
+    }
+
+    .product-review-quote {
+      font-family: 'Red Hat Display', 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #1E2123;
+      margin: 0;
+    }
+
+    .product-review-author {
+      font-family: 'Red Hat Display', 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 22px;
+      color: #1E2123;
+      margin: 0;
+    }
+
+    .product-review-verified {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 3px 8px;
+      gap: 5px;
+      border: 1px solid #D9D9D9;
+      border-radius: 8px;
+      background: #FFFFFF;
+    }
+
+    .product-review-verified-icon {
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-review-verified-text {
+      font-family: 'Red Hat Display', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 13px;
+      letter-spacing: 0.63px;
+      text-transform: uppercase;
+      color: #1E2123;
+    }
+
+    /* Right Column: Product Buy Box Info */
+    .product-info-col {
+      width: 47.5%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    /* Rating Row */
+    .product-rating-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+
+    .product-rating-stars {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .product-rating-stars svg {
+      width: 14px;
+      height: 14px;
+      fill: #070D10;
+    }
+
+    .product-rating-score,
+    .product-rating-count {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4A5C63;
+    }
+
+    /* Title & Description */
+    .product-hero-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 48px;
+      letter-spacing: -0.02em;
+      color: #070D10;
+      margin: 0;
+    }
+
+    .product-hero-description {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      color: #4A5C63;
+      margin: 0;
+    }
+
+    /* Price Row */
+    .product-price-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .product-price-current {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 42px;
+      letter-spacing: -0.01em;
+      color: #070D10;
+    }
+
+    .product-price-compare {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      text-decoration: line-through;
+      color: #4A5C63;
+    }
+
+    .product-price-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background: #2EE6D6;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+      white-space: nowrap;
+    }
+
+    /* Benefits Checklist */
+    .product-benefits-list {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 4px 0;
+    }
+
+    .product-benefit-item {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .product-benefit-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+      background: #2EE6D6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .product-benefit-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: #070D10;
+      stroke-width: 2.2;
+      fill: none;
+    }
+
+    .product-benefit-text {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #070D10;
+      flex: 1 1 0%;
+    }
+
+    /* Quantity Selector Chips */
+    .product-quantity-wrap {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .product-quantity-label {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+    }
+
+    .product-quantity-chips {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      box-sizing: border-box;
+    }
+
+    .product-quantity-chip {
+      flex: 1 1 0%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      gap: 2px;
+      background: #FFFFFF;
+      border: 1px solid #C5D6D8;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .product-quantity-chip.is-selected {
+      border: 2px solid #070D10;
+      padding: 11px 15px;
+    }
+
+    .product-chip-pack {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #070D10;
+    }
+
+    .product-chip-save {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #4A5C63;
+    }
+
+    /* Purchase Offers Box */
+    .product-offers-container {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+      background: #F8F8F8;
+      border-radius: 18px;
+    }
+
+    .product-offer-card {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 16px 20px;
+      gap: 12px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #E2E8F0;
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .product-offer-card.is-selected {
+      border: 2px solid #070D10;
+      padding: 15px 19px;
+    }
+
+    .product-offer-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      background: #2EE6D6;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+      width: fit-content;
+    }
+
+    .product-offer-main-row {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-offer-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1 1 0%;
+    }
+
+    .product-offer-title {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #070D10;
+    }
+
+    .product-offer-subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4A5C63;
+    }
+
+    .product-offer-pricing {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .product-offer-compare {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      text-decoration: line-through;
+      color: #4A5C63;
+    }
+
+    .product-offer-price {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #070D10;
+    }
+
+    .product-offer-perks {
+      width: 100%;
+      box-sizing: border-box;
+      border-top: 1px solid #C5D6D8;
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .product-offer-perk {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .product-offer-perk-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+      background: #2EE6D6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .product-offer-perk-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: #070D10;
+      stroke-width: 2.2;
+      fill: none;
+    }
+
+    .product-offer-perk-text {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #070D10;
+    }
+
+    /* Primary CTA Button */
+    .product-cta-btn {
+      width: 100%;
+      height: 48px;
+      background: #2EE6D6;
+      border-radius: 999px;
+      border: none;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+
+    .product-cta-btn:hover {
+      background: #26D5C6;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(46, 230, 214, 0.4);
+    }
+
+    .product-cta-btn:active {
+      transform: translateY(1px);
+    }
+
+    .product-cta-label {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      color: #070D10;
+    }
+
+    .product-cta-arrow {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      color: #070D10;
+      transition: transform 0.2s ease;
+    }
+
+    .product-cta-btn:hover .product-cta-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Guarantees & Shipping */
+    .product-meta-notes {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: -4px;
+    }
+
+    .product-meta-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .product-meta-icon {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .product-meta-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: #070D10;
+      fill: none;
+    }
+
+    .product-meta-text {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      color: #4A5C63;
+    }
+
+    /* Trust Row */
+    .product-trust-row {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      box-shadow: 0 2px 16px rgba(7, 13, 16, 0.04);
+      border: 1px solid #EDF2F4;
+    }
+
+    .product-trust-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1 1 0%;
+    }
+
+    .product-trust-icon {
+      width: 24px;
+      height: 24px;
+      background: #DCEBEC;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-trust-icon svg {
+      width: 12px;
+      height: 12px;
+      fill: #070D10;
+    }
+
+    .product-trust-value {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      color: #070D10;
+    }
+
+    .product-trust-caption {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      color: #4A5C63;
+    }
+
+    /* Accordions */
+    .product-accordions {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-accordion-item {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #EDF2F4;
+      padding: 16px 0;
+    }
+
+    .product-accordion-header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+    }
+
+    .product-accordion-title {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #070D10;
+    }
+
+    .product-accordion-toggle {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+      color: #070D10;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.2s ease;
+    }
+
+    .product-accordion-header:hover .product-accordion-toggle {
+      color: #0B3C44;
+    }
+
+    /* Smooth Grid Transition for Accordion Body */
+    .product-accordion-body {
+      width: 100%;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .product-accordion-item.is-open .product-accordion-body {
+      grid-template-rows: 1fr;
+    }
+
+    .product-accordion-content,
+    .product-accordion-body > * {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .product-accordion-content {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #4A5C63;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.25s ease 0.05s, transform 0.25s ease 0.05s, padding 0.35s ease;
+      padding-top: 0;
+    }
+
+    .product-accordion-item.is-open .product-accordion-content {
+      opacity: 1;
+      transform: translateY(0);
+      padding-top: 10px;
+    }
+
+    /* UGC Video Reviews Carousel ("Over 840,000+ Happy Customers") */
+    .product-ugc-container {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding-top: 24px;
+      gap: 16px;
+    }
+
+    .product-ugc-header {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-ugc-title {
+      font-family: 'Lato', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 34px;
+      color: #1E2123;
+      margin: 0;
+    }
+
+    .product-ugc-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .product-ugc-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 99px;
+      border: 1px solid #000000;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      padding: 0;
+    }
+
+    .product-ugc-btn:hover {
+      background: #F4F7F7;
+      transform: scale(1.08);
+    }
+
+    .product-ugc-btn svg {
+      width: 12px;
+      height: 12px;
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .product-ugc-swiper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .product-ugc-slide {
+      width: auto;
+      aspect-ratio: 9 / 12.6;
+      border-radius: 13.5px;
+      overflow: hidden;
+      position: relative;
+      box-sizing: border-box;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: #070D10;
+    }
+
+    .product-ugc-slide:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    }
+
+    .product-ugc-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      z-index: 1;
+      display: block;
+      background: #070D10;
+    }
+
+    .product-ugc-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 2;
+      transition: opacity 0.3s ease;
+    }
+
+    .product-ugc-slide.is-playing .product-ugc-bg {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .product-ugc-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, opacity 0.25s ease, background 0.2s ease;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .product-ugc-slide:hover .product-ugc-play {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+
+    .product-ugc-slide.is-playing .product-ugc-play {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+
+    .product-ugc-slide.is-playing:hover .product-ugc-play {
+      opacity: 0.9;
+      transform: translate(-50%, -50%) scale(1);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .product-ugc-play-icon {
+      width: 14px;
+      height: 14px;
+      fill: #070D10;
+      margin-left: 2px;
+    }
+
+    .product-ugc-pause-icon {
+      width: 14px;
+      height: 14px;
+      fill: #070D10;
+      display: none;
+    }
+
+    .product-ugc-slide.is-playing .product-ugc-play-icon {
+      display: none;
+    }
+
+    .product-ugc-slide.is-playing .product-ugc-pause-icon {
+      display: block;
+    }
+
+    .product-ugc-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 10px;
+      padding: 6px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-sizing: border-box;
+      z-index: 3;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      pointer-events: none;
+    }
+
+    .product-ugc-name {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 14px;
+      color: #070D10;
+    }
+
+    .product-ugc-role {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 14px;
+      color: #4A5C63;
+    }
+
+    /* ========================================================
+       RESPONSIVE MEDIA QUERIES (Desktop -> Tablet -> Mobile)
+       (Explicit Figma values)
+       ======================================================== */
+    @media (max-width: 991px) {
+      .product-hero-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .product-gallery-col,
+      .product-info-col {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .product-hero-section {
+        padding: 16px 0 56px;
+      }
+
+      .product-hero-container {
+        width: 92%;
+        gap: 20px;
+      }
+
+      .product-gallery-col,
+      .product-info-col {
+        width: 100%;
+        gap: 16px;
+      }
+
+      .product-main-image-wrap {
+        border-radius: 24px;
+        aspect-ratio: 350 / 360;
+      }
+
+      .product-thumbs-btn {
+        display: none;
+      }
+
+      .product-review-card {
+        flex-direction: column;
+      }
+
+      .product-review-media {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+
+      .product-review-content {
+        width: 100%;
+        padding: 16px;
+      }
+
+      .product-hero-title {
+        font-size: 44px;
+        line-height: 46px;
+      }
+
+      .product-price-current {
+        font-size: 28px;
+        line-height: 32px;
+      }
+
+      .product-price-compare {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .product-quantity-chips {
+        gap: 8px;
+      }
+
+      .product-quantity-chip {
+        padding: 10px 8px;
+      }
+
+      .product-chip-pack {
+        font-size: 14px;
+      }
+
+      .product-chip-save {
+        font-size: 11px;
+      }
+
+      .product-offers-container {
+        padding: 12px;
+      }
+
+      .product-offer-card {
+        padding: 14px 12px;
+      }
+
+      .product-trust-row {
+        padding: 16px 8px;
+        gap: 4px;
+      }
+
+      .product-trust-value {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .product-trust-caption {
+        font-size: 11px;
+        line-height: 14px;
+      }
+
+      .product-ugc-title {
+        font-size: 22px;
+        line-height: 34px;
+      }
+    }
+
+    /* ========================================================
+       FINAL CTA SECTION: "Breathe wider tonight."
+       (Exact Figma Specs, Percentage Widths, No clamp, No mixed height)
+       ======================================================== */
+    .final-cta-section {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #0B3C44;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .final-cta-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5%;
+      position: relative;
+    }
+
+    /* Left Copy */
+    .final-cta-copy {
+      width: 48%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      z-index: 2;
+    }
+
+    .final-cta-title {
+      width: 100%;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 48px;
+      line-height: 52px;
+      letter-spacing: -0.015em;
+      color: #FFFFFF;
+      margin: 0;
+    }
+
+    .final-cta-body {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      color: #DCEBEC;
+      margin: 0;
+    }
+
+    .final-cta-btn {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 28px;
+      gap: 8px;
+      background-color: #2EE6D6;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      width: fit-content;
+    }
+
+    .final-cta-btn:hover {
+      background-color: #26D5C6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46, 230, 214, 0.35);
+    }
+
+    .final-cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .final-cta-btn-label {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      color: #070D10;
+    }
+
+    .final-cta-btn-arrow {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      color: #070D10;
+      transition: transform 0.2s ease;
+    }
+
+    .final-cta-btn:hover .final-cta-btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Right Media (Desktop) */
+    .final-cta-media-desktop {
+      width: 47%;
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      box-sizing: border-box;
+    }
+
+    .final-cta-woman-desktop {
+      width: 100%;
+      max-width: 494px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .final-cta-badge-desktop {
+      position: absolute;
+      top: 10px;
+      left: 5%;
+      width: 28%;
+      max-width: 152px;
+      aspect-ratio: 1 / 1;
+      height: auto;
+      display: block;
+      z-index: 2;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+    }
+
+    .final-cta-media-mobile {
+      display: none;
+    }
+
+    /* Responsive Media Queries (Explicit Figma values) */
+    @media (max-width: 860px) {
+      .final-cta-section {}
+
+      .final-cta-container {
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .final-cta-copy {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .final-cta-title {
+        font-size: 40px;
+        line-height: 44px;
+        text-align: center;
+      }
+
+      .final-cta-body {
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+      }
+
+      .final-cta-media-desktop {
+        display: none;
+      }
+
+      .final-cta-media-mobile {
+        display: block;
+        width: 100%;
+        max-width: 390px;
+        margin: 0 auto;
+        position: relative;
+        line-height: 0;
+      }
+
+      .final-cta-woman-mobile {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .final-cta-title {
+        font-size: 34px;
+        line-height: 38px;
+      }
+    }
+
+    /* ========================================================
+       SECTION CSS: Site Header / Nav Bar (Percentage Responsive)
+       ======================================================== */
+    .site-header {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #F4F7F7;
+      border-bottom: 1px solid #C5D6D8;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .site-header-container {
+      width: 90%;
+      max-width: 1312px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      min-height: 80px;
+    }
+
+    .site-header-logo-link {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .site-header-logo {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: -0.005em;
+      color: #070D10;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .site-header-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-header-nav-item {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .site-header-nav-link {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      color: #070D10;
+      text-decoration: none;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .site-header-nav-link:hover {
+      color: #0B3C44;
+      opacity: 0.8;
+    }
+
+    .site-header-actions-desktop {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-header-localization {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .site-header-localization-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Lato', 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14.7px;
+      line-height: 22px;
+      letter-spacing: 0.63px;
+      color: #000000;
+      outline: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .site-header-localization-btn:hover {
+      opacity: 0.75;
+    }
+
+    .site-header-chevron {
+      width: 10px;
+      height: 6px;
+      transition: transform 0.2s ease;
+    }
+
+    .site-header-localization.is-open .site-header-chevron {
+      transform: rotate(180deg);
+    }
+
+    .site-header-localization-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #FFFFFF;
+      border: 1px solid #C5D6D8;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      padding: 8px 0;
+      min-width: 160px;
+      display: none;
+      flex-direction: column;
+      z-index: 110;
+    }
+
+    .site-header-localization.is-open .site-header-localization-dropdown {
+      display: flex;
+    }
+
+    .site-header-dropdown-item {
+      padding: 8px 16px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      color: #070D10;
+      background: transparent;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+
+    .site-header-dropdown-item:hover {
+      background-color: #F4F7F7;
+    }
+
+    .site-header-flag-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .site-header-flag-wrap svg {
+      width: 36px;
+      height: 36px;
+      display: block;
+    }
+
+    .site-header-cart-btn {
+      width: 44px;
+      height: 44px;
+      background: #DCEBEC;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .site-header-cart-btn:hover {
+      background: #CCE1E3;
+      transform: scale(1.03);
+    }
+
+    .site-header-cart-icon {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
+    .site-header-cta-btn {
+      background: #2EE6D6;
+      border-radius: 999px;
+      padding: 14px 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      color: #070D10;
+      white-space: nowrap;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .site-header-cta-btn:hover {
+      background: #27d4c5;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(46, 230, 214, 0.35);
+    }
+
+    .site-header-mobile-menu-btn,
+    .site-header-mobile-cart-btn {
+      display: none;
+    }
+
+    .site-header-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 13, 16, 0.4);
+      backdrop-filter: blur(2px);
+      z-index: 120;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .site-header-drawer-overlay.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .site-header-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 82%;
+      max-width: 320px;
+      height: 100%;
+      background: #F4F7F7;
+      z-index: 130;
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 20px;
+      box-sizing: border-box;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .site-header-drawer.is-active {
+      transform: translateX(0);
+    }
+
+    .site-header-drawer-top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #C5D6D8;
+    }
+
+    .site-header-drawer-close {
+      background: #DCEBEC;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      color: #070D10;
+      outline: none;
+    }
+
+    .site-header-drawer-links {
+      list-style: none;
+      padding: 24px 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .site-header-drawer-link {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #070D10;
+      text-decoration: none;
+      display: block;
+      transition: color 0.15s ease;
+    }
+
+    .site-header-drawer-link:hover {
+      color: #0B3C44;
+    }
+
+    .site-header-drawer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid #C5D6D8;
+    }
+
+    @media (max-width: 991px) {
+      .site-header-container {
+        width: 92%;
+        padding: 14px 0;
+        min-height: 55px;
+      }
+
+      .site-header-nav,
+      .site-header-actions-desktop {
+        display: none !important;
+      }
+
+      .site-header-mobile-menu-btn {
+        width: 24px;
+        height: 24px;
+        background: #DCEBEC;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        cursor: pointer;
+        flex-shrink: 0;
+        gap: 3px;
+      }
+
+      .site-header-hamburger-line {
+        width: 10px;
+        height: 1.5px;
+        background-color: #070D10;
+        border-radius: 1px;
+      }
+
+      .site-header-logo {
+        font-size: 20px;
+        line-height: 26px;
+        text-align: center;
+      }
+
+      .site-header-mobile-cart-btn {
+        width: 24px;
+        height: 24px;
+        background: #DCEBEC;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: #070D10;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+    }
+
+    /* ========================================================
+       ANNOUNCEMENT BAR: Pure Responsive CSS (Figma Specs)
+       ======================================================== */
+    .site-announcement-bar {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #070D10;
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      position: relative;
+      z-index: 101;
+    }
+
+    .site-announcement-container {
+      width: 100%;
+      max-width: 1312px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(16px, 3.5vw, 48px);
+      box-sizing: border-box;
+    }
+
+    .site-announcement-item {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #FFFFFF;
+      text-align: center;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .site-announcement-item:hover {
+      opacity: 0.8;
+    }
+
+    @media screen and (max-width: 768px) {
+      .site-announcement-bar {
+        padding: 10px 16px;
+        height: 36px;
+        min-height: 36px;
+      }
+
+      .site-announcement-container {
+        width: 100%;
+        gap: 0;
+        justify-content: center;
+      }
+
+      .site-announcement-item {
+        width: 100%;
+        white-space: normal;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      /* Hide messages 2 and 3 on mobile per Figma specification */
+      .site-announcement-item:nth-child(n+2) {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Announcement Bar (Desktop: 3 messages, Mobile: 1 message) -->
+  <aside class="site-announcement-bar" id="SiteAnnouncementBar" aria-label="Announcement">
+    <div class="site-announcement-container">
+      <span class="site-announcement-item">Free US shipping on orders over $40</span>
+      <span class="site-announcement-item">90-day better breathing guarantee</span>
+      <span class="site-announcement-item">All 4 sizes in every kit</span>
+    </div>
+  </aside>
+
+  <!-- Site Header / Nav Bar -->
+  <header class="site-header" id="SiteHeader">
+    <div class="site-header-container">
+
+      <!-- Mobile Menu Button (Hamburger) -->
+      <button type="button" class="site-header-mobile-menu-btn" id="mobileMenuOpenBtn" aria-label="Open navigation menu">
+        <span class="site-header-hamburger-line"></span>
+        <span class="site-header-hamburger-line"></span>
+        <span class="site-header-hamburger-line"></span>
+      </button>
+
+      <!-- Logo -->
+      <a href="#" class="site-header-logo-link">
+        <span class="site-header-logo">UnlockedAir</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="site-header-nav" aria-label="Main navigation">
+        <li class="site-header-nav-item">
+          <a href="#ProductHero-section" class="site-header-nav-link">Shop</a>
+        </li>
+        <li class="site-header-nav-item">
+          <a href="#why-it-works-section" class="site-header-nav-link">Why us</a>
+        </li>
+        <li class="site-header-nav-item">
+          <a href="#how-it-works-section" class="site-header-nav-link">How it works</a>
+        </li>
+        <li class="site-header-nav-item">
+          <a href="#ugc-reviews-section" class="site-header-nav-link">Reviews</a>
+        </li>
+      </nav>
+
+      <!-- Desktop Actions Group -->
+      <div class="site-header-actions-desktop">
+
+        <!-- Localization / Currency Selector -->
+        <div class="site-header-localization" id="headerLocalization">
+          <button type="button" class="site-header-localization-btn" id="localizationBtn" aria-haspopup="true" aria-expanded="false">
+            <span id="currentLocalizationLabel">USA | USD $</span>
+            <svg class="site-header-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L9 1" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="site-header-localization-dropdown" id="localizationDropdown">
+            <button type="button" class="site-header-dropdown-item" data-value="USA | USD $">🇺🇸 USA | USD $</button>
+            <button type="button" class="site-header-dropdown-item" data-value="CAN | CAD $">🇨🇦 CAN | CAD $</button>
+            <button type="button" class="site-header-dropdown-item" data-value="GBR | GBP £">🇬🇧 GBR | GBP £</button>
+            <button type="button" class="site-header-dropdown-item" data-value="EUR | EUR €">🇪🇺 EUR | EUR €</button>
+            <button type="button" class="site-header-dropdown-item" data-value="AUS | AUD $">🇦🇺 AUS | AUD $</button>
+          </div>
+        </div>
+
+        <!-- Visitor Country Flag (United States Round) -->
+        <div class="site-header-flag-wrap" title="Shipping to United States">
+          <svg class="site-header-flag" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="headerUSFlagClip">
+                <circle cx="18" cy="18" r="18"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#headerUSFlagClip)">
+              <!-- Base White Stripes -->
+              <rect width="36" height="36" fill="#FFFFFF"/>
+              <!-- 7 Red Stripes -->
+              <rect y="0" width="36" height="2.77" fill="#B31942"/>
+              <rect y="5.54" width="36" height="2.77" fill="#B31942"/>
+              <rect y="11.08" width="36" height="2.77" fill="#B31942"/>
+              <rect y="16.62" width="36" height="2.77" fill="#B31942"/>
+              <rect y="22.15" width="36" height="2.77" fill="#B31942"/>
+              <rect y="27.69" width="36" height="2.77" fill="#B31942"/>
+              <rect y="33.23" width="36" height="2.77" fill="#B31942"/>
+              <!-- Blue Canton -->
+              <rect x="0" y="0" width="16" height="19.38" fill="#0A3161"/>
+              <!-- Stars Grid -->
+              <g fill="#FFFFFF">
+                <circle cx="2.5" cy="2.5" r="0.9"/>
+                <circle cx="5.5" cy="2.5" r="0.9"/>
+                <circle cx="8.5" cy="2.5" r="0.9"/>
+                <circle cx="11.5" cy="2.5" r="0.9"/>
+                <circle cx="14.5" cy="2.5" r="0.9"/>
+
+                <circle cx="4" cy="5.2" r="0.9"/>
+                <circle cx="7" cy="5.2" r="0.9"/>
+                <circle cx="10" cy="5.2" r="0.9"/>
+                <circle cx="13" cy="5.2" r="0.9"/>
+
+                <circle cx="2.5" cy="8" r="0.9"/>
+                <circle cx="5.5" cy="8" r="0.9"/>
+                <circle cx="8.5" cy="8" r="0.9"/>
+                <circle cx="11.5" cy="8" r="0.9"/>
+                <circle cx="14.5" cy="8" r="0.9"/>
+
+                <circle cx="4" cy="10.8" r="0.9"/>
+                <circle cx="7" cy="10.8" r="0.9"/>
+                <circle cx="10" cy="10.8" r="0.9"/>
+                <circle cx="13" cy="10.8" r="0.9"/>
+
+                <circle cx="2.5" cy="13.5" r="0.9"/>
+                <circle cx="5.5" cy="13.5" r="0.9"/>
+                <circle cx="8.5" cy="13.5" r="0.9"/>
+                <circle cx="11.5" cy="13.5" r="0.9"/>
+                <circle cx="14.5" cy="13.5" r="0.9"/>
+
+                <circle cx="4" cy="16.2" r="0.9"/>
+                <circle cx="7" cy="16.2" r="0.9"/>
+                <circle cx="10" cy="16.2" r="0.9"/>
+                <circle cx="13" cy="16.2" r="0.9"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Cart Button (44px mist circle with bag icon) -->
+        <a href="#cart" class="site-header-cart-btn" aria-label="Cart (0 items)">
+          <svg class="site-header-cart-icon" viewBox="0 0 24 24" fill="none" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </a>
+
+        <!-- Primary CTA Button ("SHOP NOW") -->
+        <a href="#ProductHero-section" class="site-header-cta-btn">
+          SHOP NOW
+        </a>
+
+      </div>
+
+      <!-- Mobile Cart Button (24px mist circle with item count '0') -->
+      <a href="#cart" class="site-header-mobile-cart-btn" aria-label="Cart">
+        <span>0</span>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="site-header-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <aside class="site-header-drawer" id="mobileDrawer" aria-label="Mobile navigation drawer">
+    <div>
+      <div class="site-header-drawer-top">
+        <span class="site-header-logo">UnlockedAir</span>
+        <button type="button" class="site-header-drawer-close" id="mobileMenuCloseBtn" aria-label="Close menu">✕</button>
+      </div>
+
+      <ul class="site-header-drawer-links">
+        <li><a href="#ProductHero-section" class="site-header-drawer-link">Shop</a></li>
+        <li><a href="#why-it-works-section" class="site-header-drawer-link">Why us</a></li>
+        <li><a href="#how-it-works-section" class="site-header-drawer-link">How it works</a></li>
+        <li><a href="#ugc-reviews-section" class="site-header-drawer-link">Reviews</a></li>
+      </ul>
+    </div>
+
+    <div class="site-header-drawer-bottom">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; color: #070D10;">🇺🇸 USA | USD $</span>
+      </div>
+      <a href="#ProductHero-section" class="site-header-cta-btn" style="width: 100%; box-sizing: border-box; text-align: center;">
+        SHOP NOW
+      </a>
+    </div>
+  </aside>
+
+  <!-- Section 0: UnlockedAir Product / Buy Box Starter Kit -->
+  <section class="product-hero-section" id="ProductHero-section">
+    <div class="product-hero-container">
+
+      <!-- LEFT COLUMN: Image Gallery & Review Comparison Card -->
+      <div class="product-gallery-col">
+
+        <!-- Product Gallery Viewer -->
+        <div class="product-gallery-viewer">
+          <div class="product-main-image-wrap">
+            <div class="swiper product-main-swiper" id="productMainSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide product-main-slide" data-index="0">
+                  <img class="product-main-image" src="assets/product-hero-large@2x.png" alt="Starter kit flatlay">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="1">
+                  <img class="product-main-image" src="assets/Sporty Portrait with Nose Strip.png" alt="Sporty portrait with nose strip">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="2">
+                  <img class="product-main-image" src="assets/feature-wont-collapse.png" alt="Man wearing magnetic strip">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="3">
+                  <img class="product-main-image" src="assets/gentle-on-skin-portrait.png" alt="Customer story video">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="4">
+                  <img class="product-main-image" src="assets/product-bands-tabs.png" alt="Bands and adhesive tabs">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="5">
+                  <img class="product-main-image" src="assets/feature-sweat-proof-hold.png" alt="Sweat proof hold in action">
+                </div>
+                <div class="swiper-slide product-main-slide" data-index="6">
+                  <img class="product-main-image" src="assets/with-unlocked-air.jpg" alt="Side profile with unlocked air">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thumbnails Slider (Swiper.js) -->
+          <div class="product-thumbs-container">
+            <button type="button" class="product-thumbs-btn product-thumbs-prev" aria-label="Previous image">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                <path d="M7 1L1 7L7 13" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <div class="swiper product-thumbs-swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide product-thumb-slide is-active" data-src="assets/product-hero-large@2x.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-1@2x.png" alt="Starter kit flatlay">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/Sporty Portrait with Nose Strip.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-2@2x.png"
+                    alt="Sporty portrait with nose strip">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/feature-wont-collapse.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-3@2x.png" alt="Man wearing magnetic strip">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/gentle-on-skin-portrait.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-4@2x.png" alt="Customer story video">
+                  <div class="product-thumb-play-icon">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="#070D10">
+                      <polygon points="6,3 20,12 6,21" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/product-bands-tabs.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-5@2x.png" alt="Bands and adhesive tabs">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/feature-sweat-proof-hold.png">
+                  <img class="product-thumb-img" src="assets/product-thumb-6@2x.png" alt="Sweat proof hold in action">
+                </div>
+                <div class="swiper-slide product-thumb-slide" data-src="assets/with-unlocked-air.jpg">
+                  <img class="product-thumb-img" src="assets/product-thumb-7@2x.png"
+                    alt="Side profile with unlocked air">
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="product-thumbs-btn product-thumbs-next" aria-label="Next image">
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                <path d="M1 1L7 7L1 13" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Customer Review Comparison Card ("With 1") -->
+        <div class="product-review-card">
+          <div class="product-review-media">
+            <img class="product-review-img" src="assets/product-review-with@2x.png"
+              alt="Customer Caroline T. before and after UnlockedAir" loading="lazy">
+          </div>
+          <div class="product-review-content">
+            <div class="product-review-stars">
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+              </svg>
+              <svg viewBox="0 0 24 24">
+                <polygon
+                  points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+              </svg>
+            </div>
+            <h3 class="product-review-title">I CAN FINALLY BREATHE AT NIGHT</h3>
+            <p class="product-review-quote">“I stopped waking up with a dry mouth. The band stays on all night and it's
+              far more comfortable than the strips I used before.”</p>
+            <p class="product-review-author">Caroline T., Austin, TX</p>
+            <div class="product-review-verified">
+              <div class="product-review-verified-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1E2123" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <span class="product-review-verified-text">VERIFIED BUYER</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Buy Box & Product Info -->
+      <div class="product-info-col">
+
+        <!-- Rating Row -->
+        <div class="product-rating-row">
+          <div class="product-rating-stars">
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+            </svg>
+          </div>
+          <span class="product-rating-score">Excellent 4.5</span>
+          <span class="product-rating-count">(45,000+ Reviews)</span>
+        </div>
+
+        <!-- Title & Subtitle -->
+        <h1 class="product-hero-title">Unlocked Air Starter Kit</h1>
+        <p class="product-hero-description">A reusable magnetic band and gentle adhesive tabs that lift your nostrils
+          open from the outside. Nothing goes inside your nose.</p>
+
+        <!-- Price Row -->
+        <div class="product-price-row">
+          <span class="product-price-current" id="displayCurrentPrice">$0.00</span>
+          <span class="product-price-compare" id="displayComparePrice">$60.00</span>
+          <span class="product-price-tag" id="displayPriceTag">Free trial</span>
+        </div>
+
+        <!-- Benefits Checklist -->
+        <div class="product-benefits-list">
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <span class="product-benefit-text">Opens your nose from the sides, with no pressure on the bridge</span>
+          </div>
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <span class="product-benefit-text">Rigid magnetic lift that won't fold when you inhale</span>
+          </div>
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <span class="product-benefit-text">Sweat-resistant tabs that hold through workouts and sleep</span>
+          </div>
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <span class="product-benefit-text">Reusable band, so you only replace the tabs</span>
+          </div>
+          <div class="product-benefit-item">
+            <div class="product-benefit-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <span class="product-benefit-text">Latex-free, hypoallergenic adhesive</span>
+          </div>
+        </div>
+
+        <!-- Quantity Selector Chips -->
+        <div class="product-quantity-wrap">
+          <span class="product-quantity-label">Choose your kit</span>
+          <div class="product-quantity-chips">
+            <div class="product-quantity-chip is-selected" data-kit="1" data-price="0.00" data-compare="60.00">
+              <span class="product-chip-pack">1 kit</span>
+              <span class="product-chip-save">Starter</span>
+            </div>
+            <div class="product-quantity-chip" data-kit="2" data-price="0.00" data-compare="120.00">
+              <span class="product-chip-pack">2 kits</span>
+              <span class="product-chip-save">Save 20%</span>
+            </div>
+            <div class="product-quantity-chip" data-kit="3" data-price="0.00" data-compare="180.00">
+              <span class="product-chip-pack">3 kits</span>
+              <span class="product-chip-save">Save 30%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offers Container (Free trial vs One-time purchase) -->
+        <div class="product-offers-container">
+
+          <!-- Option 1: Free Trial -->
+          <div class="product-offer-card is-selected" id="offerFreeTrial" data-offer="trial">
+            <div class="product-offer-tag">Limited Time Deal | 12056 left</div>
+            <div class="product-offer-main-row">
+              <div class="product-offer-copy">
+                <span class="product-offer-title">Free trial</span>
+                <span class="product-offer-subtitle">15 tab sets + 4 bands free, then 30 tab sets every 30 days</span>
+              </div>
+              <div class="product-offer-pricing">
+                <span class="product-offer-compare">$49.00</span>
+                <span class="product-offer-price">$0.00</span>
+              </div>
+            </div>
+            <div class="product-offer-perks" id="offerTrialPerks">
+              <div class="product-offer-perk">
+                <div class="product-offer-perk-icon">
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <span class="product-offer-perk-text">15 tab sets + 4 magnetic bands, free</span>
+              </div>
+              <div class="product-offer-perk">
+                <div class="product-offer-perk-icon">
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <span class="product-offer-perk-text">35% off every refill</span>
+              </div>
+              <div class="product-offer-perk">
+                <div class="product-offer-perk-icon">
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <span class="product-offer-perk-text">Pause or cancel anytime</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Option 2: One-time purchase -->
+          <div class="product-offer-card" id="offerOneTime" data-offer="onetime">
+            <div class="product-offer-main-row">
+              <div class="product-offer-copy">
+                <span class="product-offer-title">One-time purchase</span>
+                <span class="product-offer-subtitle">15 tab sets + 4 bands, no subscription</span>
+              </div>
+              <div class="product-offer-pricing">
+                <span class="product-offer-compare">$60.00</span>
+                <span class="product-offer-price">$60.00</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Main CTA Button -->
+        <a href="#checkout" class="product-cta-btn" id="productCtaBtn">
+          <span class="product-cta-label" id="productCtaLabel">Start my free trial</span>
+          <span class="product-cta-arrow">→</span>
+        </a>
+
+        <!-- Guarantees & Shipping Notes -->
+        <div class="product-meta-notes">
+          <div class="product-meta-row">
+            <div class="product-meta-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <span class="product-meta-text">30 Days Money Back Guarantee</span>
+          </div>
+          <div class="product-meta-row">
+            <div class="product-meta-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="1" y="3" width="15" height="13" />
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                <circle cx="5.5" cy="18.5" r="2.5" />
+                <circle cx="18.5" cy="18.5" r="2.5" />
+              </svg>
+            </div>
+            <span class="product-meta-text">Ships in 3–5 business days · Free US shipping over $40</span>
+          </div>
+        </div>
+
+        <!-- Trust Metrics Row -->
+        <div class="product-trust-row">
+          <div class="product-trust-badge">
+            <div class="product-trust-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="6" />
+              </svg>
+            </div>
+            <span class="product-trust-value">90 days</span>
+            <span class="product-trust-caption">Breathing guarantee</span>
+          </div>
+          <div class="product-trust-badge">
+            <div class="product-trust-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="6" />
+              </svg>
+            </div>
+            <span class="product-trust-value">4 sizes</span>
+            <span class="product-trust-caption">Fit guaranteed</span>
+          </div>
+          <div class="product-trust-badge">
+            <div class="product-trust-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="6" />
+              </svg>
+            </div>
+            <span class="product-trust-value">4.8 / 5</span>
+            <span class="product-trust-caption">Customer rating</span>
+          </div>
+        </div>
+
+        <!-- Accordions -->
+        <div class="product-accordions">
+          <!-- Item 1: Description (Open by default) -->
+          <div class="product-accordion-item is-open">
+            <button type="button" class="product-accordion-header" aria-expanded="true">
+              <span class="product-accordion-title">Description</span>
+              <span class="product-accordion-toggle">—</span>
+            </button>
+            <div class="product-accordion-body">
+              <div class="product-accordion-content">
+                Stick a tab on each side of your nose, then bring the band close and let the magnets click on. The band
+                lifts your nostrils open from the outside, so you breathe through your nose more easily.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: What's in the kit -->
+          <div class="product-accordion-item">
+            <button type="button" class="product-accordion-header" aria-expanded="false">
+              <span class="product-accordion-title">What's in the kit</span>
+              <span class="product-accordion-toggle">+</span>
+            </button>
+            <div class="product-accordion-body">
+              <div class="product-accordion-content">
+                Each starter kit includes 4 reusable magnetic bands in different sizes to guarantee your custom fit, 15
+                hypoallergenic sweat-resistant adhesive tab sets, a precision placement applicator, and an easy
+                step-by-step instructional manual.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Shipping and returns -->
+          <div class="product-accordion-item">
+            <button type="button" class="product-accordion-header" aria-expanded="false">
+              <span class="product-accordion-title">Shipping and returns</span>
+              <span class="product-accordion-toggle">+</span>
+            </button>
+            <div class="product-accordion-body">
+              <div class="product-accordion-content">
+                All US orders ship promptly within 3–5 business days, with free shipping on all orders over $40. We back
+                every purchase with our 30-day money back breathing guarantee. If you are not completely satisfied, return
+                it hassle-free for a full refund.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Materials -->
+          <div class="product-accordion-item">
+            <button type="button" class="product-accordion-header" aria-expanded="false">
+              <span class="product-accordion-title">Materials</span>
+              <span class="product-accordion-toggle">+</span>
+            </button>
+            <div class="product-accordion-body">
+              <div class="product-accordion-content">
+                Crafted from high-tensile spring steel core encased in soft-touch biocompatible silicone, rare-earth
+                neodymium micro-magnets, and medical-grade hypoallergenic breathable adhesive tabs tested safe for all
+                skin types.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- UGC Video Reviews Carousel ("Over 840,000+ Happy Customers") -->
+        <div class="product-ugc-container">
+          <div class="product-ugc-header">
+            <h2 class="product-ugc-title">Over 840,000+ Happy Customers</h2>
+            <div class="product-ugc-nav">
+              <button type="button" class="product-ugc-btn product-ugc-prev" aria-label="Previous customer review">
+                <svg viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button type="button" class="product-ugc-btn product-ugc-next" aria-label="Next customer review">
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="swiper product-ugc-swiper">
+            <div class="swiper-wrapper">
+              <!-- UGC Card 1 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Maya R." data-role="Runner">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-maya@2x.png" alt="Maya R. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21" />
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Maya R.</span>
+                  <span class="product-ugc-role">Runner</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 2 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Jordan P." data-role="Cyclist">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-jordan@2x.png" alt="Jordan P. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21" />
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Jordan P.</span>
+                  <span class="product-ugc-role">Cyclist</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 3 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Chris D." data-role="Sleep Apnea / Heavy Breather">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-chris.png" alt="Chris D. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21" />
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Chris D.</span>
+                  <span class="product-ugc-role">Recovery & Sleep</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 4 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Elena S." data-role="Marathoner">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-elena.png" alt="Elena S. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21" />
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Elena S.</span>
+                  <span class="product-ugc-role">Marathoner</span>
+                </div>
+              </div>
+
+              <!-- UGC Card 5 -->
+              <div class="swiper-slide product-ugc-slide" data-name="Marcus T." data-role="CrossFit Athlete">
+                <video class="product-ugc-video" playsinline webkit-playsinline loop preload="none">
+                  <source src="assets/ugc-sample.mp4" type="video/mp4">
+                </video>
+                <img class="product-ugc-bg" src="assets/ugc-marcus.png" alt="Marcus T. UnlockedAir review">
+                <div class="product-ugc-play" aria-label="Play review video">
+                  <svg class="product-ugc-play-icon" viewBox="0 0 24 24">
+                    <polygon points="6,3 20,12 6,21" />
+                  </svg>
+                  <svg class="product-ugc-pause-icon" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                </div>
+                <div class="product-ugc-badge">
+                  <span class="product-ugc-name">Marcus T.</span>
+                  <span class="product-ugc-role">CrossFit Athlete</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 1: UnlockedAir Why It Works -->
+  <section class="why-it-works-section" id="WhyItWorks-section">
+    <div class="why-it-works-container">
+
+      <!-- Heading Block -->
+      <div class="why-it-works-heading">
+        <div class="why-it-works-tag">
+          Why it works
+        </div>
+        <h2 class="why-it-works-title">
+          Wider lift that doesn’t fold.
+        </h2>
+        <p class="why-it-works-subtitle">
+          Strips pull from the bridge and can collapse when you inhale. UnlockedAir lifts from the sides with magnets,
+          so your nostrils stay open.
+        </p>
+      </div>
+
+      <!-- Before/After Interactive Comparison Frame -->
+      <div class="why-it-works-media" id="mediaSlider" style="--split-pos: 50%;">
+
+        <!-- After Image (With Unlocked Air) -->
+        <img src="./assets/with-unlocked-air.jpg" alt="With Unlocked Air"
+          class="why-it-works-media__img why-it-works-media__after">
+
+        <!-- Before Image (Without Unlocked Air) -->
+        <img src="./assets/without-unlocked-air.jpg" alt="Without Unlocked Air"
+          class="why-it-works-media__img why-it-works-media__before">
+
+        <!-- Divider Line -->
+        <div class="why-it-works-media__divider" aria-hidden="true"></div>
+
+        <!-- Handle with Arrows -->
+        <div class="why-it-works-media__handle" aria-hidden="true">
+          <span class="why-it-works-media__handle-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.5 12.5L2 9L5.5 5.5" stroke="#000000" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M12.5 5.5L16 9L12.5 12.5" stroke="#000000" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+
+        <!-- Left Label Badge -->
+        <div class="why-it-works-media__badge why-it-works-media__badge--left">
+          without Unlocked Air
+        </div>
+
+        <!-- Right Label Badge -->
+        <div class="why-it-works-media__badge why-it-works-media__badge--right">
+          with Unlocked Air
+        </div>
+
+        <!-- Accessible Range Input -->
+        <input type="range" min="0" max="100" value="50" class="why-it-works-media__range"
+          aria-label="Drag to compare before and after">
+      </div>
+
+      <!-- Comparison Cards -->
+      <div class="why-it-works-cards">
+
+        <!-- Card 1: With UnlockedAir -->
+        <div class="why-it-works-card why-it-works-card--brand">
+          <h3 class="why-it-works-card__title">
+            With UnlockedAir
+          </h3>
+
+          <ul class="why-it-works-card__list">
+            <li class="why-it-works-card__item">
+              <span class="why-it-works-card__icon">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="why-it-works-card__text">Lifts from the sides with magnets</span>
+            </li>
+
+            <li class="why-it-works-card__item">
+              <span class="why-it-works-card__icon">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="why-it-works-card__text">Sweat-resistant hold for training</span>
+            </li>
+
+            <li class="why-it-works-card__item">
+              <span class="why-it-works-card__icon">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="why-it-works-card__text">Reusable band, swap only the tabs</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Typical nasal strips -->
+        <div class="why-it-works-card why-it-works-card--competitor">
+          <h3 class="why-it-works-card__title">
+            Typical nasal strips
+          </h3>
+
+          <ul class="why-it-works-card__list">
+            <li class="why-it-works-card__item">
+              <span class="why-it-works-card__icon">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="why-it-works-card__text">Pulls from the bridge and can collapse</span>
+            </li>
+
+            <li class="why-it-works-card__item">
+              <span class="why-it-works-card__icon">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="why-it-works-card__text">Can peel off with sweat or oil</span>
+            </li>
+
+            <li class="why-it-works-card__item">
+              <span class="why-it-works-card__icon">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="why-it-works-card__text">Thrown away after every use</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 2: UnlockedAir Technology Band -->
+  <section class="tech-band-section" id="TechBand-section">
+    <div class="tech-band-container">
+
+      <!-- Copy Column -->
+      <div class="tech-band-copy">
+        <div class="tech-band-tag">
+          Technology
+        </div>
+
+        <h2 class="tech-band-title">
+          Magnetic lift, built to hold
+        </h2>
+
+        <p class="tech-band-body">
+          Two adhesive tabs sit on the outside of your nostrils. A band with neodymium magnets clicks onto them and
+          gently lifts your nose open. Nothing goes inside, and nothing presses on the bridge.
+        </p>
+
+        <!-- Benefit items -->
+        <ul class="tech-band-benefits">
+          <li class="tech-band-benefit-item">
+            <span class="tech-band-icon" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="tech-band-text">Clean and dry</span>
+          </li>
+
+          <li class="tech-band-benefit-item">
+            <span class="tech-band-icon" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="tech-band-text">Apply the tabs</span>
+          </li>
+
+          <li class="tech-band-benefit-item">
+            <span class="tech-band-icon" aria-hidden="true">
+              <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="tech-band-text">Snap on the band</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Media / Illustration Column -->
+      <div class="tech-band-media">
+        <img src="./assets/technology-band-illustration.png" alt="Magnetic lift, built to hold illustration"
+          class="tech-band-image" loading="lazy">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 3: UnlockedAir How It Works / Benefits -->
+  <section class="how-it-works-section" id="HowItWorks-section">
+    <div class="how-it-works-container">
+
+      <!-- Heading Block -->
+      <div class="how-it-works-heading">
+        <div class="how-it-works-tag">
+          Benefits
+        </div>
+
+        <h2 class="how-it-works-title">
+          Built to open up your Breathing
+        </h2>
+
+        <p class="how-it-works-subtitle">
+          A Magnetic Dilator that works from outside
+        </p>
+      </div>
+
+      <!-- ==============================================
+           DESKTOP VIEW: Diagram with lines and dots
+           ============================================== -->
+      <div class="how-it-works-desktop-view" aria-hidden="false">
+
+        <!-- Left Callouts Column -->
+        <div class="how-it-works-callouts-left">
+
+          <!-- Left Item 1: Instantly Expands -->
+          <div class="how-it-works-pointer-row how-it-works-pointer-row--left">
+            <span class="how-it-works-pointer-label">Instantly Expands</span>
+            <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+            <span class="how-it-works-pointer-dot" aria-hidden="true">
+              <span class="how-it-works-pointer-dot-inner"></span>
+            </span>
+          </div>
+
+          <!-- Left Item 2: Drug Free -->
+          <div class="how-it-works-pointer-row how-it-works-pointer-row--left">
+            <span class="how-it-works-pointer-label">Drug Free</span>
+            <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+            <span class="how-it-works-pointer-dot" aria-hidden="true">
+              <span class="how-it-works-pointer-dot-inner"></span>
+            </span>
+          </div>
+
+          <!-- Left Item 3: Nothing Inside Your Nose -->
+          <div class="how-it-works-pointer-row how-it-works-pointer-row--left">
+            <span class="how-it-works-pointer-label">Nothing Inside Your Nose</span>
+            <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+            <span class="how-it-works-pointer-dot" aria-hidden="true">
+              <span class="how-it-works-pointer-dot-inner"></span>
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Center Product Image -->
+        <div class="how-it-works-center-media">
+          <img src="./assets/magnific__background__1698.png" alt="Built to open up your Breathing illustration"
+            class="how-it-works-product-image" loading="lazy">
+        </div>
+
+        <!-- Right Callouts Column -->
+        <div class="how-it-works-callouts-right">
+
+          <!-- Right Item 1: Sweat Proof Hold -->
+          <div class="how-it-works-pointer-row how-it-works-pointer-row--right">
+            <span class="how-it-works-pointer-dot" aria-hidden="true">
+              <span class="how-it-works-pointer-dot-inner"></span>
+            </span>
+            <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+            <span class="how-it-works-pointer-label">Sweat Proof Hold</span>
+          </div>
+
+          <!-- Right Item 2: Reusable Band -->
+          <div class="how-it-works-pointer-row how-it-works-pointer-row--right">
+            <span class="how-it-works-pointer-dot" aria-hidden="true">
+              <span class="how-it-works-pointer-dot-inner"></span>
+            </span>
+            <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+            <span class="how-it-works-pointer-label">Reusable Band</span>
+          </div>
+
+          <!-- Right Item 3: Gentle with skin -->
+          <div class="how-it-works-pointer-row how-it-works-pointer-row--right">
+            <span class="how-it-works-pointer-dot" aria-hidden="true">
+              <span class="how-it-works-pointer-dot-inner"></span>
+            </span>
+            <span class="how-it-works-pointer-line" aria-hidden="true"></span>
+            <span class="how-it-works-pointer-label">Gentle with skin</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ==============================================
+           MOBILE VIEW: Vertical List with Aqua Checkmark & Bottom Image
+           ============================================== -->
+      <div class="how-it-works-mobile-view" aria-hidden="true">
+
+        <ul class="how-it-works-benefits-list">
+
+          <li class="how-it-works-benefit-item">
+            <span class="how-it-works-check-icon">
+              <img src="./assets/aqua-check-icon.png" alt="check" loading="lazy">
+            </span>
+            <span class="how-it-works-benefit-text">Nothing Inside Your Nose</span>
+          </li>
+
+          <li class="how-it-works-benefit-item">
+            <span class="how-it-works-check-icon">
+              <img src="./assets/aqua-check-icon.png" alt="check" loading="lazy">
+            </span>
+            <span class="how-it-works-benefit-text">Sweat Proof Hold</span>
+          </li>
+
+          <li class="how-it-works-benefit-item">
+            <span class="how-it-works-check-icon">
+              <img src="./assets/aqua-check-icon.png" alt="check" loading="lazy">
+            </span>
+            <span class="how-it-works-benefit-text">Reusable Band</span>
+          </li>
+
+          <li class="how-it-works-benefit-item">
+            <span class="how-it-works-check-icon">
+              <img src="./assets/aqua-check-icon.png" alt="check" loading="lazy">
+            </span>
+            <span class="how-it-works-benefit-text">Drug Free</span>
+          </li>
+
+          <li class="how-it-works-benefit-item">
+            <span class="how-it-works-check-icon">
+              <img src="./assets/aqua-check-icon.png" alt="check" loading="lazy">
+            </span>
+            <span class="how-it-works-benefit-text">Gentle with skin</span>
+          </li>
+
+          <li class="how-it-works-benefit-item">
+            <span class="how-it-works-check-icon">
+              <img src="./assets/aqua-check-icon.png" alt="check" loading="lazy">
+            </span>
+            <span class="how-it-works-benefit-text">Instantly Expands</span>
+          </li>
+
+        </ul>
+
+        <!-- Mobile Product Image -->
+        <div class="how-it-works-mobile-media">
+          <img src="./assets/magnific__background__1698.png" alt="Built to open up your Breathing illustration"
+            class="how-it-works-mobile-image" loading="lazy">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 4: UnlockedAir Stats Band -->
+  <section class="stats-band-section" id="StatsBand-section">
+    <div class="stats-band-container">
+
+      <!-- Heading Block -->
+      <div class="stats-band-heading">
+        <h2 class="stats-band-title">
+          What users report
+        </h2>
+
+        <p class="stats-band-subtitle">
+          Placeholder figures. Replace with results from the client's own study before launch.
+        </p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-band-grid">
+
+        <!-- Stat 1 -->
+        <div class="stats-band-item">
+          <div class="stats-band-value">
+            91%
+          </div>
+          <p class="stats-band-label">
+            of users reported less snoring (to be verified)
+          </p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="stats-band-item">
+          <div class="stats-band-value">
+            85%
+          </div>
+          <p class="stats-band-label">
+            of users reported relief from sinus pressure (to be verified)
+          </p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="stats-band-item">
+          <div class="stats-band-value">
+            96%
+          </div>
+          <p class="stats-band-label">
+            of users reported deeper, more restful sleep (to be verified)
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 5: UnlockedAir Comparison Band ("UnlockedAir vs the alternatives") -->
+  <section class="comparison-band-section" id="ComparisonBand-section">
+    <div class="comparison-band-container">
+
+      <!-- Heading Block -->
+      <div class="comparison-band-heading">
+        <h2 class="comparison-band-title">
+          UnlockedAir vs the alternatives
+        </h2>
+        <p class="comparison-band-subtitle">
+          How a magnetic dilator compares with strips and sprays.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="comparison-cards-grid">
+
+        <!-- CARD 1: UnlockedAir (Deep Teal Featured) -->
+        <div class="comparison-card comparison-card--featured">
+          <div class="comparison-card__header">
+            <img src="./assets/magnific__background__55937.png" alt="Unlocked Air Dilator"
+              class="comparison-card__popout-image" loading="lazy">
+            <h3 class="comparison-card__title">
+              UNLOCKED AIR
+            </h3>
+          </div>
+
+          <ul class="comparison-card__features">
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Opens from the sides</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Drug Free</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Holds through sweat</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Reusable</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Works the moment you puts it on</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CARD 2: Nasal Strips -->
+        <div class="comparison-card comparison-card--standard">
+          <div class="comparison-card__header">
+            <img src="./assets/magnific__background__55935.png" alt="Nasal strips"
+              class="comparison-card__product-image comparison-card__product-image--strips" loading="lazy">
+            <h3 class="comparison-card__title">
+              Nasal strips
+            </h3>
+          </div>
+
+          <ul class="comparison-card__features">
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Opens from the sides</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Drug Free</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Holds through sweat</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Reusable</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Works the moment you puts it on</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CARD 3: Nasal Spray -->
+        <div class="comparison-card comparison-card--standard">
+          <div class="comparison-card__header">
+            <img src="./assets/magnific__background__55936.png" alt="Nasal Spray"
+              class="comparison-card__product-image comparison-card__product-image--spray" loading="lazy">
+            <h3 class="comparison-card__title">
+              Nasal Spray
+            </h3>
+          </div>
+
+          <ul class="comparison-card__features">
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Opens from the sides</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Drug Free</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Holds through sweat</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Reusable</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--check" aria-hidden="true">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 5L4.5 8.5L11 1.5" stroke="#070D10" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Works the moment you puts it on</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CARD 4: Other Devices -->
+        <div class="comparison-card comparison-card--standard">
+          <div class="comparison-card__header">
+            <img src="./assets/magnific__background__18163.png" alt="Other Devices"
+              class="comparison-card__product-image comparison-card__product-image--device" loading="lazy">
+            <h3 class="comparison-card__title">
+              Other Devices
+            </h3>
+          </div>
+
+          <ul class="comparison-card__features">
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Opens from the sides</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Drug Free</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Nothing Goes Inside the Nose</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Holds through sweat</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Reusable</span>
+            </li>
+
+            <li class="comparison-feature-row">
+              <span class="comparison-icon comparison-icon--dash" aria-hidden="true">
+                <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1H9" stroke="#070D10" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="comparison-feature-text">Works the moment you puts it on</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 6: Feature Blocks ("Engineered for athletes. Loved by everyone.") -->
+  <section class="feature-blocks-section" id="FeatureBlocks-section">
+    <div class="feature-blocks-container">
+
+      <!-- Heading Block -->
+      <div class="feature-blocks-heading">
+        <div class="feature-blocks-tag">
+          Product
+        </div>
+        <h2 class="feature-blocks-title">
+          Engineered for athletes. Loved by everyone.
+        </h2>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="feature-blocks-grid">
+
+        <!-- Card 1 -->
+        <div class="feature-block-card">
+          <div class="feature-block-card__image-wrap">
+            <img src="./assets/Sporty Portrait with Nose Strip.png" alt="Instantly expands"
+              class="feature-block-card__image" loading="lazy">
+          </div>
+          <div class="feature-block-card__copy">
+            <h3 class="feature-block-card__title">
+              Instantly expands
+            </h3>
+            <p class="feature-block-card__body">
+              Opens your nasal passages the moment it clicks on.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="feature-block-card">
+          <div class="feature-block-card__image-wrap">
+            <img src="./assets/magnific__common-style-block-an-extreme-closeup-of-a-fiction__55923.png"
+              alt="Won’t collapse" class="feature-block-card__image" loading="lazy">
+          </div>
+          <div class="feature-block-card__copy">
+            <h3 class="feature-block-card__title">
+              Won’t collapse
+            </h3>
+            <p class="feature-block-card__body">
+              A rigid band keeps lift steady on every breath.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="feature-block-card">
+          <div class="feature-block-card__image-wrap">
+            <img src="./assets/magnific__edit-this-photo-remove-all-overlay-text-and-all-cu__55924.png"
+              alt="Sweat-proof hold" class="feature-block-card__image" loading="lazy">
+          </div>
+          <div class="feature-block-card__copy">
+            <h3 class="feature-block-card__title">
+              Sweat-proof hold
+            </h3>
+            <p class="feature-block-card__body">
+              Tabs grip through hard training, heat and long nights.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="feature-block-card">
+          <div class="feature-block-card__image-wrap">
+            <img src="./assets/Screenshot 2026-10-13 at 11.29.52 AM.png" alt="Gentle on skin"
+              class="feature-block-card__image" loading="lazy">
+          </div>
+          <div class="feature-block-card__copy">
+            <h3 class="feature-block-card__title">
+              Gentle on skin
+            </h3>
+            <p class="feature-block-card__body">
+              Latex-free, hypoallergenic tabs made for daily wear.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 7: Use Cases ("Wear it your way") -->
+  <section class="use-cases-section" id="UseCases-section">
+    <div class="use-cases-container">
+
+      <!-- Heading Block -->
+      <div class="use-cases-heading">
+        <div class="use-cases-tag">
+          Use cases
+        </div>
+        <h2 class="use-cases-title">
+          Wear it your way
+        </h2>
+        <p class="use-cases-subtitle">
+          One kit for nights, workouts and stuffy days.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="use-cases-grid">
+
+        <!-- Card 1: Sleep -->
+        <div class="use-case-card">
+          <div class="use-case-card__image-wrap">
+            <img src="./assets/magnific__edit-this-photo-change-only-the-color-of-the-white__55925.png" alt="Sleep"
+              class="use-case-card__image" loading="lazy">
+          </div>
+          <div class="use-case-card__copy">
+            <h3 class="use-case-card__title">
+              Sleep
+            </h3>
+            <p class="use-case-card__body">
+              Breathe through your nose all night.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Workout -->
+        <div class="use-case-card">
+          <div class="use-case-card__image-wrap">
+            <img src="./assets/magnific__using-the-uploaded-reference-images-edit-image-1-b__55927.png" alt="Workout"
+              class="use-case-card__image" loading="lazy">
+          </div>
+          <div class="use-case-card__copy">
+            <h3 class="use-case-card__title">
+              Workout
+            </h3>
+            <p class="use-case-card__body">
+              More air for runs, rides and lifts.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Congestion -->
+        <div class="use-case-card">
+          <div class="use-case-card__image-wrap">
+            <img src="./assets/magnific__using-the-uploaded-reference-images-recreate-the-c__55929.png" alt="Congestion"
+              class="use-case-card__image" loading="lazy">
+          </div>
+          <div class="use-case-card__copy">
+            <h3 class="use-case-card__title">
+              Congestion
+            </h3>
+            <p class="use-case-card__body">
+              Open up when allergies or colds hit.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4: All day -->
+        <div class="use-case-card">
+          <div class="use-case-card__image-wrap">
+            <img src="./assets/magnific__upscale-this-image-to-high-resolution-4x-and-enhan__55928.png" alt="All day"
+              class="use-case-card__image" loading="lazy">
+          </div>
+          <div class="use-case-card__copy">
+            <h3 class="use-case-card__title">
+              All day
+            </h3>
+            <p class="use-case-card__body">
+              Low-profile enough for work and travel.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Final CTA Section ("Breathe wider tonight.") -->
+  <section class="final-cta-section" id="FinalCTA-section">
+    <div class="final-cta-container">
+
+      <!-- Copy Column -->
+      <div class="final-cta-copy">
+        <h2 class="final-cta-title">Breathe wider tonight.</h2>
+        <p class="final-cta-body">Try it free, backed by our 90-day better breathing guarantee.</p>
+        <a href="#ProductHero-section" class="final-cta-btn">
+          <span class="final-cta-btn-label">Start my free trial</span>
+          <span class="final-cta-btn-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Desktop Media (Woman + 90 Days Seal Badge) -->
+      <div class="final-cta-media-desktop">
+        <img class="final-cta-badge-desktop" src="assets/final-cta-guarantee-badge.png"
+          alt="90 Days Money Back Guarantee" loading="lazy">
+        <img class="final-cta-woman-desktop" src="assets/final-cta-desktop-woman.png"
+          alt="Smiling woman wearing UnlockedAir magnetic nasal dilator" loading="lazy">
+      </div>
+
+      <!-- Mobile Media (Woman with badge composite) -->
+      <div class="final-cta-media-mobile">
+        <img class="final-cta-woman-mobile" src="assets/final-cta-mobile-woman.png"
+          alt="Smiling woman wearing UnlockedAir with 90 days guarantee" loading="lazy">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 8: FAQ ("Frequently asked questions") -->
+  <section class="faq-section" id="Faq-section">
+    <div class="faq-container">
+
+      <!-- Left Column (Heading + Button + Desktop Image) -->
+      <div class="faq-left-col">
+        <div class="faq-tag">
+          FAQ
+        </div>
+
+        <h2 class="faq-title">
+          Frequently asked questions
+        </h2>
+
+        <p class="faq-subtitle">
+          Can’t find your answer? Our help center covers fit, shipping and subscriptions.
+        </p>
+
+        <!-- Desktop Button -->
+        <a href="#" class="faq-button">
+          Visit help center
+          <span class="faq-button-arrow">→</span>
+        </a>
+
+        <!-- Desktop Sleeper Image -->
+        <div class="faq-desktop-media">
+          <img src="./assets/magnific__background__27738.png" alt="Resting comfortably with UnlockedAir dilator"
+            class="faq-desktop-img" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Mobile Sleeper Media (rendered between heading and list on mobile) -->
+      <div class="faq-mobile-media">
+        <img src="./assets/magnific__background__58886.png" alt="Resting comfortably with UnlockedAir dilator"
+          class="faq-mobile-img" loading="lazy">
+      </div>
+
+      <!-- Right Column (Accordions) -->
+      <div class="faq-right-col">
+        <ul class="faq-list">
+
+          <!-- FAQ 1 (Open by default) -->
+          <li class="faq-item is-open">
+            <button class="faq-item-header" type="button" aria-expanded="true">
+              <span class="faq-item-question">Will the tabs stay on overnight or when I sweat?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                Yes. Apply to clean, dry skin and press each tab for 10–15 seconds. They are built to hold through
+                workouts and a full night of sleep.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 2 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">Will it make my nose bigger?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                No. UnlockedAir gently lifts the nasal valve from the outside while worn; it does not alter nasal
+                anatomy or cartilage permanently.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 3 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">I have sensitive skin. Is the adhesive safe?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                Yes. Our tabs use medical-grade, hypoallergenic, latex-free adhesive designed for daily wear without
+                irritation.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 4 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">Does it hurt?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                Not at all. The magnetic force provides a gentle spring-like lift without pinching the bridge or going
+                inside the nostrils.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 5 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">What’s in the starter kit?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                The starter kit includes 1 reusable magnetic band, 30 pairs of magnetic adhesive tabs, an applicator
+                tool, and a travel case.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 6 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">Will it fit my nose?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                Yes. UnlockedAir is designed to fit a wide variety of nose shapes and sizes with flexible sizing
+                options.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 7 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">How do I take it off?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                Simply slide or pull the magnetic band away, then peel each tab gently off starting from the outer edge.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 8 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">Can I reuse the band and tabs?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                The magnetic band is fully reusable and built to last. The adhesive tabs are disposable and designed for
+                single-use hygiene.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 9 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">How do I clean the band?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                Wipe the band with warm water and mild soap or an alcohol wipe, then dry thoroughly before next use.
+              </p>
+            </div>
+          </li>
+
+          <!-- FAQ 10 -->
+          <li class="faq-item">
+            <button class="faq-item-header" type="button" aria-expanded="false">
+              <span class="faq-item-question">Can I wear it every day?</span>
+              <span class="faq-item-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-item-body">
+              <p class="faq-item-answer">
+                Yes. Many customers wear UnlockedAir every night for sleeping and during daily athletic training.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Mobile Bottom CTA Button -->
+      <div class="faq-mobile-button">
+        <a href="#" class="faq-button">
+          Visit help center
+          <span class="faq-button-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Swiper.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    // Interactive slider logic
+    (function () {
+      const container = document.getElementById('mediaSlider');
+      if (!container) return;
+
+      const rangeInput = container.querySelector('.why-it-works-media__range');
+      if (!rangeInput) return;
+
+      function updatePosition(val) {
+        const clamped = Math.max(0, Math.min(100, val));
+        container.style.setProperty('--split-pos', clamped + '%');
+        rangeInput.value = clamped;
+      }
+
+      rangeInput.addEventListener('input', function (e) {
+        updatePosition(e.target.value);
+      });
+
+      // Pointer drag support for fluid touch & mouse dragging
+      let isDragging = false;
+
+      function setFromPointer(e) {
+        const rect = container.getBoundingClientRect();
+        const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : null);
+        if (clientX === null) return;
+        const percent = ((clientX - rect.left) / rect.width) * 100;
+        updatePosition(percent);
+      }
+
+      container.addEventListener('pointerdown', function (e) {
+        isDragging = true;
+        setFromPointer(e);
+      });
+
+      window.addEventListener('pointermove', function (e) {
+        if (!isDragging) return;
+        setFromPointer(e);
+      });
+
+      window.addEventListener('pointerup', function () {
+        isDragging = false;
+      });
+
+      window.addEventListener('pointercancel', function () {
+        isDragging = false;
+      });
+    })();
+
+    // FAQ Accordion logic (Single-open: only one open at a time)
+    (function () {
+      const faqSection = document.getElementById('Faq-section');
+      if (!faqSection) return;
+
+      const faqHeaders = faqSection.querySelectorAll('.faq-item-header');
+      faqHeaders.forEach(function (header) {
+        header.addEventListener('click', function () {
+          const item = header.closest('.faq-item');
+          if (!item) return;
+          const isOpen = item.classList.contains('is-open');
+
+          // Close all other open FAQ items so only one is open at a time
+          const allItems = faqSection.querySelectorAll('.faq-item');
+          allItems.forEach(function (otherItem) {
+            if (otherItem !== item) {
+              otherItem.classList.remove('is-open');
+              const otherHeader = otherItem.querySelector('.faq-item-header');
+              if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          // Toggle clicked item
+          if (isOpen) {
+            item.classList.remove('is-open');
+            header.setAttribute('aria-expanded', 'false');
+          } else {
+            item.classList.add('is-open');
+            header.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+
+    // Product Section Logic (Swiper Gallery, UGC Swiper, Kits, Offers, Accordions, Modal)
+    (function () {
+      // 1. UGC Reviews Swiper Carousel
+      if (document.querySelector('.product-ugc-swiper')) {
+        new Swiper('.product-ugc-swiper', {
+          slidesPerView: 1.3,
+          spaceBetween: 16,
+          loop: true,
+          navigation: {
+            nextEl: '.product-ugc-next',
+            prevEl: '.product-ugc-prev',
+          },
+          breakpoints: {
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 16,
+            },
+            768: {
+              slidesPerView: 2.3,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 2.5,
+              spaceBetween: 22,
+            }
+          }
+        });
+      }
+
+      // 2. Initialize Swipers: Thumbs and Main Image Swiper
+      var thumbsSwiper = null;
+      if (document.querySelector('.product-thumbs-swiper')) {
+        thumbsSwiper = new Swiper('.product-thumbs-swiper', {
+          slidesPerView: 6.5,
+          spaceBetween: 8,
+          freeMode: true,
+          watchSlidesProgress: true,
+          breakpoints: {
+            320: {
+              slidesPerView: 4.8,
+              spaceBetween: 6,
+            },
+            480: {
+              slidesPerView: 5.8,
+              spaceBetween: 8,
+            },
+            768: {
+              slidesPerView: 6.5,
+              spaceBetween: 8,
+            }
+          },
+          navigation: {
+            nextEl: '.product-thumbs-next',
+            prevEl: '.product-thumbs-prev',
+          }
+        });
+      }
+
+      // Initialize Main Product Swiper Gallery (Allows user to swipe main images)
+      var productMainSwiper = null;
+      if (document.querySelector('.product-main-swiper')) {
+        productMainSwiper = new Swiper('.product-main-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          speed: 350,
+          grabCursor: true,
+          autoHeight: false,
+          resistanceRatio: 0.85
+        });
+      }
+
+      var thumbSlides = document.querySelectorAll('.product-thumb-slide');
+
+      function syncActiveThumb(index) {
+        thumbSlides.forEach(function (s, i) {
+          if (i === index) {
+            s.classList.add('is-active');
+          } else {
+            s.classList.remove('is-active');
+          }
+        });
+        if (thumbsSwiper && typeof thumbsSwiper.slideTo === 'function') {
+          thumbsSwiper.slideTo(index);
+        }
+      }
+
+      // When main product image is swiped, update the active thumbnail
+      if (productMainSwiper) {
+        productMainSwiper.on('slideChange', function () {
+          syncActiveThumb(productMainSwiper.activeIndex);
+        });
+      }
+
+      // When a thumbnail is clicked, slide main swiper to that index
+      thumbSlides.forEach(function (slide, idx) {
+        slide.addEventListener('click', function () {
+          if (productMainSwiper && typeof productMainSwiper.slideTo === 'function') {
+            productMainSwiper.slideTo(idx);
+          }
+          syncActiveThumb(idx);
+        });
+      });
+
+      // 3. Kit Quantity Selector Interaction
+      var kitChips = document.querySelectorAll('.product-quantity-chip');
+      var currentPriceEl = document.getElementById('displayCurrentPrice');
+      var comparePriceEl = document.getElementById('displayComparePrice');
+
+      kitChips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          kitChips.forEach(function (c) { c.classList.remove('is-selected'); });
+          chip.classList.add('is-selected');
+
+          var kitNum = chip.getAttribute('data-kit');
+          var activeOffer = document.querySelector('.product-offer-card.is-selected');
+          var offerType = activeOffer ? activeOffer.getAttribute('data-offer') : 'trial';
+
+          updatePricing(offerType, kitNum);
+        });
+      });
+
+      // 4. Offer Toggle Interaction (Free Trial vs One-Time)
+      var offerCards = document.querySelectorAll('.product-offer-card');
+      var ctaLabel = document.getElementById('productCtaLabel');
+      var priceTag = document.getElementById('displayPriceTag');
+
+      offerCards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          offerCards.forEach(function (c) { c.classList.remove('is-selected'); });
+          card.classList.add('is-selected');
+
+          var offerType = card.getAttribute('data-offer');
+          var selectedChip = document.querySelector('.product-quantity-chip.is-selected');
+          var kitNum = selectedChip ? selectedChip.getAttribute('data-kit') : '1';
+
+          updatePricing(offerType, kitNum);
+        });
+      });
+
+      function updatePricing(offerType, kitNum) {
+        var k = parseInt(kitNum, 10) || 1;
+        if (offerType === 'trial') {
+          if (currentPriceEl) currentPriceEl.textContent = '$0.00';
+          if (comparePriceEl) comparePriceEl.textContent = '$' + (k * 60).toFixed(2);
+          if (priceTag) {
+            priceTag.textContent = 'Free trial';
+            priceTag.style.display = 'inline-flex';
+          }
+          if (ctaLabel) ctaLabel.textContent = 'Start my free trial';
+        } else {
+          var basePrice = 60.00;
+          var discount = k === 2 ? 0.8 : (k === 3 ? 0.7 : 1.0);
+          var finalPrice = (basePrice * k * discount).toFixed(2);
+          if (currentPriceEl) currentPriceEl.textContent = '$' + finalPrice;
+          if (comparePriceEl) comparePriceEl.textContent = '$' + (basePrice * k).toFixed(2);
+          if (priceTag) {
+            priceTag.textContent = k > 1 ? 'Save ' + ((1 - discount) * 100).toFixed(0) + '%' : 'One-time';
+            priceTag.style.display = 'inline-flex';
+          }
+          if (ctaLabel) ctaLabel.textContent = 'Buy now · $' + finalPrice;
+        }
+      }
+
+      // 5. Accordion Toggle Interaction (Single-open: only one open at a time)
+      var accordionHeaders = document.querySelectorAll('.product-accordion-header');
+      accordionHeaders.forEach(function (header) {
+        header.addEventListener('click', function () {
+          var item = header.closest('.product-accordion-item');
+          if (!item) return;
+
+          var container = item.closest('.product-accordions') || document;
+          var isOpen = item.classList.contains('is-open');
+
+          // Close all items in this accordion list first
+          var allItems = container.querySelectorAll('.product-accordion-item');
+          allItems.forEach(function (otherItem) {
+            otherItem.classList.remove('is-open');
+            var otherHeader = otherItem.querySelector('.product-accordion-header');
+            if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+            var otherToggle = otherItem.querySelector('.product-accordion-toggle');
+            if (otherToggle) otherToggle.textContent = '+';
+          });
+
+          // If the clicked item was not open, open it now
+          if (!isOpen) {
+            item.classList.add('is-open');
+            header.setAttribute('aria-expanded', 'true');
+            var toggle = header.querySelector('.product-accordion-toggle');
+            if (toggle) toggle.textContent = '—';
+          }
+        });
+      });
+
+      // 6. Inline Video Playback for UGC Carousel Cards (Plays in place, no modal)
+      var ugcSwiperContainer = document.querySelector('.product-ugc-swiper');
+      if (ugcSwiperContainer) {
+        ugcSwiperContainer.addEventListener('click', function (e) {
+          var slide = e.target.closest('.product-ugc-slide');
+          if (!slide) return;
+
+          var video = slide.querySelector('.product-ugc-video');
+          if (!video) return;
+
+          var isPlaying = !video.paused && !video.ended;
+
+          // Pause all other videos in the carousel
+          var allVideos = ugcSwiperContainer.querySelectorAll('.product-ugc-video');
+          allVideos.forEach(function (otherVid) {
+            if (otherVid !== video) {
+              otherVid.pause();
+              var otherSlide = otherVid.closest('.product-ugc-slide');
+              if (otherSlide) {
+                otherSlide.classList.remove('is-playing');
+              }
+            }
+          });
+
+          if (isPlaying) {
+            video.pause();
+            slide.classList.remove('is-playing');
+          } else {
+            slide.classList.add('is-playing');
+            var playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(function () {
+                // If unmuted playback is restricted, play muted
+                video.muted = true;
+                video.play().catch(function (err) {
+                  console.warn('Playback error:', err);
+                });
+              });
+            }
+          }
+        });
+
+        // Reset slide state and bring poster back when video ends or is paused
+        var allUgcVideos = ugcSwiperContainer.querySelectorAll('.product-ugc-video');
+        allUgcVideos.forEach(function (vid) {
+          vid.addEventListener('ended', function () {
+            var s = vid.closest('.product-ugc-slide');
+            if (s) s.classList.remove('is-playing');
+          });
+          vid.addEventListener('pause', function () {
+            var s = vid.closest('.product-ugc-slide');
+            if (s) s.classList.remove('is-playing');
+          });
+        });
+
+        // Pause playback when carousel slide changes
+        if (typeof ugcSwiper !== 'undefined' && ugcSwiper && typeof ugcSwiper.on === 'function') {
+          ugcSwiper.on('slideChange', function () {
+            var allVideos = ugcSwiperContainer.querySelectorAll('.product-ugc-video');
+            allVideos.forEach(function (vid) {
+              if (!vid.paused) {
+                vid.pause();
+                var s = vid.closest('.product-ugc-slide');
+                if (s) s.classList.remove('is-playing');
+              }
+            });
+          });
+        }
+      }
+    })();
+
+    // Site Header (Localization dropdown & Mobile Drawer toggle)
+    (function () {
+      var locContainer = document.getElementById('headerLocalization');
+      var locBtn = document.getElementById('localizationBtn');
+      var locLabel = document.getElementById('currentLocalizationLabel');
+      var locItems = document.querySelectorAll('.site-header-dropdown-item');
+
+      if (locBtn && locContainer) {
+        locBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = locContainer.classList.contains('is-open');
+          locContainer.classList.toggle('is-open', !isOpen);
+          locBtn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+        });
+
+        locItems.forEach(function (item) {
+          item.addEventListener('click', function () {
+            var val = item.getAttribute('data-value');
+            if (val && locLabel) {
+              locLabel.textContent = val;
+            }
+            locContainer.classList.remove('is-open');
+            locBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!locContainer.contains(e.target)) {
+            locContainer.classList.remove('is-open');
+            locBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      var openBtn = document.getElementById('mobileMenuOpenBtn');
+      var closeBtn = document.getElementById('mobileMenuCloseBtn');
+      var overlay = document.getElementById('mobileDrawerOverlay');
+      var drawer = document.getElementById('mobileDrawer');
+      var drawerLinks = document.querySelectorAll('.site-header-drawer-link, .site-header-drawer .site-header-cta-btn');
+
+      function openDrawer() {
+        if (drawer && overlay) {
+          drawer.classList.add('is-active');
+          overlay.classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeDrawer() {
+        if (drawer && overlay) {
+          drawer.classList.remove('is-active');
+          overlay.classList.remove('is-active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (overlay) overlay.addEventListener('click', closeDrawer);
+
+      drawerLinks.forEach(function (link) {
+        link.addEventListener('click', closeDrawer);
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+{% comment %}
+  UnlockedAir - Announcement Bar Section
+  Figma Spec:
+  - Desktop: 3 messages in a flex row centered with gap (48px / responsive clamp).
+  - Mobile: Hide messages 2 and 3, set width to fill, message 1 centered.
+  - Colors: Background #070D10 (Ink), Text #FFFFFF (White).
+  - Typography: Poppins 500, 12px, line-height 16px.
+{% endcomment %}
+
+<style>
+  .unlocked-announcement-bar {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: {{ section.settings.background_color | default: '#070D10' }};
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    position: relative;
+    z-index: 101;
+    border-bottom: {{ section.settings.divider_width | default: 0 }}px solid {{ section.settings.divider_color | default: 'transparent' }};
+  }
+
+  .unlocked-announcement-container {
+    width: 100%;
+    max-width: 1312px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(16px, 3.5vw, 48px);
+    box-sizing: border-box;
+  }
+
+  .unlocked-announcement-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: {{ section.settings.text_color | default: '#FFFFFF' }};
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .unlocked-announcement-item:hover {
+    opacity: 0.8;
+  }
+
+  /* Mobile responsiveness (under 768px): Hide messages 2 and 3, show message 1 centered */
+  @media screen and (max-width: 768px) {
+    .unlocked-announcement-bar {
+      padding: 10px 16px;
+      height: 36px;
+      min-height: 36px;
+    }
+
+    .unlocked-announcement-container {
+      width: 100%;
+      gap: 0;
+      justify-content: center;
+    }
+
+    .unlocked-announcement-item {
+      width: 100%;
+      white-space: normal;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    /* Hide messages 2 and 3 on mobile per Figma specification */
+    .unlocked-announcement-item:nth-child(n+2) {
+      display: none !important;
+    }
+  }
+</style>
+
+<aside class="unlocked-announcement-bar" id="AnnouncementBar-{{ section.id }}" aria-label="Announcement">
+  <div class="unlocked-announcement-container">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% if block.settings.text != blank %}
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="unlocked-announcement-item" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+            </a>
+          {% else %}
+            <span class="unlocked-announcement-item" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+            </span>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <!-- Default Figma 3 messages fallback -->
+      <span class="unlocked-announcement-item">Free US shipping on orders over $40</span>
+      <span class="unlocked-announcement-item">90-day better breathing guarantee</span>
+      <span class="unlocked-announcement-item">All 4 sizes in every kit</span>
+    {% endif %}
+  </div>
+</aside>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "tag": "section",
+  "class": "header-announcement-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#070D10"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "divider_width",
+      "label": "Bottom border thickness",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Bottom border color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message text",
+          "default": "Free US shipping on orders over $40"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Optional link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Free US shipping on orders over $40"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "90-day better breathing guarantee"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "All 4 sizes in every kit"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

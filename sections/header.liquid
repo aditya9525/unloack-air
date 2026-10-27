@@ -1,0 +1,788 @@
+{% comment %}
+  UnlockedAir - Header / Nav Bar Section
+  Responsive percentage-based layout supporting desktop & mobile views per Figma specs.
+{% endcomment %}
+
+<style>
+  .site-header {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #F4F7F7;
+    border-bottom: 1px solid #C5D6D8;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-header-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    min-height: 80px;
+  }
+
+  /* Logo */
+  .site-header-logo-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .site-header-logo {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.005em;
+    color: #070D10;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .site-header-logo-img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Desktop Navigation Links */
+  .site-header-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-header-nav-item {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-header-nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #070D10;
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .site-header-nav-link:hover {
+    color: #0B3C44;
+    opacity: 0.8;
+  }
+
+  /* Desktop Actions Container */
+  .site-header-actions-desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Currency / Country Selector */
+  .site-header-localization {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .site-header-localization-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Lato', 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.7px;
+    line-height: 22px;
+    letter-spacing: 0.63px;
+    color: #000000;
+    outline: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-header-localization-btn:hover {
+    opacity: 0.75;
+  }
+
+  .site-header-chevron {
+    width: 10px;
+    height: 6px;
+    transition: transform 0.2s ease;
+  }
+
+  .site-header-localization.is-open .site-header-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Localization Dropdown */
+  .site-header-localization-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #C5D6D8;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 8px 0;
+    min-width: 160px;
+    display: none;
+    flex-direction: column;
+    z-index: 110;
+  }
+
+  .site-header-localization.is-open .site-header-localization-dropdown {
+    display: flex;
+  }
+
+  .site-header-dropdown-item {
+    padding: 8px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #070D10;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .site-header-dropdown-item:hover {
+    background-color: #F4F7F7;
+  }
+
+  /* Visitor Country Flag */
+  .site-header-flag-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .site-header-flag-wrap svg,
+  .site-header-flag-wrap img {
+    width: 36px;
+    height: 36px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Desktop Cart Button */
+  .site-header-cart-btn {
+    width: 44px;
+    height: 44px;
+    background: #DCEBEC;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .site-header-cart-btn:hover {
+    background: #CCE1E3;
+    transform: scale(1.03);
+  }
+
+  .site-header-cart-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  /* Primary CTA Button ("SHOP NOW") */
+  .site-header-cta-btn {
+    background: #2EE6D6;
+    border-radius: 999px;
+    padding: 14px 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #070D10;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  }
+
+  .site-header-cta-btn:hover {
+    background: #27d4c5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 230, 214, 0.35);
+  }
+
+  /* Mobile Exclusive Elements */
+  .site-header-mobile-menu-btn,
+  .site-header-mobile-cart-btn {
+    display: none;
+  }
+
+  /* Mobile Drawer Overlay & Drawer */
+  .site-header-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 13, 16, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 120;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .site-header-drawer-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .site-header-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 82%;
+    max-width: 320px;
+    height: 100%;
+    background: #F4F7F7;
+    z-index: 130;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px;
+    box-sizing: border-box;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .site-header-drawer.is-active {
+    transform: translateX(0);
+  }
+
+  .site-header-drawer-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #C5D6D8;
+  }
+
+  .site-header-drawer-close {
+    background: #DCEBEC;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #070D10;
+    outline: none;
+  }
+
+  .site-header-drawer-links {
+    list-style: none;
+    padding: 24px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .site-header-drawer-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #070D10;
+    text-decoration: none;
+    display: block;
+    transition: color 0.15s ease;
+  }
+
+  .site-header-drawer-link:hover {
+    color: #0B3C44;
+  }
+
+  .site-header-drawer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 1px solid #C5D6D8;
+  }
+
+  /* Responsive Mobile Adaptations (Matches Mobile Figma Spec) */
+  @media (max-width: 991px) {
+    .site-header-container {
+      width: 92%;
+      padding: 14px 0;
+      min-height: 55px;
+    }
+
+    .site-header-nav,
+    .site-header-actions-desktop {
+      display: none !important;
+    }
+
+    /* Mobile Menu Button (24px mist pill) */
+    .site-header-mobile-menu-btn {
+      width: 24px;
+      height: 24px;
+      background: #DCEBEC;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+      gap: 3px;
+    }
+
+    .site-header-hamburger-line {
+      width: 10px;
+      height: 1.5px;
+      background-color: #070D10;
+      border-radius: 1px;
+    }
+
+    /* Mobile Logo (Center positioned) */
+    .site-header-logo {
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+    }
+
+    /* Mobile Cart Button (24px mist pill with '0' text) */
+    .site-header-mobile-cart-btn {
+      width: 24px;
+      height: 24px;
+      background: #DCEBEC;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #070D10;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<header class="site-header" id="SiteHeader">
+  <div class="site-header-container">
+
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button type="button" class="site-header-mobile-menu-btn" id="mobileMenuOpenBtn" aria-label="Open navigation menu">
+      <span class="site-header-hamburger-line"></span>
+      <span class="site-header-hamburger-line"></span>
+      <span class="site-header-hamburger-line"></span>
+    </button>
+
+    <!-- Logo -->
+    <a href="{{ routes.root_url | default: '/' }}" class="site-header-logo-link">
+      {% if section.settings.logo_image != blank %}
+        <img
+          src="{{ section.settings.logo_image | image_url: width: 280 }}"
+          alt="{{ shop.name | default: 'UnlockedAir' | escape }}"
+          class="site-header-logo-img"
+          loading="eager"
+        >
+      {% else %}
+        <span class="site-header-logo">{{ section.settings.logo_text | default: 'UnlockedAir' }}</span>
+      {% endif %}
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="site-header-nav" aria-label="Main navigation">
+      {% if section.settings.menu != blank and section.settings.menu.links.size > 0 %}
+        {% for link in section.settings.menu.links %}
+          <li class="site-header-nav-item">
+            <a href="{{ link.url }}" class="site-header-nav-link">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      {% else %}
+        <li class="site-header-nav-item">
+          <a href="#ProductHero-section" class="site-header-nav-link">{{ section.settings.link_1_text | default: 'Shop' }}</a>
+        </li>
+        <li class="site-header-nav-item">
+          <a href="#why-it-works-section" class="site-header-nav-link">{{ section.settings.link_2_text | default: 'Why us' }}</a>
+        </li>
+        <li class="site-header-nav-item">
+          <a href="#how-it-works-section" class="site-header-nav-link">{{ section.settings.link_3_text | default: 'How it works' }}</a>
+        </li>
+        <li class="site-header-nav-item">
+          <a href="#ugc-reviews-section" class="site-header-nav-link">{{ section.settings.link_4_text | default: 'Reviews' }}</a>
+        </li>
+      {% endif %}
+    </nav>
+
+    <!-- Desktop Actions Group -->
+    <div class="site-header-actions-desktop">
+
+      <!-- Localization / Currency Selector -->
+      {% if section.settings.show_localization %}
+        <div class="site-header-localization" id="headerLocalization">
+          <button type="button" class="site-header-localization-btn" id="localizationBtn" aria-haspopup="true" aria-expanded="false">
+            <span id="currentLocalizationLabel">{{ section.settings.localization_label | default: 'USA | USD $' }}</span>
+            <svg class="site-header-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L9 1" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="site-header-localization-dropdown" id="localizationDropdown">
+            <button type="button" class="site-header-dropdown-item" data-value="USA | USD $">🇺🇸 USA | USD $</button>
+            <button type="button" class="site-header-dropdown-item" data-value="CAN | CAD $">🇨🇦 CAN | CAD $</button>
+            <button type="button" class="site-header-dropdown-item" data-value="GBR | GBP £">🇬🇧 GBR | GBP £</button>
+            <button type="button" class="site-header-dropdown-item" data-value="EUR | EUR €">🇪🇺 EUR | EUR €</button>
+            <button type="button" class="site-header-dropdown-item" data-value="AUS | AUD $">🇦🇺 AUS | AUD $</button>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Visitor Country Flag (United States Round) -->
+      {% if section.settings.show_flag %}
+        <div class="site-header-flag-wrap" title="Shipping to United States">
+          <svg class="site-header-flag" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="headerUSFlagClip">
+                <circle cx="18" cy="18" r="18"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#headerUSFlagClip)">
+              <!-- Base White Stripes -->
+              <rect width="36" height="36" fill="#FFFFFF"/>
+              <!-- 7 Red Stripes -->
+              <rect y="0" width="36" height="2.77" fill="#B31942"/>
+              <rect y="5.54" width="36" height="2.77" fill="#B31942"/>
+              <rect y="11.08" width="36" height="2.77" fill="#B31942"/>
+              <rect y="16.62" width="36" height="2.77" fill="#B31942"/>
+              <rect y="22.15" width="36" height="2.77" fill="#B31942"/>
+              <rect y="27.69" width="36" height="2.77" fill="#B31942"/>
+              <rect y="33.23" width="36" height="2.77" fill="#B31942"/>
+              <!-- Blue Canton -->
+              <rect x="0" y="0" width="16" height="19.38" fill="#0A3161"/>
+              <!-- Stars Grid -->
+              <g fill="#FFFFFF">
+                <circle cx="2.5" cy="2.5" r="0.9"/>
+                <circle cx="5.5" cy="2.5" r="0.9"/>
+                <circle cx="8.5" cy="2.5" r="0.9"/>
+                <circle cx="11.5" cy="2.5" r="0.9"/>
+                <circle cx="14.5" cy="2.5" r="0.9"/>
+
+                <circle cx="4" cy="5.2" r="0.9"/>
+                <circle cx="7" cy="5.2" r="0.9"/>
+                <circle cx="10" cy="5.2" r="0.9"/>
+                <circle cx="13" cy="5.2" r="0.9"/>
+
+                <circle cx="2.5" cy="8" r="0.9"/>
+                <circle cx="5.5" cy="8" r="0.9"/>
+                <circle cx="8.5" cy="8" r="0.9"/>
+                <circle cx="11.5" cy="8" r="0.9"/>
+                <circle cx="14.5" cy="8" r="0.9"/>
+
+                <circle cx="4" cy="10.8" r="0.9"/>
+                <circle cx="7" cy="10.8" r="0.9"/>
+                <circle cx="10" cy="10.8" r="0.9"/>
+                <circle cx="13" cy="10.8" r="0.9"/>
+
+                <circle cx="2.5" cy="13.5" r="0.9"/>
+                <circle cx="5.5" cy="13.5" r="0.9"/>
+                <circle cx="8.5" cy="13.5" r="0.9"/>
+                <circle cx="11.5" cy="13.5" r="0.9"/>
+                <circle cx="14.5" cy="13.5" r="0.9"/>
+
+                <circle cx="4" cy="16.2" r="0.9"/>
+                <circle cx="7" cy="16.2" r="0.9"/>
+                <circle cx="10" cy="16.2" r="0.9"/>
+                <circle cx="13" cy="16.2" r="0.9"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      {% endif %}
+
+      <!-- Cart Button (44px mist circle with bag icon) -->
+      <a href="{{ routes.cart_url | default: '/cart' }}" class="site-header-cart-btn" aria-label="Cart ({{ cart.item_count | default: 0 }} items)">
+        <svg class="site-header-cart-icon" viewBox="0 0 24 24" fill="none" stroke="#070D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </a>
+
+      <!-- Primary CTA Button ("SHOP NOW") -->
+      <a href="{{ section.settings.cta_link | default: '#ProductHero-section' }}" class="site-header-cta-btn">
+        {{ section.settings.cta_text | default: 'SHOP NOW' }}
+      </a>
+
+    </div>
+
+    <!-- Mobile Cart Button (24px mist circle with item count '0') -->
+    <a href="{{ routes.cart_url | default: '/cart' }}" class="site-header-mobile-cart-btn" aria-label="Cart">
+      <span id="mobileCartCount">{{ cart.item_count | default: '0' }}</span>
+    </a>
+
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="site-header-drawer-overlay" id="mobileDrawerOverlay"></div>
+<aside class="site-header-drawer" id="mobileDrawer" aria-label="Mobile navigation drawer">
+  <div>
+    <div class="site-header-drawer-top">
+      <span class="site-header-logo">{{ section.settings.logo_text | default: 'UnlockedAir' }}</span>
+      <button type="button" class="site-header-drawer-close" id="mobileMenuCloseBtn" aria-label="Close menu">✕</button>
+    </div>
+
+    <ul class="site-header-drawer-links">
+      {% if section.settings.menu != blank and section.settings.menu.links.size > 0 %}
+        {% for link in section.settings.menu.links %}
+          <li><a href="{{ link.url }}" class="site-header-drawer-link">{{ link.title }}</a></li>
+        {% endfor %}
+      {% else %}
+        <li><a href="#ProductHero-section" class="site-header-drawer-link">{{ section.settings.link_1_text | default: 'Shop' }}</a></li>
+        <li><a href="#why-it-works-section" class="site-header-drawer-link">{{ section.settings.link_2_text | default: 'Why us' }}</a></li>
+        <li><a href="#how-it-works-section" class="site-header-drawer-link">{{ section.settings.link_3_text | default: 'How it works' }}</a></li>
+        <li><a href="#ugc-reviews-section" class="site-header-drawer-link">{{ section.settings.link_4_text | default: 'Reviews' }}</a></li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <div class="site-header-drawer-bottom">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div class="site-header-flag-wrap" style="width: 28px; height: 28px;">
+        <svg class="site-header-flag" width="28" height="28" viewBox="0 0 36 36" fill="none">
+          <use href="#headerUSFlagClip"/>
+          <!-- Simplified Mini Flag for Drawer -->
+          <circle cx="14" cy="14" r="14" fill="#B31942"/>
+        </svg>
+      </div>
+      <span style="font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500; color: #070D10;">USA | USD $</span>
+    </div>
+    <a href="{{ section.settings.cta_link | default: '#ProductHero-section' }}" class="site-header-cta-btn" style="width: 100%; box-sizing: border-box; text-align: center;">
+      {{ section.settings.cta_text | default: 'SHOP NOW' }}
+    </a>
+  </div>
+</aside>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1. Localization Dropdown Interaction
+    var locContainer = document.getElementById('headerLocalization');
+    var locBtn = document.getElementById('localizationBtn');
+    var locLabel = document.getElementById('currentLocalizationLabel');
+    var locItems = document.querySelectorAll('.site-header-dropdown-item');
+
+    if (locBtn && locContainer) {
+      locBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = locContainer.classList.contains('is-open');
+        locContainer.classList.toggle('is-open', !isOpen);
+        locBtn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+      });
+
+      locItems.forEach(function (item) {
+        item.addEventListener('click', function () {
+          var val = item.getAttribute('data-value');
+          if (val && locLabel) {
+            locLabel.textContent = val;
+          }
+          locContainer.classList.remove('is-open');
+          locBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!locContainer.contains(e.target)) {
+          locContainer.classList.remove('is-open');
+          locBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // 2. Mobile Drawer Toggle
+    var openBtn = document.getElementById('mobileMenuOpenBtn');
+    var closeBtn = document.getElementById('mobileMenuCloseBtn');
+    var overlay = document.getElementById('mobileDrawerOverlay');
+    var drawer = document.getElementById('mobileDrawer');
+    var drawerLinks = document.querySelectorAll('.site-header-drawer-link, .site-header-drawer .site-header-cta-btn');
+
+    function openDrawer() {
+      if (drawer && overlay) {
+        drawer.classList.add('is-active');
+        overlay.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDrawer() {
+      if (drawer && overlay) {
+        drawer.classList.remove('is-active');
+        overlay.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    drawerLinks.forEach(function (link) {
+      link.addEventListener('click', closeDrawer);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Header Navigation",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "UnlockedAir"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Custom Logo Image"
+    },
+    {
+      "type": "header",
+      "content": "Navigation Links"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Header Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "link_1_text",
+      "label": "Fallback Link 1 Text",
+      "default": "Shop"
+    },
+    {
+      "type": "text",
+      "id": "link_2_text",
+      "label": "Fallback Link 2 Text",
+      "default": "Why us"
+    },
+    {
+      "type": "text",
+      "id": "link_3_text",
+      "label": "Fallback Link 3 Text",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "id": "link_4_text",
+      "label": "Fallback Link 4 Text",
+      "default": "Reviews"
+    },
+    {
+      "type": "header",
+      "content": "Localization & Currency"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_localization",
+      "label": "Show Currency Selector",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "localization_label",
+      "label": "Default Currency Label",
+      "default": "USA | USD $"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flag",
+      "label": "Show Visitor Country Flag",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header Navigation"
+    }
+  ]
+}
+{% endschema %}

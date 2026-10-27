@@ -1,0 +1,631 @@
+{% comment %}
+  UnlockedAir - "FAQ" Section
+  Features:
+  - Responsive percentage-based layout (no fixed widths)
+  - Embedded CSS with clean direct class selectors (no section.id in CSS)
+  - No clamp() and no mixed heights
+  - 2-column desktop layout (Left: Intro + CTA + Pillow Sleeper Image, Right: 10 Accordions)
+  - Mobile layout: Intro -> Mobile Sleeper Image -> Accordions -> Bottom CTA Button
+  - Accessible interactive accordion toggling with smooth transitions
+  - Fully customizable Shopify Theme Customizer Schema
+{% endcomment %}
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .faq-section {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #FFFFFF;
+    padding: 96px 0;
+  }
+
+  .faq-container {
+    width: 90%;
+    max-width: 1312px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 5%;
+    position: relative;
+  }
+
+  /* Left Column (Desktop) */
+  .faq-left-col {
+    width: 35%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .faq-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    background-color: #DCEBEC;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #070D10;
+  }
+
+  .faq-title {
+    width: 100%;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 52px;
+    letter-spacing: -0.015em;
+    color: #070D10;
+    margin: 0;
+  }
+
+  .faq-subtitle {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #4A5C63;
+    margin: 0;
+  }
+
+  /* CTA Button */
+  .faq-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 28px;
+    background-color: #2EE6D6;
+    border-radius: 999px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #070D10;
+    text-decoration: none;
+    margin-top: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .faq-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(46, 230, 214, 0.45);
+    background-color: #26d2c3;
+  }
+
+  .faq-button-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-button:hover .faq-button-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Desktop Sleeper Image */
+  .faq-desktop-media {
+    width: 100%;
+    max-width: 440px;
+    margin-top: 36px;
+    display: block;
+    position: relative;
+  }
+
+  .faq-desktop-img {
+
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  /* Mobile Media (hidden on desktop) */
+  .faq-mobile-media {
+    display: none;
+  }
+
+  /* Right Column (Accordions) */
+  .faq-right-col {
+    width: 60%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-list {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Accordion Item */
+  .faq-item {
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #E2E8EC;
+    padding: 18px 0;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-item-header {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+  }
+
+  .faq-item-question {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #070D10;
+    margin: 0;
+    flex: 1 1 0%;
+    transition: color 0.2s ease;
+  }
+
+  .faq-item:hover .faq-item-question {
+    color: #0B3C44;
+  }
+
+  /* Toggle Icon */
+  .faq-item-icon {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    color: #070D10;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    user-select: none;
+    transition: transform 0.25s ease;
+  }
+
+  /* Accordion Body */
+  .faq-item-body {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, margin 0.25s ease;
+    box-sizing: border-box;
+  }
+
+  .faq-item-answer {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #4A5C63;
+    margin: 10px 0 2px 0;
+  }
+
+  /* Open State */
+  .faq-item.is-open .faq-item-body {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 4px;
+  }
+
+  .faq-item.is-open .faq-item-icon {
+    transform: rotate(45deg);
+  }
+
+  /* Mobile Bottom Button (hidden on desktop) */
+  .faq-mobile-button {
+    display: none;
+  }
+
+  /* Mobile Responsive Breakpoint (<= 860px) */
+  @media screen and (max-width: 860px) {
+    .faq-section {
+      padding: 56px 0;
+    }
+
+    .faq-container {
+      width: 90%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 28px;
+    }
+
+    .faq-left-col {
+      width: 100%;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .faq-title {
+      font-size: 32px;
+      line-height: 36px;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
+
+    .faq-subtitle {
+      font-size: 16px;
+      line-height: 24px;
+      text-align: left;
+    }
+
+    /* Hide desktop CTA button and sleeper in left column */
+    .faq-left-col .faq-button {
+      display: none;
+    }
+
+    .faq-desktop-media {
+      display: none;
+    }
+
+    /* Show mobile sleeper image right under heading */
+    .faq-mobile-media {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    .faq-mobile-img {
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .faq-right-col {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .faq-item {
+      padding: 16px 0;
+    }
+
+    .faq-item-question {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    /* Show mobile CTA button at the very bottom */
+    .faq-mobile-button {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    .faq-mobile-button .faq-button {
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+  }
+</style>
+
+<section class="faq-section" id="Faq-section">
+  <div class="faq-container">
+    
+    <!-- Left Column (Heading + Button + Desktop Image) -->
+    <div class="faq-left-col">
+      {% if section.settings.tag != blank %}
+        <div class="faq-tag">
+          {{ section.settings.tag }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="faq-title">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subtitle != blank %}
+        <p class="faq-subtitle">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+
+      <!-- Desktop Button -->
+      <a href="{{ section.settings.button_link | default: '#' }}" class="faq-button">
+        {{ section.settings.button_text | default: 'Visit help center' }}
+        <span class="faq-button-arrow">→</span>
+      </a>
+
+      <!-- Desktop Sleeper Image -->
+      <div class="faq-desktop-media">
+        <img
+          src="{{ 'magnific__background__27738.png' | asset_url }}"
+          alt="Resting comfortably with UnlockedAir dilator"
+          class="faq-desktop-img"
+          loading="lazy"
+        >
+      </div>
+    </div>
+
+    <!-- Mobile Sleeper Media (rendered between heading and list on mobile) -->
+    <div class="faq-mobile-media">
+      <img
+        src="{{ 'magnific__background__58886.png' | asset_url }}"
+        alt="Resting comfortably with UnlockedAir dilator"
+        class="faq-mobile-img"
+        loading="lazy"
+      >
+    </div>
+
+    <!-- Right Column (Accordions) -->
+    <div class="faq-right-col">
+      <ul class="faq-list">
+        
+        <!-- FAQ 1 (Open by default) -->
+        <li class="faq-item is-open">
+          <button class="faq-item-header" type="button" aria-expanded="true">
+            <span class="faq-item-question">Will the tabs stay on overnight or when I sweat?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              Yes. Apply to clean, dry skin and press each tab for 10–15 seconds. They are built to hold through workouts and a full night of sleep.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 2 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">Will it make my nose bigger?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              No. UnlockedAir gently lifts the nasal valve from the outside while worn; it does not alter nasal anatomy or cartilage permanently.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 3 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">I have sensitive skin. Is the adhesive safe?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              Yes. Our tabs use medical-grade, hypoallergenic, latex-free adhesive designed for daily wear without irritation.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 4 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">Does it hurt?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              Not at all. The magnetic force provides a gentle spring-like lift without pinching the bridge or going inside the nostrils.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 5 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">What’s in the starter kit?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              The starter kit includes 1 reusable magnetic band, 30 pairs of magnetic adhesive tabs, an applicator tool, and a travel case.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 6 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">Will it fit my nose?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              Yes. UnlockedAir is designed to fit a wide variety of nose shapes and sizes with flexible sizing options.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 7 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">How do I take it off?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              Simply slide or pull the magnetic band away, then peel each tab gently off starting from the outer edge.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 8 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">Can I reuse the band and tabs?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              The magnetic band is fully reusable and built to last. The adhesive tabs are disposable and designed for single-use hygiene.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 9 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">How do I clean the band?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              Wipe the band with warm water and mild soap or an alcohol wipe, then dry thoroughly before next use.
+            </p>
+          </div>
+        </li>
+
+        <!-- FAQ 10 -->
+        <li class="faq-item">
+          <button class="faq-item-header" type="button" aria-expanded="false">
+            <span class="faq-item-question">Can I wear it every day?</span>
+            <span class="faq-item-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-item-body">
+            <p class="faq-item-answer">
+              Yes. Many customers wear UnlockedAir every night for sleeping and during daily athletic training.
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- Mobile Bottom CTA Button -->
+    <div class="faq-mobile-button">
+      <a href="{{ section.settings.button_link | default: '#' }}" class="faq-button">
+        {{ section.settings.button_text | default: 'Visit help center' }}
+        <span class="faq-button-arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    const faqSection = document.getElementById('Faq-section');
+    if (!faqSection) return;
+
+    const faqHeaders = faqSection.querySelectorAll('.faq-item-header');
+    faqHeaders.forEach(function(header) {
+      header.addEventListener('click', function() {
+        const item = header.closest('.faq-item');
+        if (!item) return;
+        const isOpen = item.classList.contains('is-open');
+
+        // Close all other open FAQ items so only one is open at a time
+        const allItems = faqSection.querySelectorAll('.faq-item');
+        allItems.forEach(function(otherItem) {
+          if (otherItem !== item) {
+            otherItem.classList.remove('is-open');
+            const otherHeader = otherItem.querySelector('.faq-item-header');
+            if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle state of clicked item
+        if (isOpen) {
+          item.classList.remove('is-open');
+          header.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('is-open');
+          header.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "section-faq",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Label",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Title",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle Description",
+      "default": "Can’t find your answer? Our help center covers fit, shipping and subscriptions."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Label",
+      "default": "Visit help center"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Sleeper Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Sleeper Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ"
+    }
+  ]
+}
+{% endschema %}
